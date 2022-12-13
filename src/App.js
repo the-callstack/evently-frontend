@@ -9,10 +9,11 @@ import { Product } from './components/productDisplay/Product';
 function App() {
   return (
     <>
-    <Layout/>
+    <Product />
+    {/* <Layout/>
     <LoginWithSplash/>
     <CookiesModal/>
-     <Footer/>
+     <Footer/> */}
     </>
   );
 }

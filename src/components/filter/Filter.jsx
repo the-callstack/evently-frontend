@@ -6,7 +6,7 @@ export const Filter = () => {
 
     const changePrice = (e) => {
         setPrice(e.target.value);
-    }
+    };
   return (
     <div className="flex flex-col h-screen p-3 bg-white shadow w-60">
       <div className="space-y-3">
