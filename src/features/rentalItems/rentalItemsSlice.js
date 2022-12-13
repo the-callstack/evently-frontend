@@ -44,6 +44,13 @@ export const deleteItem = createAsyncThunk('rental/deleteItem',
     }
     );    
 
+    export const getByCategory = createAsyncThunk('rental/getByCategory',
+    async (categoryId) => {
+        const rentalItems = await axios.get(`/rentalcat?${categoryId}`);
+        return rentalItems ; 
+    }
+    )
+
 export const rentalItemsSlice=createSlice({
     name:'rental',
     initialState,
@@ -71,11 +78,17 @@ export const rentalItemsSlice=createSlice({
         })
         .addCase(updateItem.fulfilled, (state, action) => {
             state.rentalItems = action.payload ;
+        })
+        .addCase(getByCategory.fulfilled, (state, action) => {
+            state.rentalItems = action.payload ;
+        })
+        .addCase(getByCategory.rejected, (state, action) => {
+            state.errMsg = action.payload ;
         });
     }
 })
 
-export const selectRentalItemsState = (state) => state.rentalItems;
+export const selectRentalItemsState = (state) => state;
 
 
 export default rentalItemsSlice.reducer;
