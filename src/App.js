@@ -9,9 +9,8 @@ import { Route, Routes } from 'react-router-dom';
 import { Signup } from './features/auth/Signup';
 
 
-
-
 function App() {
+  
   return (
     <>
       <Layout/>
