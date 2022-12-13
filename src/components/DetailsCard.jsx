@@ -9,7 +9,7 @@ export default function Details(props) {
                 <div className="flex-none w-96 relative">
                     <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80"
                         alt="props.item.imgName"
-                        className="absolute inset-0 w-full h-full object-cover rounded-lg"
+                        className="absolute inset-0 w-full h-full object-cover rounded-lg "
                         loading="lazy" />
                 </div>
                 <form className="flex-auto p-6">
@@ -49,8 +49,6 @@ export default function Details(props) {
                         <div className="space-x-1 flex text-sm font-medium">
                         </div>
                     </div>
-
-
 
                     <div className="flex space-x-4 mb-5 text-sm font-medium">
                         <div className="flex-auto flex space-x-4 pr-4">
