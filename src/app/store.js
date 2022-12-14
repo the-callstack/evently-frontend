@@ -10,4 +10,5 @@ export const store = configureStore({
     rentalItem: rentalReducer,
     category: categoryReducer,
     user:userReducer,
+}
 });

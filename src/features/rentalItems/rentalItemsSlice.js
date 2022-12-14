@@ -17,7 +17,6 @@ export const getSpecific = createAsyncThunk('rental/getSpecific',
 export const getAll = createAsyncThunk('rental/getAll',
     async () => {
         const res = await axios.get('/rental');
-        console.log(res.data);
         return res.data ;
     }
 );
@@ -40,7 +39,7 @@ export const deleteItem = createAsyncThunk('rental/deleteItem',
     export const updateItem = createAsyncThunk('rental/updateItem',
     async (id, data) => {
         const res = await axios.put(`/rental/${id}`, data);
-        return res.data ;
+        return res.data[1][0] ;
     }
     );    
 
@@ -77,7 +76,13 @@ export const rentalItemsSlice=createSlice({
             state.errMsg = action.payload ;
         })
         .addCase(updateItem.fulfilled, (state, action) => {
-            state.rentalItems = action.payload ;
+            const newRental = state.rentalItems.map(item => {
+                if(item.id === action.payload.id){
+                    return action.payload ;
+                }
+                return item;
+            });
+            state.rentalItems = [...newRental];
         })
         .addCase(getByCategory.fulfilled, (state, action) => {
             state.rentalItems = action.payload ;
