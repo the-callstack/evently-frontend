@@ -71,6 +71,7 @@ export const userSlice = createSlice({
                 state.errMsg = '';
             })
             .addCase(signIn.rejected,(state, action) => {
+                console.log(action.error);
                 state.errMsg = action.error ;
             });
     }
