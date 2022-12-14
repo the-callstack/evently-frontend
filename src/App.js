@@ -7,6 +7,7 @@ import { Product } from "./components/productDisplay/Product";
 import DetailsCard from "./components/DetailsCard";
 import { Route, Routes } from "react-router-dom";
 import { Signup } from "./features/auth/Signup";
+import { Cart } from "./components/cart/Cart";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/products" element={<Product />}>
           <Route path=":id" element={<DetailsCard className="pt-96" />} />
         </Route>
+        <Route path="/cart" element={<Cart />}/>
       </Routes>
       {/* <CookiesModal/> */}
       <Footer />
