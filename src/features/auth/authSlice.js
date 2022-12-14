@@ -6,7 +6,8 @@ import  axios,{ axiosPrivate }  from "../../api/config";
 const initialState = {
     loggedUser: null,
     isLoggedIn: false,
-    isLoading: true
+    isLoading: true,
+    errMsg: ''
 };
 
 export const silentLogin = createAsyncThunk('user/silentLogin',
@@ -27,6 +28,7 @@ export const signIn = createAsyncThunk('user/signIn',
         const { email, password } = data;
         const encodedData = base64.encode(`${email}:${password}`);
         const res = await axios.post(`/signin`, {}, { headers: { Authorization: `Basic ${encodedData}` } });
+        console.log('Comes from signIn: ',res.data);
         return res.data;
     }
 );
@@ -66,6 +68,10 @@ export const userSlice = createSlice({
             .addCase(signIn.fulfilled, (state, action) => {
                 state.loggedUser = action.payload;
                 state.isLoggedIn = true;
+                state.errMsg = '';
+            })
+            .addCase(signIn.rejected,(state, action) => {
+                state.errMsg = action.error ;
             });
     }
 });

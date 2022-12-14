@@ -7,11 +7,14 @@ import { Product } from "./components/productDisplay/Product";
 import DetailsCard from "./components/DetailsCard";
 import { Route, Routes } from "react-router-dom";
 import { Signup } from "./features/auth/Signup";
+import { Carousel } from "./components/carousel/Carousel";
 
 function App() {
   return (
     <>
-      <Layout />
+    <Carousel />
+    {/* <LoginWithSplash /> */}
+      {/* <Layout />
       <Routes>
         <Route path="/auth">
           <Route path="signup" element={<Signup />} />
@@ -21,8 +24,8 @@ function App() {
           <Route path=":id" element={<DetailsCard className="pt-96" />} />
         </Route>
       </Routes>
+      <Footer /> */}
       {/* <CookiesModal/> */}
-      <Footer />
     </>
   );
 }
