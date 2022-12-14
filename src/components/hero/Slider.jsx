@@ -27,16 +27,18 @@ export const Slider = () => {
 {myData.map(item => {
     const {image, title, id, random} = item ;
     return(
-        <div key={id} className={activeSlide === id ? 'flex justify-between items-center w-full': 'hidden'}
+        <div key={id} className={
+            activeSlide === id ? 'flex justify-between items-center w-full' : 'hidden'
+        }
         >
             <button className= 'text-6x1 border-2 rounded-full border-black w-8' onClick={() => prevSliderHandler(id)}>
                {'<'}
             </button>
             <div className={`flex flex-col items-center w-full`}>
             <img src={image} alt={title} className='w-full'/>
-            <h2>{id}</h2>
-            <h3>{title}</h3>
-            <p>{random}</p>
+            {/* <h2>{id}</h2> */}
+            {/* <h3>{title}</h3>
+            <p>{random}</p> */}
             </div>
             <button className= 'text-6x1 border-2 rounded-full border-black w-8'  onClick={() => nextSliderHandler(id)}>
                 {'>'}

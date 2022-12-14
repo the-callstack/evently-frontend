@@ -68,8 +68,6 @@ export default function CookiesModal() {
             </div>
           </div>
         </div>
-      </div>
-
     </>
   );
 }

@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 import base64 from 'base-64';
-import { axiosPrivate } from "../../api/config";
+import  axios,{ axiosPrivate }  from "../../api/config";
 
 const initialState = {
     loggedUser: null,
@@ -26,7 +26,7 @@ export const signIn = createAsyncThunk('user/signIn',
     async (data) => {
         const { email, password } = data;
         const encodedData = base64.encode(`${email}:${password}`);
-        const res = await axiosPrivate.post(`/signin`, {}, { headers: { Authorization: `Basic ${encodedData}` } });
+        const res = await axios.post(`/signin`, {}, { headers: { Authorization: `Basic ${encodedData}` } });
         return res.data;
     }
 );

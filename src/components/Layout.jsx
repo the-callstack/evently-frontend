@@ -1,14 +1,14 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom';
-import Footer from './Footer';
-import Header from './Header';
+import Header from './header/Header';
+import { Hero } from './hero/Hero';
 
 export default function Layout() {
   return (
     <>
     <Header/>
+    <Hero/>
     <Outlet/>
-    {/* <Footer/> */}
     </>
   )
 }
