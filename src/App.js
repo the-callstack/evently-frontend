@@ -11,8 +11,6 @@ import { useSelector } from 'react-redux';
 import { selectUserState } from './features/auth/authSlice';
 
 
-
-
 function App() {
   const { isLoggedIn } = useSelector(selectUserState);
 

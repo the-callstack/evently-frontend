@@ -1,4 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { axiosPrivate } from "../../api/config";
 
 
 
@@ -23,13 +24,13 @@ export const getStore = createAsyncThunk('stores/getStore',
 export const postStore = createAsyncThunk('stores/postStore',
     async (data) => {
         const stores = await axiosPrivate.post(`/store`,data);
-        return store.data;
+        return stores.data;
     });
 
     export const updateStore = createAsyncThunk('stores/updateStore',
     async (data) => {
         const stores = await axiosPrivate.put(`/store/id`,data);
-        return store.data;
+        return stores.data;
     });
 
     export const deleteStore = createAsyncThunk('stores/deleteStore',
