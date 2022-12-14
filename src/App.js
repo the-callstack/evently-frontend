@@ -7,7 +7,10 @@ import { Product } from "./components/productDisplay/Product";
 import DetailsCard from "./components/DetailsCard";
 import { Route, Routes } from "react-router-dom";
 import { Signup } from "./features/auth/Signup";
+import Aggregator from './components/aggregator/Aggregator';
+import { Cart } from "./components/cart/Cart";
 import { Profile } from "./components/profile/Profile";
+
 
 function App() {
   return (
@@ -24,9 +27,12 @@ function App() {
           <Route path=":id" element={<DetailsCard className="pt-96" />} />
         </Route>
         <Route path="/profile" element={<Profile />} />
+        <Route path="/cart" element={<Cart />}/>
       </Routes>
-      <Footer />
       {/* <CookiesModal/> */}
+      <Aggregator />
+      <Footer />
+    
     </>
   );
 }
