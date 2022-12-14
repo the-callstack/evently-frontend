@@ -12,7 +12,8 @@ import { Profile } from "./components/profile/Profile";
 function App() {
   return (
     <>
-    {/* <LoginWithSplash /> */}
+    {/* <Profile />
+    <LoginWithSplash /> */}
       <Layout />
       <Routes>
         <Route path="/auth">

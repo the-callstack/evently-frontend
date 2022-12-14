@@ -9,7 +9,8 @@ const { isLoggedIn } = useSelector(selectUserState);
 console.log(isLoggedIn);
   return (
     <div>
-      {isLoggedIn ? <ProfileCard /> : <Navigate to='/auth/signin'/>}
+      {/* {isLoggedIn ? <ProfileCard /> : <Navigate to='/auth/signin'/>} */}
+      <ProfileCard />
     </div>
   );
 };
