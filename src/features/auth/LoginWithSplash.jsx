@@ -8,7 +8,6 @@ export default function LoginWithSplash() {
     const [email, setEmail] = useState();
 
     const signin = async (e) => {
-        console.log('---------------------------------------------------')
         e.preventDefault();
         const userData = {
             "email": email,
@@ -35,7 +34,6 @@ export default function LoginWithSplash() {
                         <div className="flex-1">
                             <div className="text-center">
                                 <h2 className="text-4xl font-bold text-center text-gray-700 dark:text-white">Evently</h2>
-
                                 <p className="mt-3 text-gray-500 dark:text-gray-300">Sign in to access your account</p>
                             </div>
 
@@ -69,7 +67,7 @@ export default function LoginWithSplash() {
 
                                 </form>
 
-                                <p className="mt-6 text-sm text-center text-gray-400">Don&#x27;t have an account yet? <a href="auth/signup" className="text-blue-500 focus:outline-none focus:underline hover:underline">Sign up</a>.</p>
+                                <p className="mt-6 text-sm text-center text-gray-400">Don&#x27;t have an account yet? <a href="/auth/signup" className="text-blue-500 focus:outline-none focus:underline hover:underline">Sign up</a>.</p>
                             </div>
                         </div>
                     </div>

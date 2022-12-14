@@ -1,7 +1,7 @@
 export const data = [
     {
       id: 1,
-      image: "https://media.discordapp.net/attachments/1029705588957003894/1052119001343475752/360_F_207090644_pzixjQM0iSPLdTTAjDT0DX4nXVMz7Non.jpg",
+      image: "https://cehhs.utk.edu/wp-content/uploads/sites/15/2021/02/calendar.jpg",
       title: "First Slide",
       random:
         "*Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, ducimus?",
