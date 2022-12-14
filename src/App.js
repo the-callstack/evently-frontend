@@ -7,21 +7,31 @@ import { Product } from './components/productDisplay/Product';
 import DetailsCard from './components/DetailsCard';
 import { Route, Routes } from 'react-router-dom';
 import { Signup } from './features/auth/Signup';
+import { useSelector } from 'react-redux';
+import { selectUserState } from './features/auth/authSlice';
 
 
 function App() {
-  
+  const { isLoggedIn } = useSelector(selectUserState);
+
   return (
     <>
-      <Layout/>
+
+{
+          ((isLoggedIn ) ?
+            <Layout /> :
+            <LoginWithSplash />)
+        }
+
+      {/* <Layout /> */}
       <Routes>
-      <Route path='/auth' element={<LoginWithSplash/>} />
-      <Route path='/auth/signup' element={<Signup />} />
-      <Route path='/products' element={<Product />} />
-      <Route path='/productdetails' element={ <DetailsCard className ="pt-96" />} />
+        <Route path='/auth/signup' element={<Signup />} />
+        <Route path='/products' element={<Product />} />
+        <Route path='/productdetails' element={<DetailsCard className="pt-96" />} />
+        <Route path='/auth' element={<LoginWithSplash />} />
       </Routes>
       {/* <CookiesModal/> */}
-      <Footer/>
+      <Footer />
     </>
   );
 }
