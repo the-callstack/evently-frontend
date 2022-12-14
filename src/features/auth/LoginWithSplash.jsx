@@ -5,8 +5,8 @@ import { selectUserState, signIn } from "./authSlice";
 
 export default function LoginWithSplash() {
   const dispatch = useDispatch();
-  const { errMsg } = useSelector(selectUserState);
-
+  const { errMsg, isLoggedIn } = useSelector(selectUserState);
+  console.log(isLoggedIn);
   const signin = async (e) => {
     e.preventDefault();
     const userData = {
@@ -37,7 +37,6 @@ export default function LoginWithSplash() {
               </div>
             </div>
           </div>
-
           <div className="flex items-center w-full max-w-md px-6 mx-auto lg:w-2/6">
             <div className="flex-1">
               <div className="text-center">

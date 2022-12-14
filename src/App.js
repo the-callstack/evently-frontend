@@ -7,14 +7,13 @@ import { Product } from "./components/productDisplay/Product";
 import DetailsCard from "./components/DetailsCard";
 import { Route, Routes } from "react-router-dom";
 import { Signup } from "./features/auth/Signup";
-import { Carousel } from "./components/carousel/Carousel";
+import { Profile } from "./components/profile/Profile";
 
 function App() {
   return (
     <>
-    <Carousel />
     {/* <LoginWithSplash /> */}
-      {/* <Layout />
+      <Layout />
       <Routes>
         <Route path="/auth">
           <Route path="signup" element={<Signup />} />
@@ -23,8 +22,9 @@ function App() {
         <Route path="/products" element={<Product />}>
           <Route path=":id" element={<DetailsCard className="pt-96" />} />
         </Route>
+        <Route path="/profile" element={<Profile />} />
       </Routes>
-      <Footer /> */}
+      <Footer />
       {/* <CookiesModal/> */}
     </>
   );
