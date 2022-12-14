@@ -7,6 +7,7 @@ import { Product } from "./components/productDisplay/Product";
 import DetailsCard from "./components/DetailsCard";
 import { Route, Routes } from "react-router-dom";
 import { Signup } from "./features/auth/Signup";
+import Aggregator from './components/aggregator/Aggregator';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         </Route>
       </Routes>
       {/* <CookiesModal/> */}
+      <Aggregator />
       <Footer />
     </>
   );
