@@ -7,10 +7,12 @@ import reportWebVitals from './reportWebVitals';
 import './index.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { getAll } from './features/rentalItems/rentalItemsSlice';
+import { silentLogin } from './features/auth/authSlice';
 
 const container = document.getElementById('root');
 const root = createRoot(container);
 store.dispatch(getAll())
+store.dispatch(silentLogin())
 root.render(
   <React.StrictMode>
     <Provider store={store}>

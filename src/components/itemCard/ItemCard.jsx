@@ -9,7 +9,9 @@ export const ItemCard = ({item}) => {
           id: item.id,
           name: item.name,
           price: item.price,
-          quantity: item.quantity
+          quantity: item.quantity,
+          imagePath: item.imgPath,
+          imageName: item.imgName
         }
       })
     }

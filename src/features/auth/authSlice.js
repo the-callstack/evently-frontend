@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 import base64 from 'base-64';
-import  axios,{ axiosPrivate }  from "../../api/config";
+import { axiosPrivate }  from "../../api/config";
 
 const initialState = {
     loggedUser: null,
@@ -18,7 +18,7 @@ export const silentLogin = createAsyncThunk('user/silentLogin',
 
 export const logout = createAsyncThunk('user/logout',
     async () => {
-        await axiosPrivate.delete(`/silent`);
+        await axiosPrivate.delete(`/signout`);
         return null;
     }
 );
@@ -27,7 +27,7 @@ export const signIn = createAsyncThunk('user/signIn',
     async (data) => {
         const { email, password } = data;
         const encodedData = base64.encode(`${email}:${password}`);
-        const res = await axios.post(`/signin`, {}, { headers: { Authorization: `Basic ${encodedData}` } });
+        const res = await axiosPrivate.post(`/signin`, {}, { headers: { Authorization: `Basic ${encodedData}` } });
         console.log('Comes from signIn: ',res.data);
         return res.data;
     }
@@ -35,7 +35,7 @@ export const signIn = createAsyncThunk('user/signIn',
 
 export const signUp = createAsyncThunk('user/signUp',
     async (data) => {
-        const res = axiosPrivate.post(`/signUp`, data);
+        const res = await axiosPrivate.post(`/signUp`, data);
         return res.data;
     });
 

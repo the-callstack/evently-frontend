@@ -1,6 +1,7 @@
 import React from 'react'
 import { useLocation } from 'react-router-dom'
-import Carousel from './Carousel'
+import TestCarousel from './TestCarousel'
+
 import Review from './Review'
 
 export default function Details() {
@@ -10,8 +11,8 @@ export default function Details() {
         <>
             <div className="flex font-serif p-20 pt-28">
                 <div className="flex-none w-96 relative">
-                    <img src="https://wallpaperaccess.com/full/2489661.jpg"
-                        alt="props.item.imgName"
+                    <img src={location.state.imagePath}
+                        alt={location.state.imageName}
                         className="absolute inset-0 w-full h-full object-cover rounded-lg "
                         loading="lazy" />
                 </div>
@@ -74,7 +75,7 @@ export default function Details() {
 
                 </form>
             </div>
-            <Carousel />
+            <TestCarousel />
             <Review />
         </>
     )

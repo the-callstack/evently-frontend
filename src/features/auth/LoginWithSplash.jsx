@@ -1,10 +1,12 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Navigate, useLocation } from "react-router-dom";
 import { Alert } from "./Alert";
 import { selectUserState, signIn } from "./authSlice";
 
 export default function LoginWithSplash() {
   const dispatch = useDispatch();
+  const location = useLocation();
   const { errMsg, isLoggedIn } = useSelector(selectUserState);
   console.log(isLoggedIn);
   const signin = async (e) => {
@@ -108,6 +110,10 @@ export default function LoginWithSplash() {
                   {errMsg ?
                  <Alert />
                   : <></>}
+                  {/* {
+                    isLoggedIn &&
+                     <Navigate to='/' />
+                  } */}
                 </p>
               </div>
             </div>
