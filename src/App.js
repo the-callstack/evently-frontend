@@ -34,7 +34,7 @@ function App() {
       </Routes>
       {/* <CookiesModal/> */}
       {/* <ContactUs /> */}
-      <Aggregator />
+      {/* <Aggregator /> */}
       <Footer />
     
     </>
