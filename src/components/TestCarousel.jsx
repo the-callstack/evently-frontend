@@ -1,13 +1,13 @@
 import { useState, useRef, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { selectRentalItemsState } from '../features/rentalItems/rentalItemsSlice';
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 
 
 const TestCarousel = (props) => {
-  const {rentalItem}  = useSelector(selectRentalItemsState);
+  const { rentalItem } = useSelector(selectRentalItemsState);
 
 
   const maxScrollWidth = useRef(0);
@@ -57,17 +57,14 @@ const TestCarousel = (props) => {
 
   const navigate = useNavigate();
   const handleClick = (item) => {
-
-
-    console.log(item.id)
-    // navigate(`/products/${item.id}`,{
-    //   state: {
-    //     id: item.id,
-    //     name: item.name,
-    //     price: item.price,
-    //     quantity: item.quantity
-    //   }
-    // })
+    navigate(`/products/${item.id}`,{
+      state: {
+        id: item.id,
+        name: item.name,
+        price: item.price,
+        quantity: item.quantity
+      }
+    })
   }
 
   return (
@@ -127,29 +124,42 @@ const TestCarousel = (props) => {
           {rentalItem.rentalItems.map((resource, index) => {
             // console.log(resource.name,resource.imgPath,resource.id)
             return (
-              <div 
+              <div
                 key={index}
                 className="carousel-item text-center relative w-64 h-64 snap-start"
               >
-                <a
-                  href={resource.imgPath}
+                <div  onClick={()=>handleClick(resource)}
                   className="h-full w-full aspect-square block bg-origin-padding bg-left-top bg-cover bg-no-repeat z-0"
                   style={{ backgroundImage: `url(${resource.imgPath || ''})` }}
                 >
+                  <img 
+                    src={resource.imgPath || ''}
+                    alt={resource.name}
+                    className="w-full aspect-square hidden"
+                  />
+                </div>
+
+
+
+                {/* <Link className="h-full w-full aspect-square block bg-origin-padding bg-left-top bg-cover bg-no-repeat z-0"
+                  style={{ backgroundImage: `url(${resource.imgPath || ''})` }} to='https://online.ltuc.com/d2l/home'>
                   <img
                     src={resource.imgPath || ''}
                     alt={resource.name}
                     className="w-full aspect-square hidden"
                   />
-                </a>
-                <a 
+                </Link> */}
+
+                {/* <a 
                   href={resource.imgPath}
+
+
                   className="h-full w-full aspect-square block absolute top-0 left-0 transition-opacity duration-300 opacity-0 hover:opacity-100 bg-blue-800/75 z-10"
                 >
                   <h3 className="text-white py-6 px-3 mx-auto text-xl">
                     {resource.id} {resource.imgPath}
                   </h3>
-                </a>
+                </a> */}
               </div>
             );
           })}
