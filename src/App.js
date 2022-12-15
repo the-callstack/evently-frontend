@@ -26,9 +26,8 @@ function App() {
           <Route path="signup" element={<Signup />} />
           <Route path="signin" element={<LoginWithSplash />} />
         </Route>
-        <Route path="/products" element={<Product />}>
-          <Route path=":id" element={<DetailsCard className="pt-96" />} />
-        </Route>
+        <Route path="/products/:id" element={<DetailsCard />} />
+        <Route path="/products" element={<Product />}/>
         <Route path="/profile" element={<Profile />} />
         <Route path="/cart" element={<Cart />}/>
       </Routes>
