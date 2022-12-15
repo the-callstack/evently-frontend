@@ -18,8 +18,8 @@ export default function Header() {
               </Link>
               <ul className="hidden md:flex px-4 mx-auto font-semibold font-heading space-x-12">
                 <li><Link className="hover:text-gray-200" to="/">Home</Link></li>
-                <li><Link className="hover:text-gray-200" to="/products">Products</Link></li>
-                <li><Link className="hover:text-gray-200" to="#ss">Contact Us</Link></li>
+                <li><Link className="hover:text-gray-200" to="/products"></Link></li>
+                <li><Link className="hover:text-gray-200" to="#ss">CProductsontact Us</Link></li>
                 <li>
                 </li>
               </ul>
