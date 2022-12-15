@@ -8,10 +8,17 @@ import DetailsCard from "./components/DetailsCard";
 import { Route, Routes } from "react-router-dom";
 import { Signup } from "./features/auth/Signup";
 import ContactUs from "./components/ContactUs";
+import Aggregator from './components/aggregator/Aggregator';
+import { Cart } from "./components/cart/Cart";
+import { Profile } from "./components/profile/Profile";
+
+
 
 function App() {
   return (
     <>
+    {/* <Profile />
+    <LoginWithSplash /> */}
       <Layout />
       <Routes>
         <Route path="/contactus" element={<ContactUs />} />
@@ -22,10 +29,14 @@ function App() {
         <Route path="/products" element={<Product />}>
           <Route path=":id" element={<DetailsCard className="pt-96" />} />
         </Route>
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/cart" element={<Cart />}/>
       </Routes>
       {/* <CookiesModal/> */}
       {/* <ContactUs /> */}
+      <Aggregator />
       <Footer />
+    
     </>
   );
 }

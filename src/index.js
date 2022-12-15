@@ -6,10 +6,11 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './index.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { getAll } from './features/rentalItems/rentalItemsSlice';
 
 const container = document.getElementById('root');
 const root = createRoot(container);
-
+store.dispatch(getAll())
 root.render(
   <React.StrictMode>
     <Provider store={store}>
