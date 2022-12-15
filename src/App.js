@@ -7,9 +7,11 @@ import { Product } from "./components/productDisplay/Product";
 import DetailsCard from "./components/DetailsCard";
 import { Route, Routes } from "react-router-dom";
 import { Signup } from "./features/auth/Signup";
+import ContactUs from "./components/ContactUs";
 import Aggregator from './components/aggregator/Aggregator';
 import { Cart } from "./components/cart/Cart";
 import { Profile } from "./components/profile/Profile";
+
 
 
 function App() {
@@ -19,6 +21,7 @@ function App() {
     <LoginWithSplash /> */}
       <Layout />
       <Routes>
+        <Route path="/contactus" element={<ContactUs />} />
         <Route path="/auth">
           <Route path="signup" element={<Signup />} />
           <Route path="signin" element={<LoginWithSplash />} />
@@ -30,6 +33,7 @@ function App() {
         <Route path="/cart" element={<Cart />}/>
       </Routes>
       {/* <CookiesModal/> */}
+      {/* <ContactUs /> */}
       <Aggregator />
       <Footer />
     

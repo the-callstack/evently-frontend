@@ -8,7 +8,6 @@ export default function Header() {
 
   return (
     <>
-
       <div className="flex flex-wrap place-items-center">
         <section className="relative mx-auto">
           <nav className="flex justify-between bg-gray-900 text-white w-screen">
@@ -69,7 +68,6 @@ export default function Header() {
 
         </section>
       </div>
-
     </>
   );
 }
