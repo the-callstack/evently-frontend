@@ -44,9 +44,9 @@ export const ProfileCard = () => {
             {loggedUser ?loggedUser.address : 'adress'}
           </p>
           <p className="pt-8 text-sm">
-          <h1 className="text-lg font-semibold pt-8 lg:pt-0 underline-offset-0">
+          <span className="text-lg font-semibold pt-8 lg:pt-0 underline-offset-0">
             About :
-          </h1>
+          </span>
             {loggedUser ? loggedUser.about : '---'}
           </p>
           <div className="mt-6 pb-16 lg:pb-0 w-4/5 lg:w-full mx-auto flex flex-wrap justify-center gap-14">

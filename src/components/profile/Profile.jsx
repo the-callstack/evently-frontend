@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 import { selectUserState } from "../../features/auth/authSlice";
@@ -9,13 +8,11 @@ export const Profile = () => {
 const { isLoggedIn } = useSelector(selectUserState);
   return (
     <div>
-      {isLoggedIn &&
-       <ProfileCard />
-       }
-
-      {/* {!isLoggedIn &&
+      {isLoggedIn && <ProfileCard /> 
+      }
+      {!isLoggedIn &&
       <Navigate to='/auth/signin'/>
-      } */}
+      }
       {/* <ProfileCard /> */}
     </div>
   );

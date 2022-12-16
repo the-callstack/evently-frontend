@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { logout, selectUserState } from "../../features/auth/authSlice";
@@ -48,14 +48,13 @@ export default function Header() {
                 }
                 {
                   isLoggedIn &&
-                <Link
+                <button
                   className="hover:text-gray-200 hover:underline"
-                  to="/"
                   onClick={handleSignOut}
                 >
                   {" "}
                   Sign out
-                </Link>
+                </button>
                 }
                 <Link className="hover:text-gray-200" to="#ss">
                   <svg
@@ -98,8 +97,9 @@ export default function Header() {
                   </span>
                 </Link>
                 <Link
-                  className="flex items-center hover:text-gray-200"
+                  className="flex items-center gap-1 hover:text-gray-200"
                   to="/profile"
+                  title="Profile page"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -115,6 +115,10 @@ export default function Header() {
                       d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                     />
                   </svg>
+                  {
+                  isLoggedIn &&
+                  <h3> { loggedUser.username}  !</h3>
+                }
                 </Link>
               </div>
             </div>
