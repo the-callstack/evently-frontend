@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { useLocation } from 'react-router-dom';
-import { deleteRentalItem, getStoreRentalItems, selectRentalItemsState } from '../features/rentalItems/rentalItemsSlice';
-import { deleteSaleItems, getStoreSaleItems, selectSaleItemsState } from '../features/saleItems/saleItemsSlice';
+import {  useLocation } from 'react-router-dom';
+import { deleteRentalItem, getStoreRentalItems, selectRentalItemsState } from '../../features/rentalItems/rentalItemsSlice';
+import { deleteSaleItems, getStoreSaleItems, selectSaleItemsState } from '../../features/saleItems/saleItemsSlice';
+import { AddItem } from './AddItem';
+import { AddStore } from './AddStore';
 
 export default function ItemsTable(props) {
     const dispatch = useDispatch()
@@ -15,8 +17,9 @@ export default function ItemsTable(props) {
     const [itemObject, setItemObject] = useState({})
     useEffect(() => {
         dispatch(getStoreSaleItems(location.state.store.id))
-        dispatch(getStoreRentalItems(location.state.store.id))
+        dispatch(getStoreRentalItems(location.state.store.id)) 
     }, []);
+
 
     const handleSaleUpdate = (item) => {
         // console.log(item.id, item.itemName)
@@ -89,7 +92,8 @@ export default function ItemsTable(props) {
                                     })
 
                                 } */}
-                                { saleItems.saleItems?.map((item, index) => {
+                                
+                                {saleItems.saleItems?.map((item, index) => {
                                     return (
 
                                         <tr key={index}>
@@ -145,13 +149,12 @@ export default function ItemsTable(props) {
                                         </tr>
                                     )
                                 })}
-
-
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
+            <AddItem/> 
         </div>
     );
 }

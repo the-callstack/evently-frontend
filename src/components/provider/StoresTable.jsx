@@ -1,23 +1,26 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { deleteStore, getVendorStores, selectStoresState } from '../features/stores/storesSlice';
+import { selectUserState } from '../../features/auth/authSlice';
+import { deleteStore, getVendorStores, selectStoresState } from '../../features/stores/storesSlice';
+import { AddStore } from './AddStore';
 
 export default function StoresTable() {
     const dispatch = useDispatch()
     const { stores } = useSelector(selectStoresState);
+    const { loggedUser } = useSelector(selectUserState);
+
     const navigate = useNavigate();
 
     useEffect(() => {
         // dispatch(getAllStores())
-        dispatch(getVendorStores(2))
-
+        dispatch(getVendorStores(loggedUser.id))
 
         console.log(stores);
     }, []);
 
     const handleClick = (store) => {
-   
+
         navigate(`/storeitems/${store.storeName}`, {
             state: {
                 store: store
@@ -102,14 +105,12 @@ export default function StoresTable() {
                                         </tr>
                                     )
                                 })}
-
-
-
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
+            <AddStore />
         </div>
     );
 }
