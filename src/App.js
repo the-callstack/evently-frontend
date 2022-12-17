@@ -11,11 +11,8 @@ import ContactUs from "./components/ContactUs";
 import Aggregator from './components/aggregator/Aggregator';
 import { Cart } from "./components/cart/Cart";
 import { Profile } from "./components/profile/Profile";
-
-import { Provider } from "./components/provider/Provider";
-
-import StoresTable from "./components/StoresTable";
-import ItemsTable from "./components/ItemsTable";
+import StoresTable from "./components/provider/StoresTable";
+import ItemsTable from "./components/provider/ItemsTable";
 import TestCarousel from "./components/TestCarousel";
 
 
@@ -30,7 +27,7 @@ function App() {
       {/* <ItemsTable /> */}
       {/* <TestCarousel/> */}
       <Layout />
-      <Provider />
+      
       <Routes>
         <Route path="/contactus" element={<ContactUs />} />
         <Route path="/auth">

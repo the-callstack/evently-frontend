@@ -56,7 +56,7 @@ export  const UpdateStore = () => {
                   </button>
                 </div>
                 {/*body*/}
-<form enctype='multipart/form-data' onSubmit={handleSubmit} className="w-full max-w-sm">
+<form encType='multipart/form-data' onSubmit={handleSubmit} className="w-full max-w-sm">
   <div className="md:flex md:items-center mb-6 pt-6">
     <div className="md:w-1/3">
       <label
