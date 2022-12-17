@@ -89,7 +89,7 @@ export default function ItemsTable(props) {
                                     })
 
                                 } */}
-                                {saleItems && saleItems.map((item, index) => {
+                                { saleItems.saleItems?.map((item, index) => {
                                     return (
 
                                         <tr key={index}>
@@ -116,7 +116,7 @@ export default function ItemsTable(props) {
                                         </tr>
                                     )
                                 })}
-                                {rentalItems.rentalItems && rentalItems.rentalItems.map((item, index) => {
+                                {rentalItems.rentalItems?.map((item, index) => {
                                     return (
 
                                         <tr key={index}>

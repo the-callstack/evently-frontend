@@ -13,6 +13,7 @@ import { Cart } from "./components/cart/Cart";
 import { Profile } from "./components/profile/Profile";
 import StoresTable from "./components/StoresTable";
 import ItemsTable from "./components/ItemsTable";
+import TestCarousel from "./components/TestCarousel";
 
 
 
@@ -23,6 +24,7 @@ function App() {
     <LoginWithSplash /> */}
       {/* <StoresTable /> */}
       {/* <ItemsTable /> */}
+      {/* <TestCarousel/> */}
       <Layout />
       <Routes>
         <Route path="/contactus" element={<ContactUs />} />

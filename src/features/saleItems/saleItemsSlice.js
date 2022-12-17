@@ -81,7 +81,7 @@ export const saleItemsSlice = createSlice({
     }
 })
 
-export const selectSaleItemsState = (state) => state.saleItems;
+export const selectSaleItemsState = (state) => state;
 
 
 export default saleItemsSlice.reducer;
