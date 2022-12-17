@@ -1,7 +1,25 @@
 import React, {useState} from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { selectUserState } from "../../features/auth/authSlice";
+import { updateStore } from "../../features/stores/storesSlice";
 
 export  const UpdateStore = () => {
   const [menu, setMenu] = useState(false);
+
+  const dispatch = useDispatch();
+  const { loggedUser } = useSelector(selectUserState);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const data = {
+      storeName: e.target.storeName.value,
+      phone: e.target.storePhone.value,
+      logoPath: e.target.logo.value,
+      address: e.target.address.value,
+      UserId: loggedUser.id,
+    }
+    dispatch(updateStore(data))
+  }
 
   const showMenu = () => {
     setMenu(!menu);
@@ -15,7 +33,7 @@ export  const UpdateStore = () => {
       >
         Open store modal
       </button>
-      
+
         <div className={(menu) ? `w-full h-full bg-gray-900 bg-opacity-80 top-0 fixed sticky-0` : `hidden`}>
           <div
             className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
@@ -38,7 +56,7 @@ export  const UpdateStore = () => {
                   </button>
                 </div>
                 {/*body*/}
-                 <form enctype='multipart/form-data' className="w-full max-w-sm">
+<form enctype='multipart/form-data' onSubmit={handleSubmit} className="w-full max-w-sm">
   <div className="md:flex md:items-center mb-6 pt-6">
     <div className="md:w-1/3">
       <label
@@ -118,27 +136,26 @@ export  const UpdateStore = () => {
       
     </div>
   </div>
-</form>
                 {/*footer*/}
                 <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
                   <button
                     className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                     type="button"
                     onClick={showMenu}
-                  > 
+                    > 
                     Close
                   </button>
                   <button
                         className="shadow bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
-                        type="button"
-                    >
+                        type="submit"
+                        >
                         Update
                     </button>
                 </div>
+                </form>
               </div>
             </div>
           </div>
-          <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
         </div>
       
     </>
