@@ -1,9 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { getAll } from '../features/rentalItems/rentalItemsSlice';
-import { getAllSaleItems } from '../features/saleItems/saleItemsSlice';
-import { deleteStore, getAllStores, getVendorStores, selectStoresState } from '../features/stores/storesSlice';
+import { deleteStore, getVendorStores, selectStoresState } from '../features/stores/storesSlice';
 
 export default function StoresTable() {
     const dispatch = useDispatch()
@@ -19,8 +17,7 @@ export default function StoresTable() {
     }, []);
 
     const handleClick = (store) => {
-        // dispatch(getAll(store.id))
-        // dispatch(getAllSaleItems(store.id))
+   
         navigate(`/storeitems/${store.storeName}`, {
             state: {
                 store: store

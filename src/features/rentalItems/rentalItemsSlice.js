@@ -39,9 +39,11 @@ export const createItem = createAsyncThunk('rental/createItem',
 export const deleteRentalItem = createAsyncThunk('rental/deleteRentalItem',
     async (id) => {
         const res = await axios.delete(`/rental/${id}`);
-        return res.data ;
+        return id ;
     }
     );
+
+
 
     export const updateItem = createAsyncThunk('rental/updateItem',
     async (id, data) => {
