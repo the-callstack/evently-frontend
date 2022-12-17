@@ -11,14 +11,18 @@ import ContactUs from "./components/ContactUs";
 import Aggregator from './components/aggregator/Aggregator';
 import { Cart } from "./components/cart/Cart";
 import { Profile } from "./components/profile/Profile";
+import StoresTable from "./components/StoresTable";
+import ItemsTable from "./components/ItemsTable";
 
 
 
 function App() {
   return (
     <>
-    {/* <Profile />
+      {/* <Profile />
     <LoginWithSplash /> */}
+      {/* <StoresTable /> */}
+      {/* <ItemsTable /> */}
       <Layout />
       <Routes>
         <Route path="/contactus" element={<ContactUs />} />
@@ -27,15 +31,16 @@ function App() {
           <Route path="signin" element={<LoginWithSplash />} />
         </Route>
         <Route path="/products/:id" element={<DetailsCard />} />
-        <Route path="/products" element={<Product />}/>
+        <Route path="/products" element={<Product />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/cart" element={<Cart />}/>
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/storeitems/:name" element={<ItemsTable />} />
       </Routes>
       {/* <CookiesModal/> */}
       {/* <ContactUs /> */}
       {/* <Aggregator /> */}
       <Footer />
-    
+
     </>
   );
 }
