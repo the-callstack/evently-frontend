@@ -11,17 +11,19 @@ import ContactUs from "./components/ContactUs";
 import Aggregator from './components/aggregator/Aggregator';
 import { Cart } from "./components/cart/Cart";
 import { Profile } from "./components/profile/Profile";
+import AboutUs from "./components/AboutUs";
 
 
 
 function App() {
   return (
     <>
-    {/* <Profile />
+      {/* <Profile />
     <LoginWithSplash /> */}
       <Layout />
-      <Routes>
+       <Routes>
         <Route path="/contactus" element={<ContactUs />} />
+        <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/auth">
           <Route path="signup" element={<Signup />} />
           <Route path="signin" element={<LoginWithSplash />} />
@@ -34,8 +36,8 @@ function App() {
       {/* <CookiesModal/> */}
       {/* <ContactUs /> */}
       {/* <Aggregator /> */}
+      {/* <AboutUs /> */}
       <Footer />
-    
     </>
   );
 }
