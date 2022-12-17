@@ -1,11 +1,10 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "../../api/config";
 
-
-
 const initialState = {
     saleItems: [],
     saleItem: {},
+    errMsg:''
 }
 
 
@@ -30,7 +29,7 @@ export const postSaleItems = createAsyncThunk('saleItems/postSaleItems',
     });
 
 export const updateSaleItems = createAsyncThunk('saleItems/updateSaleItems',
-    async (id) => {
+    async (id,data) => {
         const sale = await axios.put(`/sale/${id}`, data);
         return sale.data[1][0];
     });
@@ -40,6 +39,19 @@ export const deleteSaleItems = createAsyncThunk('saleItems/deleteSaleItems',
         const sale = await axios.delete(`/sale/${id}`);
         return id;
     });
+export const getSaleByPrice = createAsyncThunk('saleItems/getSaleByPrice',
+    async (price) => {
+        const sale = await axios.get(`/saleprice/${price}`);
+        return sale.data;
+    });
+
+    export const getSaleByName = createAsyncThunk('rental/getSaleByName',
+    async (name) => {
+        const saleItems = await axios.get(`/salekey?keyWord=${name}`);
+        return saleItems.data ; 
+    }
+    );
+
 
 export const saleItemsSlice = createSlice({
     name: 'saleItems',
@@ -62,6 +74,18 @@ export const saleItemsSlice = createSlice({
             .addCase(deleteSaleItems.fulfilled, (state, action) => {
                 const newSaleItems = state.saleItems.filter((item) => item.id !== action.payload);
                 state.saleItems=newSaleItems;
+            })
+            .addCase(getSaleByPrice.fulfilled, (state, action) => {
+                state.rentalItems = action.payload ;
+            })
+            .addCase(getSaleByPrice.rejected, (state, action) => {
+                state.errMsg = action.error ;
+            })
+            .addCase(getSaleByName.fulfilled, (state, action) => {
+                state.rentalItems = action.payload ;
+            })
+            .addCase(getSaleByName.rejected, (state, action) => {
+                state.errMsg = action.error ;
             })
     }
 })

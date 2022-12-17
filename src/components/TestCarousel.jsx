@@ -1,13 +1,13 @@
 import { useState, useRef, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { selectRentalItemsState } from '../features/rentalItems/rentalItemsSlice';
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 
 
 const TestCarousel = (props) => {
-  const { rentalItem } = useSelector(selectRentalItemsState);
+  const { rentalItems } = useSelector(selectRentalItemsState);
 
 
   const maxScrollWidth = useRef(0);
@@ -121,8 +121,7 @@ const TestCarousel = (props) => {
           ref={carousel}
           className="carousel-container relative flex gap-1 overflow-hidden scroll-smooth snap-x snap-mandatory touch-pan-x z-0"
         >
-          {rentalItem.rentalItems.map((resource, index) => {
-            // console.log(resource.name,resource.imgPath,resource.id)
+          {rentalItems.rentalItems.map((resource, index) => {
             return (
               <div
                 key={index}

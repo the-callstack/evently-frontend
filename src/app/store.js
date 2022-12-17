@@ -8,7 +8,7 @@ import eventCatReducer from '../features/EventCat/EventCatSlice';
 export const store = configureStore({
   reducer: {
     counter: counterReducer,
-    rentalItem: rentalReducer,
+    rentalItems: rentalReducer,
     category: categoryReducer,
     user:userReducer,
     eventCat: eventCatReducer
