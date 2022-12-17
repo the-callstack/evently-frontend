@@ -11,7 +11,7 @@ import ContactUs from "./components/ContactUs";
 import Aggregator from './components/aggregator/Aggregator';
 import { Cart } from "./components/cart/Cart";
 import { Profile } from "./components/profile/Profile";
-
+import { Provider } from "./components/provider/Provider";
 
 
 function App() {
@@ -20,6 +20,7 @@ function App() {
     {/* <Profile />
     <LoginWithSplash /> */}
       <Layout />
+      <Provider />
       <Routes>
         <Route path="/contactus" element={<ContactUs />} />
         <Route path="/auth">
