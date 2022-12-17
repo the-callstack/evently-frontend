@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { axiosPrivate } from "../../api/config";
+import axios from "../../api/config";
 
 
 
@@ -10,33 +10,38 @@ const initialState = {
 
 export const getAllStores = createAsyncThunk('stores/getAllStores',
     async () => {
+        const stores = await axios.get(`/store`);
+        return stores.data;
+    });
 
-        const stores = await axiosPrivate.get(`/store`);
+    export const getVendorStores = createAsyncThunk('stores/getVendorStores',
+    async (vendorid) => {
+        const stores = await axios.get(`/vendorstores/${vendorid}`);
         return stores.data;
     });
 
 export const getStore = createAsyncThunk('stores/getStore',
-    async () => {
-        const stores = await axiosPrivate.get(`/store/id`);
+    async (id) => {
+        const stores = await axios.get(`/store/${id}`);
         return stores.data;
     });
 
 export const postStore = createAsyncThunk('stores/postStore',
     async (data) => {
-        const stores = await axiosPrivate.post(`/store`,data);
+        const stores = await axios.post(`/store`,data);
         return stores.data;
     });
 
     export const updateStore = createAsyncThunk('stores/updateStore',
     async (data) => {
-        const stores = await axiosPrivate.put(`/store/id`,data);
+        const stores = await axios.put(`/store/${data.id}`,data);
         return stores.data;
     });
 
     export const deleteStore = createAsyncThunk('stores/deleteStore',
-    async (data) => {
-        const store = await axiosPrivate.delete(`/store/id`,);
-        return null;
+    async (id) => {
+        const store = await axios.delete(`/store/${id}`);
+        return id;
     });
 
 
@@ -52,6 +57,10 @@ export const storesSlice = createSlice({
         .addCase(getStore.fulfilled, (state, action) => {
             state.store = action.payload;
         })
+        .addCase(getVendorStores.fulfilled, (state, action) => {
+            state.stores = action.payload
+            
+        })
         .addCase(updateStore.fulfilled, (state, action) => {
             state.store = action.payload;
         })
@@ -60,9 +69,13 @@ export const storesSlice = createSlice({
             state.store = action.payload;
         })
         .addCase(deleteStore.fulfilled, (state, action) => {
+            const newStores= state.stores.filter((store) => store.id !== action.payload);
+            state.stores=newStores;
         })
     }
 })
 
 
 export const selectStoresState = (state) => state.stores;
+
+export default storesSlice.reducer;
