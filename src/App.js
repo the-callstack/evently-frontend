@@ -11,14 +11,24 @@ import ContactUs from "./components/ContactUs";
 import Aggregator from './components/aggregator/Aggregator';
 import { Cart } from "./components/cart/Cart";
 import { Profile } from "./components/profile/Profile";
+
 import { Provider } from "./components/provider/Provider";
+
+import StoresTable from "./components/StoresTable";
+import ItemsTable from "./components/ItemsTable";
+import TestCarousel from "./components/TestCarousel";
+
+
 
 
 function App() {
   return (
     <>
-    {/* <Profile />
+      {/* <Profile />
     <LoginWithSplash /> */}
+      {/* <StoresTable /> */}
+      {/* <ItemsTable /> */}
+      {/* <TestCarousel/> */}
       <Layout />
       <Provider />
       <Routes>
@@ -27,17 +37,17 @@ function App() {
           <Route path="signup" element={<Signup />} />
           <Route path="signin" element={<LoginWithSplash />} />
         </Route>
-        <Route path="/products" element={<Product />}>
-          <Route path=":id" element={<DetailsCard className="pt-96" />} />
-        </Route>
+        <Route path="/products/:id" element={<DetailsCard />} />
+        <Route path="/products" element={<Product />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/cart" element={<Cart />}/>
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/storeitems/:name" element={<ItemsTable />} />
       </Routes>
       {/* <CookiesModal/> */}
       {/* <ContactUs /> */}
       {/* <Aggregator /> */}
       <Footer />
-    
+
     </>
   );
 }

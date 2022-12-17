@@ -1,14 +1,14 @@
 import { useState, useRef, useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { selectRentalItemsState } from '../features/rentalItems/rentalItemsSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { getAll, selectRentalItemsState } from '../features/rentalItems/rentalItemsSlice';
 import { Link, useNavigate } from "react-router-dom";
 
 
 
 
 const TestCarousel = (props) => {
-  const { rentalItem } = useSelector(selectRentalItemsState);
-
+  const { rentalItems} = useSelector(selectRentalItemsState);
+  const dispatch = useDispatch()
 
   const maxScrollWidth = useRef(0);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -53,16 +53,17 @@ const TestCarousel = (props) => {
     maxScrollWidth.current = carousel.current
       ? carousel.current.scrollWidth - carousel.current.offsetWidth
       : 0;
+
+    dispatch(getAll())
   }, []);
 
   const navigate = useNavigate();
   const handleClick = (item) => {
-    navigate(`/products/${item.id}`,{
+   
+
+    navigate(`/products/${item.id}`, {
       state: {
-        id: item.id,
-        name: item.name,
-        price: item.price,
-        quantity: item.quantity
+        item
       }
     })
   }
@@ -121,23 +122,25 @@ const TestCarousel = (props) => {
           ref={carousel}
           className="carousel-container relative flex gap-1 overflow-hidden scroll-smooth snap-x snap-mandatory touch-pan-x z-0"
         >
-          {rentalItem.rentalItems.map((resource, index) => {
-            // console.log(resource.name,resource.imgPath,resource.id)
+          {rentalItems.rentalItems?.map((resource, index) => {
             return (
               <div
                 key={index}
-                className="carousel-item text-center relative w-64 h-64 snap-start"
-              >
-                <div  onClick={()=>handleClick(resource)}
+                className="carousel-item text-center relative w-64 h-64 snap-start"  >
+                <div onClick={() => handleClick(resource)}
                   className="h-full w-full aspect-square block bg-origin-padding bg-left-top bg-cover bg-no-repeat z-0"
                   style={{ backgroundImage: `url(${resource.imgPath || ''})` }}
                 >
-                  <img 
+                  <img
                     src={resource.imgPath || ''}
                     alt={resource.name}
                     className="w-full aspect-square hidden"
                   />
+
                 </div>
+                <p className="text-red-700">
+                  {resource.id} {resource.name}
+                </p>
 
 
 

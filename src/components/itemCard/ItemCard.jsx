@@ -6,10 +6,7 @@ export const ItemCard = ({item}) => {
     const handleClick = (item) => {
       navigate(`/products/${item.id}`,{
         state: {
-          id: item.id,
-          name: item.name,
-          price: item.price,
-          quantity: item.quantity
+          item
         }
       })
     }
