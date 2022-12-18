@@ -8,7 +8,7 @@ import DetailsCard from "./components/DetailsCard";
 import { Route, Routes } from "react-router-dom";
 import { Signup } from "./features/auth/Signup";
 import ContactUs from "./components/ContactUs";
-// import Aggregator from "./components/aggregator/Aggregator";
+import Aggregator from "./components/aggregator/Aggregator";
 import { Cart } from "./components/cart/Cart";
 import { Profile } from "./components/profile/Profile";
 import AboutUs from "./components/AboutUs";
@@ -43,7 +43,7 @@ function App() {
       </Routes>
       {/* <CookiesModal/> */}
 
-      {/* <Aggregator /> */}
+      <Aggregator />
 
       <Footer />
     </>
