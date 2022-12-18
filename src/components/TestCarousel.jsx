@@ -70,9 +70,6 @@ const TestCarousel = (props) => {
 
   return (
     <div className="carousel my-12 mx-auto">
-      <h2 className="text-4xl leading-8 font-semibold mb-12 text-slate-700">
-        Our epic carousel
-      </h2>
       <div className="relative overflow-hidden">
         <div className="flex justify-between absolute top left w-full h-full">
           <button
@@ -126,7 +123,7 @@ const TestCarousel = (props) => {
             return (
               <div
                 key={index}
-                className="carousel-item text-center relative w-64 h-64 snap-start"  >
+                className="carousel-item text-center relative w-64 h-64 snap-start flex flex-col hover:cursor-pointer"  >
                 <div onClick={() => handleClick(resource)}
                   className="h-full w-full aspect-square block bg-origin-padding bg-left-top bg-cover bg-no-repeat z-0"
                   style={{ backgroundImage: `url(${resource.imgPath || ''})` }}
@@ -138,11 +135,14 @@ const TestCarousel = (props) => {
                   />
 
                 </div>
-                <p className="text-red-700">
-                  {resource.id} {resource.name}
-                </p>
+           
 
-
+                <h4 className="text-black">
+                 {resource.name}
+                </h4>
+                <h6 className="text-black">
+                 ${resource.price}
+                </h6>
 
                 {/* <Link className="h-full w-full aspect-square block bg-origin-padding bg-left-top bg-cover bg-no-repeat z-0"
                   style={{ backgroundImage: `url(${resource.imgPath || ''})` }} to='https://online.ltuc.com/d2l/home'>
@@ -164,6 +164,7 @@ const TestCarousel = (props) => {
                   </h3>
                 </a> */}
               </div>
+              
             );
           })}
         </div>
