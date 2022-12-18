@@ -8,12 +8,10 @@ import DetailsCard from "./components/DetailsCard";
 import { Route, Routes } from "react-router-dom";
 import { Signup } from "./features/auth/Signup";
 import ContactUs from "./components/ContactUs";
-import Aggregator from "./components/aggregator/Aggregator";
+// import Aggregator from "./components/aggregator/Aggregator";
 import { Cart } from "./components/cart/Cart";
 import { Profile } from "./components/profile/Profile";
 import AboutUs from "./components/AboutUs";
-import StoresTable from "./components/provider/StoresTable";
-import TestCarousel from "./components/TestCarousel";
 import { SaleProduct } from "./components/productDisplay/SaleProduct";
 import { NewLayout } from "./components/newLayout/NewLayout";
 import ItemsTable from "./components/provider/ItemsTable";
@@ -23,12 +21,7 @@ import StoreItemCard from "./components/provider/storeItemCard";
 function App() {
   return (
     <>
-      {/* <Profile />
-    <LoginWithSplash /> */}
-      {/* <StoresTable /> */}
-      {/* <ItemsTable /> */}
-      {/* <TestCarousel/> */}
-      {/* <Layout /> */}
+
       <Routes>
         <Route path="/" element={<NewLayout />}>
           <Route path="/auth">
@@ -49,9 +42,9 @@ function App() {
         <Route path="/storeitemDetails" element={<StoreItemCard />} />
       </Routes>
       {/* <CookiesModal/> */}
-      {/* <ContactUs /> */}
+
       {/* <Aggregator /> */}
-      {/* <AboutUs /> */}
+
       <Footer />
     </>
   );
