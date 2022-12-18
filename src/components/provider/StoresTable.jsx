@@ -14,6 +14,7 @@ export default function StoresTable() {
 
     useEffect(() => {
         // dispatch(getAllStores())
+        
         dispatch(getVendorStores(loggedUser.id))
 
         console.log(stores);
@@ -76,6 +77,7 @@ export default function StoresTable() {
                                 </tr>
                             </thead>
                             <tbody className="divide-y divide-gray-200">
+                                {console.log(stores)}
                                 {stores?.map((store, index) => {
                                     return (
 
@@ -89,7 +91,7 @@ export default function StoresTable() {
                                             <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
                                                 <a onClick={() => handleUpdate(store)}
                                                     className="text-green-500 hover:text-green-700"
-                                                    href="#"
+                                                    href="#sss"
                                                 >
                                                     Edit
                                                 </a>
@@ -97,7 +99,7 @@ export default function StoresTable() {
                                             <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
                                                 <a onClick={() => handleDelete(store)}
                                                     className="text-red-500 hover:text-red-700"
-                                                    href="#"
+                                                    href="#sss"
                                                 >
                                                     Delete
                                                 </a>
