@@ -27,6 +27,7 @@ export const Filter = ({category}) => {
   const handleReset = () => {
     setKeyWord('');
     setPrice(1000);
+    dispatch(getAllRentals())
   }
   return (
     <div className="flex flex-col h-screen p-3 bg-white shadow w-60">
