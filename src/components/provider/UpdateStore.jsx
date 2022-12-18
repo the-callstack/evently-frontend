@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectUserState } from "../../features/auth/authSlice";
 import { updateStore } from "../../features/stores/storesSlice";
 
-export  const UpdateStore = () => {
-  const [menu, setMenu] = useState(false);
+export  const UpdateStore = ({show}) => {
+  const [menu, setMenu] = useState(show);
 
   const dispatch = useDispatch();
   const { loggedUser } = useSelector(selectUserState);
@@ -22,19 +22,19 @@ export  const UpdateStore = () => {
   }
 
   const showMenu = () => {
-    setMenu(!menu);
+    setMenu(!show);
   };
   return (
     <>
-      <button
+      {/* <button
         className="bg-blue-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
         type="button"
         onClick={showMenu}
       >
         Open store modal
-      </button>
+      </button> */}
 
-        <div className={(menu) ? `w-full h-full bg-gray-900 bg-opacity-80 top-0 fixed sticky-0` : `hidden`}>
+        <div className={(show) ? `w-full h-full bg-gray-900 bg-opacity-80 top-0 fixed sticky-0` : `hidden`}>
           <div
             className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
           >
