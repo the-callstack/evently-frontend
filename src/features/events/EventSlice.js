@@ -2,23 +2,19 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "../../api/config";
 
 const initialState = {
-  categories: [],
+  events: [],
   errMsg: "",
 };
 
-export const getAllCategories = createAsyncThunk(
-  "category/getAllCategories",
-  async () => {
-    const categories = await axios.get("/category");
-    return categories.data;
-  }
-);
+export const getAllEvents = createAsyncThunk("event/getAllEvents", async () => {
+  const events = await axios.get("/event");
+  return events.data;
+});
 
-export const createCategory = createAsyncThunk(
-  "category/createCategory",
+export const createEvent = createAsyncThunk(
+  "event/createEvent",
   async (payload) => {
-    const res = await axios.post("/category", payload);
-    console.log(res.data);
+    const res = await axios.post("/event", payload);
     return res.data;
   }
 );
@@ -30,10 +26,10 @@ export const updateCategory = createAsyncThunk(
     return res.data;
   }
 );
-export const deleteCategory = createAsyncThunk(
-  "category/deleteCategory",
+export const deleteEvent = createAsyncThunk(
+  "event/deleteEvent",
   async (payload) => {
-    const res = await axios.delete(`/category/${payload.id}`, {
+    const res = await axios.delete(`/event/${payload.id}`, {
       headers: {
         //TODO:add check authorization method in the backend
         Authorization: `Bearer ${payload.accessToken}`,
@@ -43,22 +39,22 @@ export const deleteCategory = createAsyncThunk(
   }
 );
 
-export const categorySlice = createSlice({
-  name: "category",
+export const eventSlice = createSlice({
+  name: "event",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(getAllCategories.fulfilled, (state, action) => {
-        state.categories = action.payload;
+      .addCase(getAllEvents.fulfilled, (state, action) => {
+        state.events = action.payload;
       })
-      .addCase(getAllCategories.rejected, (state, action) => {
+      .addCase(getAllEvents.rejected, (state, action) => {
         state.errMsg = action.error;
       })
-      .addCase(createCategory.fulfilled, (state, action) => {
+      .addCase(createEvent.fulfilled, (state, action) => {
         state.categories.push(action.payload);
       })
-      .addCase(createCategory.rejected, (state, action) => {
+      .addCase(createEvent.rejected, (state, action) => {
         state.errMsg = action.error;
       })
       .addCase(updateCategory.fulfilled, (state, action) => {
@@ -74,16 +70,18 @@ export const categorySlice = createSlice({
       .addCase(updateCategory.rejected, (state, action) => {
         state.errMsg = action.error;
       })
-      .addCase(deleteCategory.fulfilled, (state, action) => {
-        const newCategories = state.categories.filter((item) => item.id !== action.payload);
-        state.categories = [...newCategories];
+      .addCase(deleteEvent.fulfilled, (state, action) => {
+        const newEvents = state.events.filter(
+          (item) => item.id !== action.payload
+        );
+        state.categories = [...newEvents];
       })
-      .addCase(deleteCategory.rejected, (state, action) => {
+      .addCase(deleteEvent.rejected, (state, action) => {
         state.errMsg = action.error;
       });
   },
 });
 
-export const selectCategoryState = (state) => state;
+export const selectEventState = (state) => state;
 
-export default categorySlice.reducer;
+export default eventSlice.reducer;
