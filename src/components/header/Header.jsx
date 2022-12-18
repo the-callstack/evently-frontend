@@ -16,7 +16,7 @@ export default function Header() {
           <nav className="flex justify-between bg-gray-900 text-white w-screen">
             <div className="px-5 xl:px-12 py-6 flex w-full items-center">
               <Link className="text-3xl font-bold font-heading" to="/">
-                  {/* <img className="h-9" src="logo.png" alt="" /> */}
+                {/* <img className="h-9" src="logo.png" alt="" /> */}
                 Evently
               </Link>
               <ul className="hidden md:flex px-4 mx-auto font-semibold font-heading space-x-12">
@@ -30,9 +30,15 @@ export default function Header() {
                     Product
                   </Link>
                 </li>
+               
                 <li>
                   <Link className="hover:text-gray-200" to="/contactus">
                     Contact Us
+                  </Link>
+                </li>
+                <li>
+                  <Link className="hover:text-gray-200" to="/aboutus">
+                    About Us
                   </Link>
                 </li>
                 <li></li>
