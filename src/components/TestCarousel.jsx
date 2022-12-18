@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllRentals, selectRentalItemsState } from '../features/rentalItems/rentalItemsSlice';
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -54,7 +54,7 @@ const TestCarousel = (props) => {
       ? carousel.current.scrollWidth - carousel.current.offsetWidth
       : 0;
 
-    dispatch(getAll())
+    dispatch(getAllRentals())
   }, []);
 
   const navigate = useNavigate();
