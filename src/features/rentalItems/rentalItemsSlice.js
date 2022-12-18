@@ -14,6 +14,14 @@ export const getSpecific = createAsyncThunk('rental/getSpecific',
     }
 )
 
+
+export const getStoreRentalItems = createAsyncThunk('rental/getStoreRentalItems',
+    async (id) => {
+        const res = await axios.get(`/rentalstore/${id}`);
+        return res.data ;
+    }
+)
+
 export const getAllRentals = createAsyncThunk('rental/getAllRentals',
     async () => {
         const res = await axios.get('/rental');
@@ -29,12 +37,14 @@ export const createItem = createAsyncThunk('rental/createItem',
     }
 );
 
-export const deleteItem = createAsyncThunk('rental/deleteItem',
+export const deleteRentalItem = createAsyncThunk('rental/deleteRentalItem',
     async (id) => {
         const res = await axios.delete(`/rental/${id}`);
-        return res.data ;
+        return id ;
     }
     );
+
+
 
     export const updateItem = createAsyncThunk('rental/updateItem',
     async (id, data) => {
@@ -77,6 +87,9 @@ export const rentalItemsSlice=createSlice({
         .addCase(getAllRentals.fulfilled, (state, action) => {
             state.rentalItems = action.payload ;
         })
+        .addCase(getStoreRentalItems.fulfilled, (state, action) => {
+            state.rentalItems = action.payload ;
+        })
         .addCase(getAllRentals.rejected, (state, action) => {
             state.errMsg = action.payload ;
         })
@@ -86,11 +99,11 @@ export const rentalItemsSlice=createSlice({
         .addCase(getSpecific.rejected, (state, action) => {
             state.errMsg = action.payload ;
         })
-        .addCase(deleteItem.fulfilled, (state, action) => {
+        .addCase(deleteRentalItem.fulfilled, (state, action) => {
             const newRentalItems = state.rentalItems.filter((item) => item.id !== action.payload);
             state.rentalItems=newRentalItems;
         })
-        .addCase(deleteItem.rejected, (state, action) => {
+        .addCase(deleteRentalItem.rejected, (state, action) => {
             state.errMsg = action.payload ;
         })
         .addCase(updateItem.fulfilled, (state, action) => {

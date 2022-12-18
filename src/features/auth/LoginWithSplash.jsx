@@ -50,7 +50,9 @@ export default function LoginWithSplash() {
               </div>
 
               <div className="mt-8">
-                <form onSubmit={signin}>
+                <form 
+                encType='multipart/form-data'
+                onSubmit={signin}>
                   <div>
                     <label
                       htmlFor="email"

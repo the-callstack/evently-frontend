@@ -11,15 +11,15 @@ export default function Details() {
         <>
             <div className="flex font-serif p-20 pt-28">
                 <div className="flex-none w-96 relative">
-                    <img src={location.state.imagePath}
-                        alt={location.state.imageName}
+                    <img src={location.state.item.imgPath}
+                        alt={location.state.item.imgName}
                         className="absolute inset-0 w-full h-full object-cover rounded-lg "
                         loading="lazy" />
                 </div>
                 <form className="flex-auto p-6">
                     <div className="flex flex-wrap items-baseline">
                         <h1 className="w-full flex-none mb-3 text-2xl leading-none text-slate-900">
-                        {location.state.name}
+                        {location.state.item.name}
                         </h1>
 
                         <div className="text-xs leading-6 font-medium uppercase text-slate-500">
@@ -31,7 +31,7 @@ export default function Details() {
                         </div>
                     </div>
                     <div className="flex-auto text-lg font-bold   text-slate-500">
-                       {location.state.price}
+                       {location.state.item.price}
                     </div>
                     <div className="flex items-baseline mt-4 mb-6 pb-1 border-b border-slate-200">
                         <div className="space-x-1 flex text-sm font-medium">
