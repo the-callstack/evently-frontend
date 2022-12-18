@@ -1,14 +1,16 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { selectUserState } from '../../features/auth/authSlice';
 import { deleteStore, getVendorStores, selectStoresState } from '../../features/stores/storesSlice';
 import { AddStore } from './AddStore';
+import { UpdateStore } from './UpdateStore';
 
 export default function StoresTable() {
     const dispatch = useDispatch()
     const { stores } = useSelector(selectStoresState);
     const { loggedUser } = useSelector(selectUserState);
+    const [editModal, setEditModal] = useState(false)
 
     const navigate = useNavigate();
 
@@ -30,7 +32,7 @@ export default function StoresTable() {
     }
 
     const handleUpdate = (store) => {
-        console.log(store.id, store.storeName)
+        setEditModal(true)
     }
     const handleDelete = (store) => {
         dispatch(deleteStore(store.id))
@@ -82,7 +84,7 @@ export default function StoresTable() {
                                     return (
 
                                         <tr onClick={() => handleClick(store)} key={index} >
-                                            <td className="px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap">
+                                            <td className="px-6 py-4 hover:cursor-pointer text-sm font-medium text-gray-800 whitespace-nowrap">
                                                 {store.storeName}                                    </td>
                                             <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
                                                 {store.address}                             </td>
@@ -111,6 +113,8 @@ export default function StoresTable() {
                         </table>
                     </div>
                 </div>
+                {/* {editModal && <UpdateStore />} */}
+                {/* <UpdateStore   show={editModal}/> */}
             </div>
             <AddStore />
         </div>

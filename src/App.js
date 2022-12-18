@@ -13,8 +13,9 @@ import { Cart } from "./components/cart/Cart";
 import { Profile } from "./components/profile/Profile";
 import AboutUs from "./components/AboutUs";
 import StoresTable from "./components/provider/StoresTable";
-import ItemsTable from "./components/provider/ItemsTable";
 import TestCarousel from "./components/TestCarousel";
+import ItemsTable from "./components/provider/ItemsTable";
+import StoreItemCard from "./components/provider/storeItemCard";
 
 
 
@@ -41,6 +42,8 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/storeitems/:name" element={<ItemsTable />} />
+        <Route path="/storeitemDetails" element={<StoreItemCard />} />
+
       </Routes>
       {/* <CookiesModal/> */}
       {/* <ContactUs /> */}

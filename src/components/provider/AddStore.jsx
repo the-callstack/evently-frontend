@@ -18,6 +18,7 @@ export const AddStore = () => {
       address: e.target.address.value,
       UserId: loggedUser.id,
     }
+    console.log(data)
     dispatch(postStore(data));
   }
 
