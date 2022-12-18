@@ -12,6 +12,11 @@ import Aggregator from './components/aggregator/Aggregator';
 import { Cart } from "./components/cart/Cart";
 import { Profile } from "./components/profile/Profile";
 import AboutUs from "./components/AboutUs";
+import StoresTable from "./components/provider/StoresTable";
+import ItemsTable from "./components/provider/ItemsTable";
+import TestCarousel from "./components/TestCarousel";
+
+
 
 
 
@@ -20,6 +25,9 @@ function App() {
     <>
       {/* <Profile />
     <LoginWithSplash /> */}
+      {/* <StoresTable /> */}
+      {/* <ItemsTable /> */}
+      {/* <TestCarousel/> */}
       <Layout />
        <Routes>
         <Route path="/contactus" element={<ContactUs />} />
@@ -29,9 +37,10 @@ function App() {
           <Route path="signin" element={<LoginWithSplash />} />
         </Route>
         <Route path="/products/:id" element={<DetailsCard />} />
-        <Route path="/products" element={<Product />}/>
+        <Route path="/products" element={<Product />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/cart" element={<Cart />}/>
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/storeitems/:name" element={<ItemsTable />} />
       </Routes>
       {/* <CookiesModal/> */}
       {/* <ContactUs /> */}

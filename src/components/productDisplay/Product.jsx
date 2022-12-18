@@ -7,7 +7,7 @@ import {getAll} from '../../features/rentalItems/rentalItemsSlice';
 import { Outlet } from "react-router-dom";
 export const Product = () => {
 
-  const  {rentalItem}  = useSelector(selectRentalItemsState);
+  const  {rentalItems}  = useSelector(selectRentalItemsState);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAll())
@@ -22,7 +22,7 @@ export const Product = () => {
         <div className="grid grid-cols-3 gap-5 w-full h-60 pr-10">
         {
           
-          rentalItem.rentalItems.map(item=>{
+          rentalItems.rentalItems.map(item=>{
             return(
             <ItemCard key={item.id} item={item}/>
             )
