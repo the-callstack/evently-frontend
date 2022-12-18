@@ -14,6 +14,7 @@ export const getSpecific = createAsyncThunk('rental/getSpecific',
     }
 )
 
+
 export const getStoreRentalItems = createAsyncThunk('rental/getStoreRentalItems',
     async (id) => {
         const res = await axios.get(`/rentalstore/${id}`);
@@ -21,7 +22,7 @@ export const getStoreRentalItems = createAsyncThunk('rental/getStoreRentalItems'
     }
 )
 
-export const getAll = createAsyncThunk('rental/getAll',
+export const getAllRentals = createAsyncThunk('rental/getAllRentals',
     async () => {
         const res = await axios.get('/rental');
         return res.data ;
@@ -52,12 +53,30 @@ export const deleteRentalItem = createAsyncThunk('rental/deleteRentalItem',
     }
     );    
 
-    export const getByCategory = createAsyncThunk('rental/getByCategory',
+    export const getRentalByCategory = createAsyncThunk('rental/getRentalByCategory',
     async (categoryId) => {
         const rentalItems = await axios.get(`/rentalcat/${categoryId}`);
-        return rentalItems ; 
+        return rentalItems.data ; 
     }
-    )
+    );
+
+
+    export const getRentalByPrice = createAsyncThunk('rental/getRentalByPrice',
+    async (price) => {
+        const rentalItems = await axios.get(`/rentalprice/${price}`);
+        return rentalItems.data ; 
+    }
+    );
+
+    
+    export const getRentalByName = createAsyncThunk('rental/getRentalByName',
+    async (name) => {
+        const rentalItems = await axios.get(`/rentalkey?keyWord=${name}`);
+        return rentalItems.data ; 
+    }
+    );
+
+    
 
 export const rentalItemsSlice=createSlice({
     name:'rental',
@@ -65,13 +84,13 @@ export const rentalItemsSlice=createSlice({
     reducers:{},
     extraReducers:(builder)=>{
         builder
-        .addCase(getAll.fulfilled, (state, action) => {
+        .addCase(getAllRentals.fulfilled, (state, action) => {
             state.rentalItems = action.payload ;
         })
         .addCase(getStoreRentalItems.fulfilled, (state, action) => {
             state.rentalItems = action.payload ;
         })
-        .addCase(getAll.rejected, (state, action) => {
+        .addCase(getAllRentals.rejected, (state, action) => {
             state.errMsg = action.payload ;
         })
         .addCase(getSpecific.fulfilled, (state, action) => {
@@ -96,12 +115,26 @@ export const rentalItemsSlice=createSlice({
             });
             state.rentalItems = [...newRental];
         })
-        .addCase(getByCategory.fulfilled, (state, action) => {
+        .addCase(getRentalByCategory.fulfilled, (state, action) => {
             state.rentalItems = action.payload ;
         })
-        .addCase(getByCategory.rejected, (state, action) => {
-            state.errMsg = action.payload ;
-        });
+        .addCase(getRentalByCategory.rejected, (state, action) => {
+            state.errMsg = action.error ;
+        })
+        .addCase(getRentalByPrice.fulfilled, (state, action) => {
+            state.rentalItems = action.payload ;
+        })
+        .addCase(getRentalByPrice.rejected, (state, action) => {
+            state.errMsg = action.error ;
+        })
+        .addCase(getRentalByName.fulfilled, (state, action) => {
+            state.rentalItems = action.payload ;
+        })
+        .addCase(getRentalByName.rejected, (state, action) => {
+            state.errMsg = action.error ;
+        })
+        
+        ;
     }
 })
 

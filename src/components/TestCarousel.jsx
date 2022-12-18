@@ -1,15 +1,15 @@
 import { useState, useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAll, selectRentalItemsState } from '../features/rentalItems/rentalItemsSlice';
+import { getAllRentals, selectRentalItemsState } from '../features/rentalItems/rentalItemsSlice';
 import { Link, useNavigate } from "react-router-dom";
 
 
 
 
 const TestCarousel = (props) => {
+
   const { rentalItems} = useSelector(selectRentalItemsState);
   const dispatch = useDispatch()
-
   const maxScrollWidth = useRef(0);
   const [currentIndex, setCurrentIndex] = useState(0);
   const carousel = useRef(null);
