@@ -13,10 +13,12 @@ import { Cart } from "./components/cart/Cart";
 import { Profile } from "./components/profile/Profile";
 import AboutUs from "./components/AboutUs";
 import StoresTable from "./components/provider/StoresTable";
-import ItemsTable from "./components/provider/ItemsTable";
 import TestCarousel from "./components/TestCarousel";
 import { SaleProduct } from "./components/productDisplay/SaleProduct";
 import { NewLayout } from "./components/newLayout/NewLayout";
+import ItemsTable from "./components/provider/ItemsTable";
+import StoreItemCard from "./components/provider/storeItemCard";
+
 
 function App() {
   return (
@@ -44,6 +46,7 @@ function App() {
             <Route path="/productsale" element={<SaleProduct />} />
           </Route>
         </Route>
+        <Route path="/storeitemDetails" element={<StoreItemCard />} />
       </Routes>
       {/* <CookiesModal/> */}
       {/* <ContactUs /> */}
