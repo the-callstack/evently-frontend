@@ -16,7 +16,8 @@ export default function Header() {
           <nav className="flex justify-between bg-gray-900 text-white w-screen">
             <div className="px-5 xl:px-12 py-6 flex w-full items-center">
               <Link className="text-3xl font-bold font-heading" to="/">
-                <img className="h-9" src="logo.png" alt="Evently" />
+                  {/* <img className="h-9" src="logo.png" alt="" /> */}
+                Evently
               </Link>
               <ul className="hidden md:flex px-4 mx-auto font-semibold font-heading space-x-12">
                 <li>
@@ -37,26 +38,25 @@ export default function Header() {
                 <li></li>
               </ul>
               <div className="hidden xl:flex items-center space-x-5">
-                {!isLoggedIn && 
-                <Link
-                  className="hover:text-gray-200 hover:underline"
-                  to="/auth/signin"
-                >
-                  {" "}
-                  Sigin in
-                </Link>
-                }
-                {
-                  isLoggedIn &&
-                <Link
-                  className="hover:text-gray-200 hover:underline"
-                  to="/"
-                  onClick={handleSignOut}
-                >
-                  {" "}
-                  Sign out
-                </Link>
-                }
+                {!isLoggedIn && (
+                  <Link
+                    className="hover:text-gray-200 hover:underline"
+                    to="/auth/signin"
+                  >
+                    {" "}
+                    Sigin in
+                  </Link>
+                )}
+                {isLoggedIn && (
+                  <Link
+                    className="hover:text-gray-200 hover:underline"
+                    to="/"
+                    onClick={handleSignOut}
+                  >
+                    {" "}
+                    Sign out
+                  </Link>
+                )}
                 <Link className="hover:text-gray-200" to="#ss">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
