@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getAllRentals, getRentalByCategory, getRentalByName, getRentalByPrice } from "../../features/rentalItems/rentalItemsSlice";
 
-export const Filter = ({category}) => {
+export const FilterRental = ({category}) => {
   const [price, setPrice] = useState(1000);
   const [keyWord, setKeyWord] = useState('');
   const dispatch = useDispatch();
