@@ -30,6 +30,15 @@ export default function Header() {
                     Home
                   </Link>
                 </li>
+                {
+                  loggedUser?.role === 'provider' &&
+                <li>
+                  <Link className="hover:text-gray-200" to="/provider">
+                    Provider
+                  </Link>
+                </li>
+
+                }
                 <li>
                   <div className="relative inline-block text-left">
                     <div>

@@ -120,6 +120,9 @@ export default function LoginWithSplash() {
                   {
                     loggedUser?.role === 'admin' ?<Navigate to='/administrator' /> : <></>
                   }
+                  {
+                    loggedUser?.role === 'provider' ?<Navigate to='/provider' /> : <></>
+                  }
               </div>
             </div>
           </div>
