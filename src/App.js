@@ -18,15 +18,16 @@ import { SaleProduct } from "./components/productDisplay/SaleProduct";
 import { NewLayout } from "./components/newLayout/NewLayout";
 import ItemsTable from "./components/provider/ItemsTable";
 import StoreItemCard from "./components/provider/storeItemCard";
+import { Admin } from "./components/admin/Admin";
 import CategoriesCarousel from "./components/CategoriesCarousel";
 import CategoriesProduct from "./components/CategoriesProduct";
 import EventsCarousel from "./components/EventsCarousel";
 import EventProduct from "./components/EventProduct";
 
-
 function App() {
   return (
     <>
+      {/* <Admin /> */}
       {/* <Profile />
     <LoginWithSplash /> */}
       {/* <StoresTable /> */}
@@ -42,6 +43,7 @@ function App() {
             <Route path="signin" element={<LoginWithSplash />} />
           </Route>
           <Route path="/contactus" element={<ContactUs />} />
+          <Route path="/administrator" element={<Admin />} />
           <Route path="/aboutus" element={<AboutUs />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/cart" element={<Cart />} />
@@ -65,7 +67,7 @@ function App() {
       {/* <ContactUs /> */}
       {/* <Aggregator /> */}
       {/* <AboutUs /> */}
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }
