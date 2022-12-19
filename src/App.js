@@ -56,9 +56,9 @@ function App() {
           </Route >
 
           <Route path="/storeitems/:name" element={<ItemsTable />} />
-          <Route path="/" element={<Layout />}>
             <Route path="/productrent" element={<RentalProduct />} />
             <Route path="/productsale" element={<SaleProduct />} />
+          <Route path="/" element={<Layout />}>
           </Route>
         </Route>
         <Route path="/storeitemDetails" element={<StoreItemCard />} />
@@ -67,7 +67,7 @@ function App() {
       {/* <ContactUs /> */}
       {/* <Aggregator /> */}
       {/* <AboutUs /> */}
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 }
