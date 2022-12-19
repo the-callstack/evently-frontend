@@ -1,35 +1,34 @@
 import React from "react";
 import { TypeCard } from "./TypeCard";
-
+import img1 from '../../assets/13885334.jpg'
+import img2 from '../../assets/for-rent-sign-real-estate-advertising-house-rent-vector-25856845.jpg'
 export const SelectProduct = () => {
+  const data = [
+    {
+      id:1,
+      img: img2,
+      title: 'Rent Here !',
+      hash1: 'wedding',
+      hash2:'birthday',
+      hash3:'engagement',
+      route:'/productrent'
+    },
+    {
+      id:2,
+      img:img1,
+      title: 'Buy Here !',
+      hash1:'graduation',
+      hash2: 'birthday',
+      hash3: 'party',
+      route:'/productsale'
+
+    }
+  ]
   return (
-    <div>
-      <div className="max-w-sm rounded overflow-hidden shadow-lg">
-        <img
-          className="w-full"
-          src="/img/card-top.jpg"
-          alt="Sunset in the mountains"
-        />
-        <div className="px-6 py-4">
-          <div className="font-bold text-xl mb-2">The Coldest Sunset</div>
-          <p className="text-gray-700 text-base">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Voluptatibus quia, nulla! Maiores et perferendis eaque,
-            exercitationem praesentium nihil.
-          </p>
-        </div>
-        <div className="px-6 pt-4 pb-2">
-          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-            #photography
-          </span>
-          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-            #travel
-          </span>
-          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-            #winter
-          </span>
-        </div>
-      </div>
+    <div className="flex justify-around">
+      {
+        data.map(data => <TypeCard key={data.id} route={data.route} img={data.img} title={data.title} hash1={data.hash1} hash2={data.hash2} hash3={data.hash3}/>)
+      }
     </div>
   );
 };

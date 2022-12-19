@@ -25,7 +25,7 @@ export const getSaleItem = createAsyncThunk('saleItems/getSaleItem',
         return sale.data;
     });
 
-    export const getByCategory = createAsyncThunk('saleItems/getCatSaleItems',
+    export const getSaleByCategory = createAsyncThunk('saleItems/getSaleByCategory',
     async (id) => {
         const sale = await axios.get(`/salecat/${id}`);
         return sale.data;
@@ -77,7 +77,7 @@ export const saleItemsSlice = createSlice({
             .addCase(getStoreSaleItems.fulfilled, (state, action) => {
                 state.saleItems = action.payload;
             })
-            .addCase(getByCategory.fulfilled, (state, action) => {
+            .addCase(getSaleByCategory.fulfilled, (state, action) => {
                 state.saleItems = action.payload;
             })
             .addCase(updateSaleItems.fulfilled, (state, action) => {
@@ -91,13 +91,13 @@ export const saleItemsSlice = createSlice({
                 state.saleItems = newSaleItems;
             })
             .addCase(getSaleByPrice.fulfilled, (state, action) => {
-                state.rentalItems = action.payload ;
+                state.saleItems = action.payload ;
             })
             .addCase(getSaleByPrice.rejected, (state, action) => {
                 state.errMsg = action.error ;
             })
             .addCase(getSaleByName.fulfilled, (state, action) => {
-                state.rentalItems = action.payload ;
+                state.saleItems = action.payload ;
             })
             .addCase(getSaleByName.rejected, (state, action) => {
                 state.errMsg = action.error ;

@@ -3,50 +3,71 @@ import Footer from "./components/footer/Footer";
 import Layout from "./components/Layout";
 // import CookiesModal from './components/CookiesModal';
 import LoginWithSplash from "./features/auth/LoginWithSplash";
-import { Product } from "./components/productDisplay/Product";
+import { RentalProduct } from "./components/productDisplay/RentalProduct";
 import DetailsCard from "./components/DetailsCard";
 import { Route, Routes } from "react-router-dom";
 import { Signup } from "./features/auth/Signup";
 import ContactUs from "./components/ContactUs";
-import Aggregator from './components/aggregator/Aggregator';
+import Aggregator from "./components/aggregator/Aggregator";
 import { Cart } from "./components/cart/Cart";
 import { Profile } from "./components/profile/Profile";
 import AboutUs from "./components/AboutUs";
 import StoresTable from "./components/provider/StoresTable";
-import ItemsTable from "./components/provider/ItemsTable";
 import TestCarousel from "./components/TestCarousel";
-
-
-
-
+import { SaleProduct } from "./components/productDisplay/SaleProduct";
+import { NewLayout } from "./components/newLayout/NewLayout";
+import ItemsTable from "./components/provider/ItemsTable";
+import StoreItemCard from "./components/provider/storeItemCard";
+import { Admin } from "./components/admin/Admin";
+import CategoriesCarousel from "./components/CategoriesCarousel";
+import CategoriesProduct from "./components/CategoriesProduct";
+import EventsCarousel from "./components/EventsCarousel";
+import EventProduct from "./components/EventProduct";
 
 function App() {
   return (
     <>
+      {/* <Admin /> */}
       {/* <Profile />
     <LoginWithSplash /> */}
       {/* <StoresTable /> */}
       {/* <ItemsTable /> */}
       {/* <TestCarousel/> */}
-      <Layout />
-       <Routes>
-        <Route path="/contactus" element={<ContactUs />} />
-        <Route path="/aboutus" element={<AboutUs />} />
-        <Route path="/auth">
-          <Route path="signup" element={<Signup />} />
-          <Route path="signin" element={<LoginWithSplash />} />
+      {/* <Layout /> */}
+      {/* <EventsCarousel/> */}
+
+      <Routes>
+        <Route path="/" element={<NewLayout />}>
+          <Route path="/auth">
+            <Route path="signup" element={<Signup />} />
+            <Route path="signin" element={<LoginWithSplash />} />
+          </Route>
+          <Route path="/contactus" element={<ContactUs />} />
+          <Route path="/administrator" element={<Admin />} />
+          <Route path="/aboutus" element={<AboutUs />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/products/:id" element={<DetailsCard />} />
+          <Route path="/CatProducts/:id" element={<CategoriesProduct />}/> 
+         
+
+          <Route path="/ُEventProducts" element={<EventsCarousel />} >
+            <Route path=":id" element={<EventProduct />} />
+          </Route >
+
+          <Route path="/storeitems/:name" element={<ItemsTable />} />
+          <Route path="/" element={<Layout />}>
+            <Route path="/productrent" element={<RentalProduct />} />
+            <Route path="/productsale" element={<SaleProduct />} />
+          </Route>
         </Route>
-        <Route path="/products/:id" element={<DetailsCard />} />
-        <Route path="/products" element={<Product />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/storeitems/:name" element={<ItemsTable />} />
+        <Route path="/storeitemDetails" element={<StoreItemCard />} />
       </Routes>
       {/* <CookiesModal/> */}
       {/* <ContactUs /> */}
       {/* <Aggregator /> */}
       {/* <AboutUs /> */}
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

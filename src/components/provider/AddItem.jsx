@@ -134,6 +134,7 @@ export const AddItem = (props) => {
     </div>
   </div>
   <div className="md:flex md:items-center mb-6">
+
     <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
       <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="itemCat">
         Category
@@ -152,7 +153,7 @@ export const AddItem = (props) => {
               )
             }
         </select>
-        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+        <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
          
         </div>
       </div>

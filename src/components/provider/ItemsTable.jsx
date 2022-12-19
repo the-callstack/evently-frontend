@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import {  useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
 import { deleteRentalItem, getStoreRentalItems, selectRentalItemsState } from '../../features/rentalItems/rentalItemsSlice';
 import { deleteSaleItems, getStoreSaleItems, selectSaleItemsState } from '../../features/saleItems/saleItemsSlice';
 import { AddItem } from './AddItem';
@@ -11,15 +13,23 @@ export default function ItemsTable(props) {
     const { saleItems } = useSelector(selectSaleItemsState);
     const { rentalItems } = useSelector(selectRentalItemsState)
     const location = useLocation();
+    const navigate = useNavigate();
 
-    const [allItems, setAllItems] = useState([])
 
-    const [itemObject, setItemObject] = useState({})
     useEffect(() => {
         dispatch(getStoreSaleItems(location.state.store.id))
-        dispatch(getStoreRentalItems(location.state.store.id)) 
+        dispatch(getStoreRentalItems(location.state.store.id))
     }, []);
 
+    const handleClick = (item,type) => {
+        console.log(type,'--------------------------------------')
+        navigate(`/storeitemDetails`, {
+            state: {
+                item,
+                type
+            }
+        })
+    }
 
     const handleSaleUpdate = (item) => {
         // console.log(item.id, item.itemName)
@@ -72,31 +82,9 @@ export default function ItemsTable(props) {
                                 </tr>
                             </thead>
                             <tbody className="divide-y divide-gray-200">
-                                {/* {
-                                    saleItems &&
-                                    saleItems.map((item) => {
-                                        item.type = "SALE"
-                                        // setItemObject(item)
-                                        // setItemObject(...item) = 'SALE'
-                                        setAllItems(...allItems, itemObject)
-                                        // allItems.push(itemObject)
-                                    })
-                                }
-                                {
-
-                                    rentalitems &&
-                                    rentalitems.map((item) => {
-                                        itemObject = item
-                                        itemObject.type = 'RENTAL'
-                                        allItems.push(itemObject)
-                                    })
-
-                                } */}
-                                
                                 {saleItems.saleItems?.map((item, index) => {
                                     return (
-
-                                        <tr key={index}>
+                                        <tr onClick={() => handleClick(item,"SALE")} key={index} >
                                             <td className="px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap">
                                                 {item.name}                                    </td>
                                             <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
@@ -110,7 +98,7 @@ export default function ItemsTable(props) {
                                                 </a>
                                             </td>
                                             <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
-                                                <a onClick={() => handleSaleDelete(item)}
+                                                <a onClick={() => handleSaleDelete(item,"RENTAL")}
                                                     className="text-red-500 hover:text-red-700"
                                                     href="#"
                                                 >
@@ -123,7 +111,7 @@ export default function ItemsTable(props) {
                                 {rentalItems.rentalItems?.map((item, index) => {
                                     return (
 
-                                        <tr key={index}>
+                                        <tr onClick={() => handleClick(item,"RENTAL")} key={index} >
                                             <td className="px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap">
                                                 {item.name}
                                             </td>
