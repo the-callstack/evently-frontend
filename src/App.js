@@ -21,6 +21,7 @@ import CategoriesCarousel from "./components/CategoriesCarousel";
 import CategoriesProduct from "./components/CategoriesProduct";
 import EventsCarousel from "./components/EventsCarousel";
 import EventProduct from "./components/EventProduct";
+import { Provider } from "./components/provider/Provider";
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
           <Route path="/ُEventProducts" element={<EventsCarousel />} >
             <Route path=":id" element={<EventProduct />} />
           </Route >
+          <Route path="/provider" element={<Provider />}/>
           <Route path="/storeitems/:name" element={<ItemsTable />} />
             <Route path="/productrent" element={<RentalProduct />} />
             <Route path="/productsale" element={<SaleProduct />} />

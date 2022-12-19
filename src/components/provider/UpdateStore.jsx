@@ -3,8 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectUserState } from "../../features/auth/authSlice";
 import { updateStore } from "../../features/stores/storesSlice";
 
-export  const UpdateStore = ({show}) => {
-  const [menu, setMenu] = useState(show);
+export  const UpdateStore = ({show, item, setEdit}) => {
+
+  const showMenu = () => {
+    setEdit(false);
+  };
+  // const [menu, setMenu] = useState(show);
 
   const dispatch = useDispatch();
   const { loggedUser } = useSelector(selectUserState);
@@ -21,9 +25,6 @@ export  const UpdateStore = ({show}) => {
     dispatch(updateStore(data))
   }
 
-  const showMenu = () => {
-    setMenu(!show);
-  };
   return (
     <>
       {/* <button
@@ -112,6 +113,7 @@ export  const UpdateStore = ({show}) => {
       />
     </div>
   </div>
+  
   <div className="md:flex md:items-center mb-6">
     <div className="md:w-1/3">
       <label

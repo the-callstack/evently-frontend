@@ -40,6 +40,7 @@ export const postSaleItems = createAsyncThunk('saleItems/postSaleItems',
 export const updateSaleItems = createAsyncThunk('saleItems/updateSaleItems',
     async (data) => {
         const sale = await axios.put(`/sale/${data.id}`, data);
+        console.log(sale.data);
         return sale.data[1][0];
     });
 

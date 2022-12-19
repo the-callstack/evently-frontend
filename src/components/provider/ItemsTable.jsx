@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import {  useLocation } from 'react-router-dom';
+import {  Link, useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
 import { deleteRentalItem, getStoreRentalItems, selectRentalItemsState } from '../../features/rentalItems/rentalItemsSlice';
 import { deleteSaleItems, getStoreSaleItems, selectSaleItemsState } from '../../features/saleItems/saleItemsSlice';
 import { AddItem } from './AddItem';
 import { AddStore } from './AddStore';
+import { UpdateItem } from './UpdateItem';
 
 export default function ItemsTable(props) {
     const dispatch = useDispatch()
@@ -15,10 +16,15 @@ export default function ItemsTable(props) {
     const location = useLocation();
     const navigate = useNavigate();
 
+    const [test, setTest] = useState();
+
+    const [itemObject, setItemObject] = useState({});
+    const [edit, setEdit] = useState(false);
 
     useEffect(() => {
-        dispatch(getStoreSaleItems(location.state.store.id))
-        dispatch(getStoreRentalItems(location.state.store.id))
+        dispatch(getStoreSaleItems(location.state?.id));
+        dispatch(getStoreRentalItems(location.state?.id));
+        setTest(location.state?.id);
     }, []);
 
     const handleClick = (item,type) => {
@@ -33,6 +39,10 @@ export default function ItemsTable(props) {
 
     const handleSaleUpdate = (item) => {
         // console.log(item.id, item.itemName)
+        // setEditItem(item);
+        // edit(true);
+        setItemObject(item);
+        setEdit(true);
     }
     const handleSaleDelete = (item) => {
         dispatch(deleteSaleItems(item.id))
@@ -40,13 +50,16 @@ export default function ItemsTable(props) {
 
     const handleRentalUpdate = (item) => {
         // console.log(item.id, item.itemName)
+        setItemObject(item);
+        setEdit(true);
     }
     const handleRentalDelete = (item) => {
         dispatch(deleteRentalItem(item.id))
     }
 
     return (
-
+    <>
+    <UpdateItem storeId={test} show={edit} item={itemObject} setEdit={setEdit}/>
         <div className="flex flex-col">
             <div className="overflow-x-auto">
                 <div className="p-1.5 w-full inline-block align-middle">
@@ -84,18 +97,18 @@ export default function ItemsTable(props) {
                             <tbody className="divide-y divide-gray-200">
                                 {saleItems.saleItems?.map((item, index) => {
                                     return (
-                                        <tr onClick={() => handleClick(item,"SALE")} key={index} >
-                                            <td className="px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap">
+                                        <tr  key={index} >
+                                            <td onClick={() => handleClick(item,"SALE")} className="px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap">
                                                 {item.name}                                    </td>
                                             <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
                                                 SALE                           </td>
                                             <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
-                                                <a onClick={() => handleSaleUpdate(item)}
+                                                <Link onClick={() => handleSaleUpdate(item)}
                                                     className="text-green-500 hover:text-green-700"
-                                                    href="#"
+                                                    
                                                 >
                                                     Edit
-                                                </a>
+                                                </Link>
                                             </td>
                                             <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
                                                 <a onClick={() => handleSaleDelete(item,"RENTAL")}
@@ -111,20 +124,20 @@ export default function ItemsTable(props) {
                                 {rentalItems.rentalItems?.map((item, index) => {
                                     return (
 
-                                        <tr onClick={() => handleClick(item,"RENTAL")} key={index} >
-                                            <td className="px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap">
+                                        <tr key={index} >
+                                            <td onClick={() => handleClick(item,"RENTAL")}  className="px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap">
                                                 {item.name}
                                             </td>
                                             <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
                                                 RENTAL
                                             </td>
                                             <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
-                                                <a onClick={() => handleRentalUpdate(item)}
+                                                <Link onClick={() => handleRentalUpdate(item)}
                                                     className="text-green-500 hover:text-green-700"
-                                                    href="#"
+                                                    
                                                 >
                                                     Edit
-                                                </a>
+                                                </Link>
                                             </td>
                                             <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
                                                 <a onClick={() => handleRentalDelete(item)}
@@ -142,7 +155,8 @@ export default function ItemsTable(props) {
                     </div>
                 </div>
             </div>
-            <AddItem storeId={location.state.store.id}/> 
+            <AddItem storeId={location.state?.id}/> 
         </div>
+    </>
     );
 }

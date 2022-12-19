@@ -8,7 +8,6 @@ import { getAllCategories, selectCategoryState } from "../../features/categories
 export const AddItem = (props) => {
 
   const dispatch = useDispatch();
-
   // const { loggedUser } = useSelector(selectUserState);
   const { category } = useSelector(selectCategoryState);
   
@@ -27,8 +26,7 @@ export const AddItem = (props) => {
       CategoryId: e.target.itemCat.value,
       StoreId: props.storeId,
     }
-    
-    
+
     if(e.target.saleItemDrop.checked){
       dispatch(postSaleItems(data));
     }else{
