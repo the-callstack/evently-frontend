@@ -5,7 +5,7 @@ import {  selectUserState, signIn } from "./authSlice";
 
 export default function LoginWithSplash() {
   const dispatch = useDispatch();
-  const { errMsg, isLoggedIn } = useSelector(selectUserState);
+  const { errMsg, isLoggedIn, loggedUser } = useSelector(selectUserState);
   const signin = async (e) => {
     e.preventDefault();
     const userData = {
@@ -117,6 +117,9 @@ export default function LoginWithSplash() {
                  <Alert />
                   : <></>}
                   {console.log('================')}
+                  {
+                    loggedUser?.role === 'admin' ?<Navigate to='/administrator' /> : <></>
+                  }
               </div>
             </div>
           </div>
