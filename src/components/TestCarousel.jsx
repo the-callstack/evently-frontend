@@ -1,15 +1,15 @@
 import { useState, useRef, useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { selectRentalItemsState } from '../features/rentalItems/rentalItemsSlice';
-import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
+import { getAllRentals, selectRentalItemsState } from '../features/rentalItems/rentalItemsSlice';
+import { useNavigate } from "react-router-dom";
 
 
 
 
 const TestCarousel = (props) => {
-  const { rentalItem } = useSelector(selectRentalItemsState);
 
-
+  const { rentalItems} = useSelector(selectRentalItemsState);
+  const dispatch = useDispatch()
   const maxScrollWidth = useRef(0);
   const [currentIndex, setCurrentIndex] = useState(0);
   const carousel = useRef(null);
@@ -53,25 +53,23 @@ const TestCarousel = (props) => {
     maxScrollWidth.current = carousel.current
       ? carousel.current.scrollWidth - carousel.current.offsetWidth
       : 0;
+
+    dispatch(getAllRentals())
   }, []);
 
   const navigate = useNavigate();
   const handleClick = (item) => {
-    navigate(`/products/${item.id}`,{
+   
+
+    navigate(`/products/${item.id}`, {
       state: {
-        id: item.id,
-        name: item.name,
-        price: item.price,
-        quantity: item.quantity
+        item
       }
     })
   }
 
   return (
     <div className="carousel my-12 mx-auto">
-      <h2 className="text-4xl leading-8 font-semibold mb-12 text-slate-700">
-        Our epic carousel
-      </h2>
       <div className="relative overflow-hidden">
         <div className="flex justify-between absolute top left w-full h-full">
           <button
@@ -121,25 +119,30 @@ const TestCarousel = (props) => {
           ref={carousel}
           className="carousel-container relative flex gap-1 overflow-hidden scroll-smooth snap-x snap-mandatory touch-pan-x z-0"
         >
-          {rentalItem.rentalItems.map((resource, index) => {
-            // console.log(resource.name,resource.imgPath,resource.id)
+          {rentalItems.rentalItems?.map((resource, index) => {
             return (
               <div
                 key={index}
-                className="carousel-item text-center relative w-64 h-64 snap-start"
-              >
-                <div  onClick={()=>handleClick(resource)}
+                className="carousel-item text-center relative w-64 h-64 snap-start flex flex-col hover:cursor-pointer"  >
+                <div onClick={() => handleClick(resource)}
                   className="h-full w-full aspect-square block bg-origin-padding bg-left-top bg-cover bg-no-repeat z-0"
                   style={{ backgroundImage: `url(${resource.imgPath || ''})` }}
                 >
-                  <img 
+                  <img
                     src={resource.imgPath || ''}
                     alt={resource.name}
                     className="w-full aspect-square hidden"
                   />
+
                 </div>
+           
 
-
+                <h4 className="text-black">
+                 {resource.name}
+                </h4>
+                <h6 className="text-black">
+                 ${resource.price}
+                </h6>
 
                 {/* <Link className="h-full w-full aspect-square block bg-origin-padding bg-left-top bg-cover bg-no-repeat z-0"
                   style={{ backgroundImage: `url(${resource.imgPath || ''})` }} to='https://online.ltuc.com/d2l/home'>
@@ -161,6 +164,7 @@ const TestCarousel = (props) => {
                   </h3>
                 </a> */}
               </div>
+              
             );
           })}
         </div>

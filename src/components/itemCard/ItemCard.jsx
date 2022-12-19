@@ -6,12 +6,7 @@ export const ItemCard = ({item}) => {
     const handleClick = (item) => {
       navigate(`/products/${item.id}`,{
         state: {
-          id: item.id,
-          name: item.name,
-          price: item.price,
-          quantity: item.quantity,
-          imagePath: item.imgPath,
-          imageName: item.imgName
+          item
         }
       })
     }
@@ -25,6 +20,8 @@ export const ItemCard = ({item}) => {
                               style={{
                   backgroundImage:
                     "url(https://wallpaperaccess.com/full/2489661.jpg)",
+                    // backgroundImage: item.imgPath
+
                 }}
               >
               </div>

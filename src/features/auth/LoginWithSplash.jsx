@@ -1,22 +1,21 @@
-import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Navigate, useLocation } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { Alert } from "./Alert";
-import { selectUserState, signIn } from "./authSlice";
+import {  selectUserState, signIn } from "./authSlice";
 
 export default function LoginWithSplash() {
   const dispatch = useDispatch();
-  const location = useLocation();
-  const { errMsg, isLoggedIn } = useSelector(selectUserState);
-  console.log(isLoggedIn);
+  const { errMsg, isLoggedIn, loggedUser } = useSelector(selectUserState);
   const signin = async (e) => {
     e.preventDefault();
     const userData = {
       email: e.target.email.value,
       password: e.target.password.value,
     };
-    dispatch(signIn(userData));
+    dispatch(signIn(userData))
+    console.log(dispatch(signIn(userData)));
   };
+
 
   return (
     <>
@@ -51,7 +50,9 @@ export default function LoginWithSplash() {
               </div>
 
               <div className="mt-8">
-                <form onSubmit={signin}>
+                <form 
+                encType='multipart/form-data'
+                onSubmit={signin}>
                   <div>
                     <label
                       htmlFor="email"
@@ -107,14 +108,21 @@ export default function LoginWithSplash() {
                     Sign up
                   </a>
                   .<br/>
+                  {
+                    isLoggedIn &&
+                    <Navigate to='/' />
+                  }
+                </p>
                   {errMsg ?
                  <Alert />
                   : <></>}
-                  {/* {
-                    isLoggedIn &&
-                     <Navigate to='/' />
-                  } */}
-                </p>
+                  {console.log('================')}
+                  {
+                    loggedUser?.role === 'admin' ?<Navigate to='/administrator' /> : <></>
+                  }
+                  {
+                    loggedUser?.role === 'provider' ?<Navigate to='/provider' /> : <></>
+                  }
               </div>
             </div>
           </div>
