@@ -25,16 +25,6 @@ import EventProduct from "./components/EventProduct";
 function App() {
   return (
     <>
-      {/* <Admin /> */}
-      {/* <Profile />
-    <LoginWithSplash /> */}
-      {/* <StoresTable /> */}
-      {/* <ItemsTable /> */}
-      {/* <TestCarousel/> */}
-      {/* <Layout /> */}
-      {/* <EventsCarousel/> */}
-
-
       <Routes>
         <Route path="/" element={<NewLayout />}>
           <Route path="/auth">
@@ -47,13 +37,10 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/products/:id" element={<DetailsCard />} />
-          <Route path="/CatProducts/:id" element={<CategoriesProduct />}/> 
-         
-
+          <Route path="/CatProducts/:id" element={<CategoriesProduct />}/>
           <Route path="/ُEventProducts" element={<EventsCarousel />} >
             <Route path=":id" element={<EventProduct />} />
           </Route >
-
           <Route path="/storeitems/:name" element={<ItemsTable />} />
             <Route path="/productrent" element={<RentalProduct />} />
             <Route path="/productsale" element={<SaleProduct />} />
@@ -63,9 +50,7 @@ function App() {
         <Route path="/storeitemDetails" element={<StoreItemCard />} />
       </Routes>
       {/* <CookiesModal/> */}
-
       <Aggregator />
-
       <Footer />
     </>
   );

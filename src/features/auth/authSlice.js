@@ -35,7 +35,8 @@ export const signIn = createAsyncThunk('user/signIn',
 
 export const signUp = createAsyncThunk('user/signUp',
     async (data) => {
-        const res = await axiosPrivate.post(`/signUp`, data);
+        const res = await axiosPrivate.post(`/signup`, data);
+        console.log(res.data);
         return res.data;
     });
 
