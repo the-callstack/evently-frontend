@@ -18,11 +18,12 @@ export const SaleProduct = () => {
     },[]);
     return (
       <div>
-        <div className="flex justify-center gap-10 pt-10 pl-10">
+      <div className="flex justify-center gap-10 pt-10 pl-14">
           <div>
             <FilterSale category= {category.categories} /> 
           </div>
-          <div className="grid grid-cols-3 gap-5 w-full h-60 pr-10" >
+          <div className="grid grid-cols-3 gap-5 w-full  px-14 pt-4 pb-12 ">
+
           {
             
             saleItems.saleItems.map(item=>{

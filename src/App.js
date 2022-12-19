@@ -57,6 +57,7 @@ function App() {
         <Route path="/storeitemDetails" element={<StoreItemCard />} />
       </Routes>
       {/* <CookiesModal/> */}
+
       {/* <Aggregator /> */}
       <Footer />
     </>

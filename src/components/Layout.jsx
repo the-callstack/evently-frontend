@@ -18,7 +18,7 @@ export default function Layout() {
     {/* <TestCarousel/> */}
     <Hero/>
     <SelectProduct />
-    <CategoriesCarousel />
+    <CategoriesCarousel  />
 
     {/* <Provider /> */}
     <Outlet/>
