@@ -7,8 +7,8 @@ import eventCatReducer from "../features/EventCat/EventCatSlice";
 import storesSlice from "../features/stores/storesSlice";
 import saleReducer from "../features/saleItems/saleItemsSlice";
 import eventReducer from "../features/events/EventSlice";
-import cartReducer from '../features/Cart/CartSlice';
-
+import cartReducer from "../features/Cart/CartSlice";
+import packageReducer from "../features/packageSlice/PackageSlice";
 
 export const store = configureStore({
   reducer: {
@@ -20,7 +20,7 @@ export const store = configureStore({
     eventCat: eventCatReducer,
     stores: storesSlice,
     events: eventReducer,
-    cart: cartReducer
-  }
-
+    cart: cartReducer,
+    eventPackage: packageReducer,
+  },
 });
