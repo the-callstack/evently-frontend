@@ -25,16 +25,17 @@ import { AddCategoryForm } from "./components/admin/AddCategoryForm";
 import { CategoriesTable } from "./components/admin/CategoriesTable";
 import { EventsTable } from "./components/admin/EventsTable";
 import { AddEventForm } from "./components/admin/AddEventForm";
+import { Provider } from "./components/provider/Provider";
 
 function App() {
   return (
     <>
       <Routes>
+        <Route path="/auth">
+          <Route path="signup" element={<Signup />} />
+          <Route path="signin" element={<LoginWithSplash />} />
+        </Route>
         <Route path="/" element={<NewLayout />}>
-          <Route path="/auth">
-            <Route path="signup" element={<Signup />} />
-            <Route path="signin" element={<LoginWithSplash />} />
-          </Route>
           <Route path="/contactus" element={<ContactUs />} />
           <Route path="/administrator" element={<Admin />}>
             <Route
@@ -60,6 +61,8 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/products/:id" element={<DetailsCard />} />
+          <Route path="/provider" element={<Provider />} />
+
           <Route path="/CatProducts/:id" element={<CategoriesProduct />} />
           
           <Route path="/aggregator" element={<Aggregator />} />
