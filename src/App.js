@@ -17,7 +17,7 @@ import { Profile } from "./components/profile/Profile";
 function App() {
   return (
     <>
-    {/* <Profile />
+      {/* <Profile />
     <LoginWithSplash /> */}
       <Layout />
       <Routes>
@@ -34,8 +34,8 @@ function App() {
       {/* <CookiesModal/> */}
       {/* <ContactUs /> */}
       {/* <Aggregator /> */}
-      <Footer />
-    
+      {/* <Footer /> */}
+      {/* <Signup /> */}
     </>
   );
 }
