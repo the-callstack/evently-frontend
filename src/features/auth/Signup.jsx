@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import {selectUserState, signUp } from "./authSlice"
 
 export const Signup = () => {
@@ -195,19 +195,23 @@ export const Signup = () => {
                     </button>
                   </div>
                 </form>
+                <p className="mt-6 text-sm text-center text-gray-400">
+                  Already have an account !{" "}
+                  <Link
+                    to="/auth/signin"
+                    className="text-blue-500 focus:outline-none focus:underline hover:underline"
+                  >
+                    Sign in
+                  </Link>
+
+                </p>
               </div>
             </div>
           </div>
         </div>
       </div>
-      {
-        loggedUser?.role==='provider'&&
-        <Navigate  to='/provider'/>
-      }
-      {
-        loggedUser?.role==='client'&&
-        <Navigate  to='/'/>
-      }
+      {loggedUser?.role === "provider" && <Navigate to="/provider" />}
+      {loggedUser?.role === "client" && <Navigate to="/" />}
     </div>
   );
 };
