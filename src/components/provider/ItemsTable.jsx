@@ -154,7 +154,7 @@ export default function ItemsTable(props) {
                     </div>
                 </div>
             </div>
-            <AddItem/> 
+            <AddItem storeId={location.state.store.id}/> 
         </div>
     );
 }
