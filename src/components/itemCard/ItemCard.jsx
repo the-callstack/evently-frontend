@@ -20,6 +20,8 @@ export const ItemCard = ({item}) => {
                               style={{
                   backgroundImage:
                     "url(https://wallpaperaccess.com/full/2489661.jpg)",
+                    // backgroundImage: item.imgPath
+
                 }}
               >
               </div>

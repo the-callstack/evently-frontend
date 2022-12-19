@@ -2,6 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux';
 import { Outlet } from 'react-router-dom';
 import { selectUserState } from '../features/auth/authSlice';
+import CategoriesCarousel from './CategoriesCarousel';
 import Header from './header/Header';
 import { Hero } from './hero/Hero';
 import { SelectProduct } from './productDisplay/SelectProduct';
@@ -17,6 +18,8 @@ export default function Layout() {
     {/* <TestCarousel/> */}
     <Hero/>
     <SelectProduct />
+    <CategoriesCarousel />
+
     {/* <Provider /> */}
     <Outlet/>
     </>
