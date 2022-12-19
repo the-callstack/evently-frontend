@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import counterReducer from '../features/counter/counterSlice';
 import rentalReducer from '../features/rentalItems/rentalItemsSlice';
 import categoryReducer from '../features/categories/categorySlice';
+import eventReducer from '../features/Events/EventsSlice';
 import userReducer from '../features/auth/authSlice'
 import eventCatReducer from '../features/EventCat/EventCatSlice';
 import storesSlice from '../features/stores/storesSlice';
@@ -11,11 +12,12 @@ export const store = configureStore({
   reducer: {
     counter: counterReducer,
     rentalItems: rentalReducer,
-    saleItems:saleReducer,
+    saleItems: saleReducer,
     category: categoryReducer,
-    user:userReducer,
+    event: eventReducer,
+    user: userReducer,
     eventCat: eventCatReducer,
-    stores:storesSlice
-}
+    stores: storesSlice
+  }
 
 });
