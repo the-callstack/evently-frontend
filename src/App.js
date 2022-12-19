@@ -64,7 +64,7 @@ function App() {
       </Routes>
       {/* <CookiesModal/> */}
 
-      <Aggregator />
+      {/* <Aggregator /> */}
 
       <Footer />
     </>

@@ -13,10 +13,10 @@ export const ItemCard = ({item}) => {
   return (
 <>
         
-            <div className="flex flex-col w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden" >
+            <div className="flex flex-col w-full max-w-sm mx-auto px-5  rounded-md shadow-md overflow-hidden h-80" >
               <div
                 onClick={() => handleClick(item)} 
-                className="hover:cursor-pointer flex items-end justify-end h-[75%] w-full bg-cover"
+                className="hover:cursor-pointer flex items-end justify-end h-[70%] w-full bg-cover"
                               style={{
                   backgroundImage:
                     "url(https://wallpaperaccess.com/full/2489661.jpg)",
@@ -26,10 +26,13 @@ export const ItemCard = ({item}) => {
               >
               </div>
          
-              <div className="px-5 py-3 h-[25%]">
-                <h3 className="text-gray-700 uppercase hover:cursor-pointer" onClick={() => handleClick(item)}>{item.name}</h3>
+              <div className="px-5 py-3 h-[30%]">
+                <h3 className="text-gray-700 font-bold uppercase hover:cursor-pointer" onClick={() => handleClick(item)}>{item.name}</h3>
+                <h3 className="text-gray-700 uppercase hover:cursor-pointer" >{item.description}</h3>
+
                 <span className="text-gray-500 mt-2">${item.price}</span>
             </div>
+            
           </div>
 
 </>

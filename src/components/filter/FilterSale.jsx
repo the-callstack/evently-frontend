@@ -29,9 +29,9 @@ export const FilterSale = ({category}) => {
       dispatch(getAllSaleItems())
     }
     return (
-      <div className="flex flex-col h-screen p-3 bg-white shadow w-60">
-        <div className="space-y-3">
-          <div className="flex items-center justify-between">
+      <div className="flex flex-col h-screen p-5 bg-white w-60 space-y-3">
+      {/* <div className="space-y-3  bg-yellow-500 px-4"> */}
+      <div className="flex items-center justify-between ">
             <h2 className="text-xl font-bold">Filter</h2>
             <button onClick={handleReset}> reset </button>
           </div>
@@ -106,7 +106,7 @@ export const FilterSale = ({category}) => {
             </div>
           </div>
   
-        </div>
+        {/* </div> */}
       </div>
     );
 }
