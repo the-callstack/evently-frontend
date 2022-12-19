@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { Alert } from "./Alert";
 import {  selectUserState, signIn } from "./authSlice";
 
@@ -101,12 +101,12 @@ export default function LoginWithSplash() {
                
                 <p className="mt-6 text-sm text-center text-gray-400">
                   Don&#x27;t have an account yet?{" "}
-                  <a
-                    href="/auth/signup"
+                  <Link
+                    to="/auth/signup"
                     className="text-blue-500 focus:outline-none focus:underline hover:underline"
                   >
                     Sign up
-                  </a>
+                  </Link>
                   .<br/>
                   {
                     isLoggedIn &&

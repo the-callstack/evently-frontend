@@ -1,10 +1,11 @@
 import { useSelector } from 'react-redux';
 import { Outlet } from "react-router-dom";
+import { selectEventState } from '../features/events/EventSlice';
 import { ItemCard } from './itemCard/ItemCard';
-import { selectEventState } from '../features/Events/EventsSlice';
+
 
 export default function EventProduct() {
-    const { event } = useSelector(selectEventState)
+    const { events } = useSelector(selectEventState)
 
 
     return (
@@ -15,7 +16,7 @@ export default function EventProduct() {
                 </div>
                 <div className="grid grid-cols-3 gap-5 w-full h-60 pr-10">
                     {/* {
-                       event.eventsitems?.map(item => {
+                       events.eventsitems?.map(item => {
                             return (
                                 <ItemCard key={item.id} item={item} />
                             )

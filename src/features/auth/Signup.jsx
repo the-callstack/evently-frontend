@@ -1,6 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, Navigate } from "react-router-dom";
+import {selectUserState, signUp } from "./authSlice"
 
 export const Signup = () => {
+  const dispatch =useDispatch();
+  const {loggedUser} = useSelector(selectUserState);
+  const [password,setPassword] =useState("");
+  const [rePassword, setRePassword] = useState("");
+  const handlePassword =(e)=>{
+    setPassword(e.target.value);
+    
+  }
+  const handleRePassword =(e)=>{
+    setRePassword(e.target.value);
+  }
+  const handleSubmit = (e)=>{
+    e.preventDefault();
+    if(password===rePassword){
+  const data = {
+    email: e.target.email.value,
+    username: e.target.userName.value,
+    password: password,
+    address: e.target.address.value,
+    phone: e.target.mobileNum.value,
+    role: e.target.default.value,
+  };
+  dispatch(signUp(data));
+    }else{
+      alert("please make sure the password is correct");
+    }
+  }
+
   return (
     <div>
       <div className="bg-white dark:bg-gray-900">
@@ -34,21 +65,21 @@ export const Signup = () => {
               </div>
 
               <div className="mt-8">
-                <form enctype="multipart/form-data">
+                <form enctype="multipart/form-data" onSubmit={handleSubmit}>
                   <div>
                     <input
                       type="text"
                       required
                       name="userName"
                       id="userName"
-                      placeholder="First and last name"
+                      placeholder="username"
                       className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                     />
                   </div>
                   <div>
                     <div className=" ">
                       <div
-                        className="datepicker relative form-floating mb-3 xl:w-96"
+                        className="datepicker relative form-floating mb-3"
                         data-mdb-toggle-button="false"
                       >
                         <input
@@ -60,7 +91,6 @@ export const Signup = () => {
                     </div>
                   </div>
                   <div>
-                  
                     <input
                       type="email"
                       required
@@ -90,7 +120,7 @@ export const Signup = () => {
                       <option value="provider">provider</option>
                     </select>
                   </div>
-                  <div>
+                  {/* <div>
                     <input
                       type="text"
                       required
@@ -99,39 +129,59 @@ export const Signup = () => {
                       placeholder="Your address"
                       className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                     />
+                  </div> */}
+                  <div className="flex justify-between mb-2">
+                    <select
+                      id="address"
+                      className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                    >
+                      <option selected>Your Address</option>
+                      <option value="amman">Amman</option>
+                      <option value="irbid">Irbid</option>
+                      <option value="ajloun">Ajloun</option>
+                      <option value="mafraq">Mafraq</option>
+                      <option value="jerash">Jerash</option>
+                      <option value="zarqa">Zarqa</option>
+                      <option value="balqa">Balqa</option>
+                      <option value="madaba">Madaba</option>
+                      <option value="karak">Karak</option>
+                      <option value="aqaba">Aqaba</option>
+                      <option value="maan">Maan</option>
+                      <option value="tafilah">Tafilah</option>
+                    </select>
                   </div>
                   <div>
                     <input
                       type="file"
-                      required
+                      // required
                       name="img"
                       id="img"
                       placeholder="Upload your avatar"
                       className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                     />
                   </div>
-                  <div >
-                    <div className="flex justify-between mb-2">
-                     
-                    </div>
+                  <div>
+                    <div className="flex justify-between mb-2"></div>
                     <input
                       type="password"
                       required
                       name="password"
                       id="password"
                       placeholder="Your Password"
+                      value={password}
+                      onChange={handlePassword}
                       className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                     />
                   </div>
-                  <div >
-                    <div className="flex justify-between mb-2">
-                    
-                    </div>
+                  <div>
+                    <div className="flex justify-between mb-2"></div>
                     <input
                       type="password"
                       required
-                      name="password"
-                      id="password"
+                      name="re-password"
+                      id="re-password"
+                      value={rePassword}
+                      onChange={handleRePassword}
                       placeholder="Re-enter password"
                       className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                     />
@@ -145,11 +195,23 @@ export const Signup = () => {
                     </button>
                   </div>
                 </form>
+                <p className="mt-6 text-sm text-center text-gray-400">
+                  Already have an account !{" "}
+                  <Link
+                    to="/auth/signin"
+                    className="text-blue-500 focus:outline-none focus:underline hover:underline"
+                  >
+                    Sign in
+                  </Link>
+
+                </p>
               </div>
             </div>
           </div>
         </div>
       </div>
+      {loggedUser?.role === "provider" && <Navigate to="/provider" />}
+      {loggedUser?.role === "client" && <Navigate to="/" />}
     </div>
   );
 };

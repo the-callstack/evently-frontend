@@ -18,7 +18,7 @@ export const CategoriesTable = () => {
   };
 
   return (
-    <div className="w-[50%]">
+    <div className="w-[50%] mt-y border">
       <div className="flex flex-col w-[100%]">
         <div className="overflow-x-auto w-[100%]">
           <div className="p-1.5 w-[100%] inline-block align-middle">

@@ -21,20 +21,14 @@ import CategoriesCarousel from "./components/CategoriesCarousel";
 import CategoriesProduct from "./components/CategoriesProduct";
 import EventsCarousel from "./components/EventsCarousel";
 import EventProduct from "./components/EventProduct";
+import { AddCategoryForm } from "./components/admin/AddCategoryForm";
+import { CategoriesTable } from "./components/admin/CategoriesTable";
+import { EventsTable } from "./components/admin/EventsTable";
+import { AddEventForm } from "./components/admin/AddEventForm";
 
 function App() {
   return (
     <>
-      {/* <Admin /> */}
-      {/* <Profile />
-    <LoginWithSplash /> */}
-      {/* <StoresTable /> */}
-      {/* <ItemsTable /> */}
-      {/* <TestCarousel/> */}
-      {/* <Layout /> */}
-      {/* <EventsCarousel/> */}
-
-
       <Routes>
         <Route path="/" element={<NewLayout />}>
           <Route path="/auth">
@@ -42,21 +36,21 @@ function App() {
             <Route path="signin" element={<LoginWithSplash />} />
           </Route>
           <Route path="/contactus" element={<ContactUs />} />
-          <Route path="/administrator" element={<Admin />} />
+          <Route path="/administrator" element={<Admin />} >
+            <Route path='cat' element={<div className="border-4 rounded-lg mb-8 p-4 w-[80%] flex-col flex items-center"  ><CategoriesTable /><AddCategoryForm /></div>} />
+            <Route path='event' element={<div className="border-4 rounded-lg mb-8 p-4 w-[80%] flex-col flex items-center" ><EventsTable /><AddEventForm /></div>} />
+          </Route>
           <Route path="/aboutus" element={<AboutUs />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/products/:id" element={<DetailsCard />} />
-          <Route path="/CatProducts/:id" element={<CategoriesProduct />}/> 
-         
-
+          <Route path="/CatProducts/:id" element={<CategoriesProduct />} />
           <Route path="/ُEventProducts" element={<EventsCarousel />} >
             <Route path=":id" element={<EventProduct />} />
           </Route >
-
           <Route path="/storeitems/:name" element={<ItemsTable />} />
-            <Route path="/productrent" element={<RentalProduct />} />
-            <Route path="/productsale" element={<SaleProduct />} />
+          <Route path="/productrent" element={<RentalProduct />} />
+          <Route path="/productsale" element={<SaleProduct />} />
           <Route path="/" element={<Layout />}>
           </Route>
         </Route>
@@ -65,7 +59,6 @@ function App() {
       {/* <CookiesModal/> */}
 
       {/* <Aggregator /> */}
-
       <Footer />
     </>
   );

@@ -21,7 +21,7 @@ export const AddCategoryForm = () => {
     }
   };
   return (
-    <div className="mt-8 w-[30%]">
+    <div className="my-8 w-[30%]">
       <form encType="multipart/form-data" onSubmit={handleCreate}>
         <div>
           <label

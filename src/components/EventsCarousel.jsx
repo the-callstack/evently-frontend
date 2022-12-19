@@ -1,11 +1,11 @@
 import React, {  useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Outlet, useNavigate } from 'react-router-dom';
-import { getAllEvents, getEventsitem, selectEventState } from '../features/Events/EventsSlice';
+import { getAllEvents, getEventsitem, selectEventState } from '../features/events/EventSlice';
 
 
 export default function EventsCarousel() {
-    const { event } = useSelector(selectEventState);
+    const { events } = useSelector(selectEventState);
     const dispatch = useDispatch()
 
     const maxScrollWidth = useRef(0);
@@ -117,7 +117,7 @@ export default function EventsCarousel() {
                         ref={carousel}
                         className="carousel-container relative flex gap-1 overflow-hidden scroll-smooth snap-x snap-mandatory touch-pan-x z-0"
                     >
-                        {event.events?.map((resource, index) => {
+                        {events.events?.map((resource, index) => {
                             return (
                                 <div
                                     key={index}
