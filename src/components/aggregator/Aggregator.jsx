@@ -13,7 +13,7 @@ export default function Aggregator() {
     const eventsData = events.map(event => {
         return (
             <div className="w-48 py-3  pl-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300  dark:bg-gray-700 ">
-                <Field type="radio" name="event" value={event.name} />
+                <Field type="radio" name="eventId" value={event.id} />
                 <p className='inline p-4'>{event.name}</p>
             </div>
         );
@@ -23,7 +23,7 @@ export default function Aggregator() {
         return (
 
             <div key={cat.id} className="w-48 p-3 text-sm font-medium  text-gray-900 bg-white rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white" >
-                <Field type="checkbox" name="cats" value={cat.name} />
+                <Field type="checkbox" name="categories" value={cat.id} />
                 <p className='inline p-4'>{cat.name}</p>
             </div >
         );
@@ -33,8 +33,8 @@ export default function Aggregator() {
         <div className='' >
             <Formik
                 initialValues={{
-                    cats: [],
-                    event: 'as',
+                    categories: [],
+                    eventId: 0,
                     attendance: 0
                 }}
                 onSubmit={(values) => {
