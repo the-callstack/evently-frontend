@@ -22,25 +22,31 @@ import axios from "../../api/config";
 // }],
 
 
+// const initialState = {
+//     items: [{
+//         item: {
+//             name: "chair",
+//             price: 20,
+//             id: 1,
+//             type: 'rental'
+//         },
+//         quantity: 10
+//     }, {
+//         item: {
+//             name: "table",
+//             price: 30,
+//             id: 2,
+//             type: 'sale'
+//         },
+//         quantity: 20
+//     }],
+//     totalPrice: 800,
+//     order: {}
+// };
+
 const initialState = {
-    items: [{
-        item: {
-            name: "chair",
-            price: 20,
-            id: 1,
-            type: 'rental'
-        },
-        quantity: 10
-    }, {
-        item: {
-            name: "table",
-            price: 30,
-            id: 2,
-            type: 'sale'
-        },
-        quantity: 20
-    }],
-    totalPrice: 800,
+    items: [],
+    totalPrice: 0,
     order: {}
 };
 
@@ -57,12 +63,18 @@ export const cartSlice = createSlice({
     initialState,
     reducers: {
         addToCart: (state, action) => {
+            console.log(action.payload);
             state.items.push(action.payload);
-            state.totalPrice += action.payload.price;
+            state.totalPrice += action.payload.item.price * action.payload.quantity;
         },
         removeFromCart: (state, action) => {
             const stateItems = state.items.filter(item => item.item.id !== action.payload);
             state.items = stateItems;
+            console.log(stateItems);
+            state.totalPrice = stateItems?.reduce((acc,item)=>{
+                acc += item.quantity * item.item.price
+                return acc;
+            },0) ;
         }
     },
     extraReducers: (builder) => {
