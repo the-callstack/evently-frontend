@@ -79,7 +79,7 @@ export const Signup = () => {
                   <div>
                     <div className=" ">
                       <div
-                        className="datepicker relative form-floating mb-3 xl:w-96"
+                        className="datepicker relative form-floating mb-3"
                         data-mdb-toggle-button="false"
                       >
                         <input
