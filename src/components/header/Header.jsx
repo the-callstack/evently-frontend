@@ -73,7 +73,7 @@ export default function Header() {
                         role="menu"
                         aria-orientation="vertical"
                         aria-labelledby="menu-button"
-                        tabindex="-1"
+                        tabIndex="-1"
                       >
                         <div className="py-1" role="none">
                           <Link
@@ -81,7 +81,7 @@ export default function Header() {
                             to="/productrent"
                             className="text-gray-100 hover:text-gray-200 block px-4 py-2 text-sm"
                             role="menuitem"
-                            tabindex="-1"
+                            tabIndex="-1"
                             id="menu-item-0"
                           >
                             Rent Items
@@ -93,7 +93,7 @@ export default function Header() {
                             to="/productsale"
                             className="text-gray-100 hover:text-gray-200 block px-4 py-2 text-sm"
                             role="menuitem"
-                            tabindex="-1"
+                            tabIndex="-1"
                             id="menu-item-0"
                           >
                             Buy Items

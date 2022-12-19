@@ -3,6 +3,7 @@ import axios from "../../api/config";
 
 const initialState = {
   events: [],
+  eventsitems: [],
   errMsg: "",
 };
 
@@ -38,6 +39,19 @@ export const deleteEvent = createAsyncThunk(
     return res.data;
   }
 );
+export const getEventsitem = createAsyncThunk('event/getEventsitem',
+    async (id, param1, param2) => {
+        const events = await axios.get(`/event/${id}?`, {
+            params: {
+                cats: param1,
+                items: param2
+            }
+        });
+        console.log(events.data.categories[0].rentalItems)
+        // console.log(events.data.categories[1])
+        
+        return events.data;
+    })
 
 export const eventSlice = createSlice({
   name: "event",
@@ -78,7 +92,14 @@ export const eventSlice = createSlice({
       })
       .addCase(deleteEvent.rejected, (state, action) => {
         state.errMsg = action.error;
-      });
+      })
+      .addCase(getEventsitem.fulfilled, (state, action) => {
+        state.eventsitems = action.payload;
+    })
+    .addCase(getEventsitem.rejected, (state, action) => {
+        state.errMsg = action.error;
+    })
+      ;
   },
 });
 
