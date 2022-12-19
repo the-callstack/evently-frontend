@@ -8,6 +8,7 @@ import storesSlice from "../features/stores/storesSlice";
 import saleReducer from "../features/saleItems/saleItemsSlice";
 import eventReducer from "../features/events/EventSlice";
 
+
 export const store = configureStore({
   reducer: {
     counter: counterReducer,
@@ -18,5 +19,6 @@ export const store = configureStore({
     eventCat: eventCatReducer,
     stores: storesSlice,
     events: eventReducer,
-  },
+  }
+
 });
