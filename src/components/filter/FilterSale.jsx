@@ -29,7 +29,7 @@ export const FilterSale = ({category}) => {
       dispatch(getAllSaleItems())
     }
     return (
-      <div className="flex flex-col h-screen p-5 bg-white w-60 space-y-3">
+      <div className="flex flex-col h-1/2 border border-solid rounded-md p-5 bg-white w-60 space-y-3">
       {/* <div className="space-y-3  bg-yellow-500 px-4"> */}
       <div className="flex items-center justify-between ">
             <h2 className="text-xl font-bold">Filter</h2>
@@ -66,7 +66,7 @@ export const FilterSale = ({category}) => {
           <div className="flex-1 space-y-5">
             <select
               id="category"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              className="bg-gray-50 border border-gray-300  text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               onChange={handleSelect}
             >
               <option selected>Category</option>
