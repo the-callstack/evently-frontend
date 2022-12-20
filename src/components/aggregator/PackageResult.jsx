@@ -2,19 +2,22 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { selectPackageState } from '../../features/packageSlice/PackageSlice';
-import CartSummary from '../cart/CartSummary';
 import { PackageResultCard } from './PackageResultCard';
+import PackageSummary from './PackageSummary';
 
 function PackageResult() {
     const { eventPackage } = useSelector(selectPackageState);
 
-    const items = eventPackage.package.items.map(item => {
+    const items = eventPackage.package?.items?.map(item => {
         return (
             <PackageResultCard item={item} />
         );
     });
     return (
-        <>
+        <>{
+            eventPackage.package?.items?.length
+            &&
+
             <div className="container mx-auto mt-10">
                 <div className="flex shadow-md my-10">
                     <div className="w-3/4 bg-white px-10 py-10">
@@ -34,11 +37,11 @@ function PackageResult() {
                             Continue Shopping
                         </Link>
                     </div>
-                    <CartSummary totalPrice={eventPackage.package.totalPrice} items={eventPackage.package.items} />
+                    <PackageSummary totalPrice={eventPackage.package.totalPrice} items={eventPackage.package.items} />
                 </div>
             </div>
 
-        </>
+        } </>
     );
 }
 
