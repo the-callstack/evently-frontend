@@ -51,6 +51,7 @@ export const Admin = () => {
     dispatch(getAllCategories());
   });
   return (
+  
     <div className="min-h-screen mt-4">
       <h1 className="flex flex-col items-center py-10 justify-center text-4xl font-extrabold dark:text-black">
         Admin Dashboard
@@ -61,25 +62,25 @@ export const Admin = () => {
           onClick={() =>
             dispatch2({ type: ACTIONS.SHOW_EVENT, payload: !test })
           }
-          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xl"
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xl"
         >
           Events
         </button>
         <button
           onClick={() => dispatch2({ type: ACTIONS.SHOW_ADD_EVENT })}
-          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xl"
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xl"
         >
           Add Event
         </button>
         <button
           onClick={() => dispatch2({ type: ACTIONS.SHOW_ADD_CAT })}
-          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xl"
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xl"
         >
           Add Category
         </button>
         <button
           onClick={() => dispatch2({ type: ACTIONS.SHOW_CAT })}
-          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xl"
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xl"
         >
           Categories
         </button>
