@@ -21,7 +21,7 @@ export const RentalProduct = () => {
   return (
     <div>
       <Carousel />
-      <div className="flex justify-between gap-10 pt-10 pl-14">
+      <div className="flex justify-between gap-10 pt-10 pl-14 min-h-screen">
         <div className="pt-16">
           <FilterRental category={category.categories} />
         </div>

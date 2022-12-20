@@ -71,7 +71,7 @@ function PackageSummary({ items, totalPrice }) {
             </div>
             <div className="py-10">
                 <label htmlFor="deleveryDate" className="font-semibold inline-block mb-3 text-sm ">Delivery Date</label>
-                <input type="date" id="deleveryDate" className="p-2 text-sm w-full" />
+                <input type="date" required id="deleveryDate" className="p-2 text-sm w-full" />
             </div>
             <div className="border-t mt-8">
                 <div className="flex font-semibold justify-between py-6 text-sm uppercase">

@@ -36,6 +36,9 @@ function PackageResult() {
                 <h3 className="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 ">
                   Price
                 </h3>
+                <h3 className="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 ">
+                  Total price
+                </h3>
               </div>
               {items}
               <Link
