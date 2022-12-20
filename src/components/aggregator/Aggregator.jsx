@@ -74,7 +74,7 @@ export default function Aggregator() {
             <Form className="w-full p-5 shadow-xl rounded-lg  ">
               <div
                 id="checkbox-group"
-                className="mb-4 flex flex-col justify-center pl-5 text-lg m-3 font-semibold text-gray-900 p-5 shadow-md"
+                className="my-4 flex flex-col justify-center pl-5 text-lg  font-semibold text-gray-900 p-5 shadow-md"
               >
                 Categories
               </div>
@@ -84,7 +84,7 @@ export default function Aggregator() {
               <br />
               <div
                 id="radio-group"
-                className="mb-4 flex flex-col justify-center pl-5 text-lg  m-3 font-semibold text-gray-900 p-4 shadow-md"
+                className="mb-4 flex flex-col justify-center pl-5 text-lg  font-semibold text-gray-900 p-4 shadow-md"
               >
                 Events
               </div>
@@ -95,23 +95,23 @@ export default function Aggregator() {
               >
                 {eventsData}
               </div>
-              <div className="mb-4 m-3 p-3 font-semibold text-gray-900 shadow-md pl-4">
+              <div className=" my-10 p-3 font-semibold text-gray-900 shadow-md">
                 <p className="inline p-4"> Attendance</p>
                 <Field type="range" name="attendance" min="0" max="1000" />
                 <Field
                   type="number"
-                  className="text-black rounded-xl hidden"
+                  className="text-black w-[4rem] rounded-xl "
                   name="attendance"
                   value={values.attendance}
                 />
-                <div className="mb-4 inline mx-3 font-semibold text-gray-900 ">
+                <div className="mb-4 inline mx-3 hidden font-semibold text-gray-900 ">
                   {values.attendance}
                 </div>
               </div>
               <div className="flex justify-center pb-5">
                 <button
                   type="submit"
-                  className="p-3 w-40 bg-gray-100 rounded-lg text-gray-900 hover:shadow-inner hover:translate-x-1 hover:text-gray-800 shadow-md"
+                  className="p-3 w-40 bg-gray-100 rounded-lg text-gray-900 hover:drop-shadow-sm hover:scale-95 duration-150 hover:text-gray-800 drop-shadow-lg"
                 >
                   Get your package !
                 </button>

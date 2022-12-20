@@ -22,7 +22,7 @@ export default function Header() {
           <nav className="flex justify-between text-yellow-600 m-w-screen">
             <div className="px-5 xl:px-12 py-5 flex w-screen items-center">
               <Link className="p-0 m-0 h-10" to="/">
-                <img className="h-full p-0 m-0 shadow-sm" src={Logo} alt="logo" />
+                <img className="h-full p-0 m-0" src={Logo} alt="logo" />
               </Link>
               <ul className="hidden md:flex px-4 mx-auto font-semibold font-heading space-x-12">
                 <li>
