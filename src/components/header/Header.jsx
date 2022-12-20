@@ -18,7 +18,7 @@ export default function Header() {
     <>
       <div className="flex flex-wrap place-items-center">
         <section className="relative mx-auto">
-          <nav className="flex justify-between bg-gray-900 text-white w-screen">
+          <nav className="flex justify-between  bg-white dark:bg-gray-900 text-gray-500 dark:text-white w-screen">
             <div className="px-5 xl:px-12 py-6 flex w-full items-center">
               <Link className="text-3xl font-bold font-heading" to="/">
                 {/* <img className="h-9" src="logo.png" alt="" /> */}
@@ -30,15 +30,13 @@ export default function Header() {
                     Home
                   </Link>
                 </li>
-                {
-                  loggedUser?.role === 'provider' &&
+                {loggedUser?.role === "provider" && (
                   <li>
                     <Link className="hover:text-gray-200" to="/provider">
                       Provider
                     </Link>
                   </li>
-
-                }
+                )}
                 <li>
                   <div className="relative inline-block text-left">
                     <div>
@@ -77,7 +75,7 @@ export default function Header() {
                       >
                         <div className="py-1" role="none">
                           <Link
-                            onClick={() => setShow(prev => !prev)}
+                            onClick={() => setShow((prev) => !prev)}
                             to="/productrent"
                             className="text-gray-100 hover:text-gray-200 block px-4 py-2 text-sm"
                             role="menuitem"
@@ -87,9 +85,12 @@ export default function Header() {
                             Rent Items
                           </Link>
                         </div>
-                        <div className="py-1 border-t-2 border-gray-600" role="none">
+                        <div
+                          className="py-1 border-t-2 border-gray-600"
+                          role="none"
+                        >
                           <Link
-                            onClick={() => setShow(prev => !prev)}
+                            onClick={() => setShow((prev) => !prev)}
                             to="/productsale"
                             className="text-gray-100 hover:text-gray-200 block px-4 py-2 text-sm"
                             role="menuitem"
