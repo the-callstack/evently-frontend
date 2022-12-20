@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import {  Link, useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
 import { deleteRentalItem, getStoreRentalItems, selectRentalItemsState } from '../../features/rentalItems/rentalItemsSlice';
@@ -27,8 +27,8 @@ export default function ItemsTable(props) {
         setTest(location.state?.id);
     }, []);
 
-    const handleClick = (item,type) => {
-        console.log(type,'--------------------------------------')
+    const handleClick = (item, type) => {
+        console.log(type, '--------------------------------------')
         navigate(`/storeitemDetails`, {
             state: {
                 item,
@@ -58,105 +58,105 @@ export default function ItemsTable(props) {
     }
 
     return (
-    <>
-    <UpdateItem storeId={test} show={edit} item={itemObject} setEdit={setEdit}/>
-        <div className="flex flex-col">
-            <div className="overflow-x-auto">
-                <div className="p-1.5 w-full inline-block align-middle">
-                    <div className="overflow-hidden border rounded-lg">
-                        <table className="min-w-full divide-y divide-gray-200">
-                            <thead className="bg-gray-50">
-                                <tr>
-                                    <th
-                                        scope="col"
-                                        className="px-6 py-3 text-xs font-bold text-left text-gray-500 uppercase "
-                                    >
-                                        Item Name
-                                    </th>
-                                    <th
-                                        scope="col"
-                                        className="px-6 py-3 text-xs font-bold text-left text-gray-500 uppercase "
-                                    >
-                                        Item Type
-                                    </th>
+        <>
+            <UpdateItem storeId={test} show={edit} item={itemObject} setEdit={setEdit} />
+            <div className="flex flex-col px-10 py-8">
+                <div className="overflow-x-auto pb-6 pt-2 px-4">
+                    <div className="p-1.5 w-full inline-block align-middle">
+                        <div className="overflow-hidden rounded-lg shadow-xl">
+                            <table className="min-w-full divide-y divide-gray-200">
+                                <thead className="bg-gray-200 text-s">
+                                    <tr>
+                                        <th
+                                            scope="col"
+                                            className="px-6 py-3 font-bold text-left text-gray-500 uppercase "
+                                        >
+                                            Item Name
+                                        </th>
+                                        <th
+                                            scope="col"
+                                            className="px-6 py-3 font-bold text-left text-gray-500 uppercase "
+                                        >
+                                            Item Type
+                                        </th>
 
-                                    <th
-                                        scope="col"
-                                        className="px-6 py-3 text-xs font-bold text-right text-gray-500 uppercase "
-                                    >
-                                        Edit
-                                    </th>
-                                    <th
-                                        scope="col"
-                                        className="px-6 py-3 text-xs font-bold text-right text-gray-500 uppercase "
-                                    >
-                                        Delete
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody className="divide-y divide-gray-200">
-                                {saleItems.saleItems?.map((item, index) => {
-                                    return (
-                                        <tr  key={index} >
-                                            <td onClick={() => handleClick(item,"SALE")} className="px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap">
-                                                {item.name}                                    </td>
-                                            <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
-                                                SALE                           </td>
-                                            <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
-                                                <Link onClick={() => handleSaleUpdate(item)}
-                                                    className="text-green-500 hover:text-green-700"
-                                                    
-                                                >
-                                                    Edit
-                                                </Link>
-                                            </td>
-                                            <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
-                                                <a onClick={() => handleSaleDelete(item,"RENTAL")}
-                                                    className="text-red-500 hover:text-red-700"
-                                                    href="#"
-                                                >
-                                                    Delete
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    )
-                                })}
-                                {rentalItems.rentalItems?.map((item, index) => {
-                                    return (
+                                        <th
+                                            scope="col"
+                                            className="px-6 py-3 font-bold text-right text-gray-500 uppercase "
+                                        >
+                                            Edit
+                                        </th>
+                                        <th
+                                            scope="col"
+                                            className="px-6 py-3 font-bold text-right text-gray-500 uppercase "
+                                        >
+                                            Delete
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody className="divide-y divide-gray-200">
+                                    {saleItems.saleItems?.map((item, index) => {
+                                        return (
+                                            <tr key={index} >
+                                                <td onClick={() => handleClick(item, "SALE")} className="px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap">
+                                                    {item.name}                                    </td>
+                                                <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
+                                                    SALE                           </td>
+                                                <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
+                                                    <Link onClick={() => handleSaleUpdate(item)}
+                                                        className="text-green-500 hover:text-green-700"
 
-                                        <tr key={index} >
-                                            <td onClick={() => handleClick(item,"RENTAL")}  className="px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap">
-                                                {item.name}
-                                            </td>
-                                            <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
-                                                RENTAL
-                                            </td>
-                                            <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
-                                                <Link onClick={() => handleRentalUpdate(item)}
-                                                    className="text-green-500 hover:text-green-700"
-                                                    
-                                                >
-                                                    Edit
-                                                </Link>
-                                            </td>
-                                            <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
-                                                <a onClick={() => handleRentalDelete(item)}
-                                                    className="text-red-500 hover:text-red-700"
-                                                    href="#"
-                                                >
-                                                    Delete
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    )
-                                })}
-                            </tbody>
-                        </table>
+                                                    >
+                                                        Edit
+                                                    </Link>
+                                                </td>
+                                                <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
+                                                    <a onClick={() => handleSaleDelete(item, "RENTAL")}
+                                                        className="text-red-500 hover:text-red-700"
+                                                        href="#"
+                                                    >
+                                                        Delete
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        )
+                                    })}
+                                    {rentalItems.rentalItems?.map((item, index) => {
+                                        return (
+
+                                            <tr key={index} >
+                                                <td onClick={() => handleClick(item, "RENTAL")} className="px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap">
+                                                    {item.name}
+                                                </td>
+                                                <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
+                                                    RENTAL
+                                                </td>
+                                                <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
+                                                    <Link onClick={() => handleRentalUpdate(item)}
+                                                        className="text-green-500 hover:text-green-700"
+
+                                                    >
+                                                        Edit
+                                                    </Link>
+                                                </td>
+                                                <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
+                                                    <a onClick={() => handleRentalDelete(item)}
+                                                        className="text-red-500 hover:text-red-700"
+                                                        href="#"
+                                                    >
+                                                        Delete
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        )
+                                    })}
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
+                <AddItem storeId={location.state?.id} />
             </div>
-            <AddItem storeId={location.state?.id}/> 
-        </div>
-    </>
+        </>
     );
 }

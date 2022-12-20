@@ -9,7 +9,7 @@ import {
   getAllEvents,
   selectEventState,
 } from "../../features/events/EventSlice";
-import { createPackage } from "../../features/EventCat/EventCatSlice";
+import { createPackage } from "../../features/packageSlice/PackageSlice";
 import { selectPackageState } from "../../features/packageSlice/PackageSlice";
 
 export default function Aggregator() {

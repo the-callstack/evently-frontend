@@ -62,8 +62,7 @@ export default function CategoriesCarousel() {
 
     navigate(`/CatProducts/${category.id}`, {
       state: {
-        category: category,
-        showBy: "Category"
+        category: category
       }
     })
   }
@@ -125,35 +124,20 @@ export default function CategoriesCarousel() {
               return (
                 <div
                   key={index}
-                  className="carousel-item text-center relative w-64 h-64 snap-start  flex flex-col  hover:cursor-pointer  group"  >
+                  className="carousel-item text-center relative w-64 h-64 snap-start  flex flex-col  hover:cursor-pointer   group"  >
+                  <h3 className="text-transparent py-6 px-3 mx-auto text-lg group-hover:text-3xl text-black  ">
+                    {resource.name}
+                  </h3>
                   <div onClick={() => handleClick(resource)}
-                    className="h-full w-full aspect-square block bg-origin-padding bg-left-top bg-cover bg-no-repeat z-0"
+                    className="h-full w-full aspect-square block bg-origin-padding bg-left-top bg-cover bg-no-repeat z-0  opacity-75 group-hover:opacity-100"
                     style={{ backgroundImage: `url(${resource.catImgPath || ''})` }}
                   >
                     <img
                       src={resource.catImgPath || ''}
                       alt={resource.name}
-                      className="w-full aspect-square hidden    group-hover:text-green-400"
+                      className="w-full aspect-square hidden   "
                     />
-                    <h3 className="text-transparent py-6 px-3 mx-auto text-xl  group-hover:text-black  group-hover:text-3xl">
-                      {resource.name} 
-                    </h3>
-
                   </div>
-                 
-
-
-
-                  {/* <a 
-                  href={resource.imgPath}
-
-
-                  className="h-full w-full aspect-square block absolute top-0 left-0 transition-opacity duration-300 opacity-0 hover:opacity-100 bg-blue-800/75 z-10"
-                >
-                  <h3 className="text-white py-6 px-3 mx-auto text-xl">
-                    {resource.id} {resource.imgPath}
-                  </h3>
-                </a> */}
                 </div>
               );
             })}

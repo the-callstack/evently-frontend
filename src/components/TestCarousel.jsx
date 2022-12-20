@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { getAllSaleItems } from '../features/saleItems/saleItemsSlice';
 
 
-const TestCarousel = (props) => {
+export default function  TestCarousel (props)  {
 
   const { rentalItems } = useSelector(selectRentalItemsState);
   const { saleItems } = useSelector(selectRentalItemsState)
@@ -126,59 +126,26 @@ const TestCarousel = (props) => {
             return (
               <div
                 key={index}
-                className="carousel-item text-center relative w-64 h-64 snap-start  flex flex-col  hover:cursor-pointer  group"  >
+                className="carousel-item text-center relative w-64 h-64 snap-start  flex flex-col  hover:cursor-pointer   group"  >
+                <h3 className="text-transparent py-6 px-3 mx-auto text-lg group-hover:text-3xl text-black  ">
+                  {resource.name}
+                </h3>
                 <div onClick={() => handleClick(resource)}
-                  className="h-full w-full aspect-square block bg-origin-padding bg-left-top bg-cover bg-no-repeat z-0"
+                  className="h-full w-full aspect-square block bg-origin-padding bg-left-top bg-cover bg-no-repeat z-0  opacity-75 group-hover:opacity-100"
                   style={{ backgroundImage: `url(${resource.imgPath || ''})` }}
                 >
                   <img
                     src={resource.imgPath || ''}
                     alt={resource.name}
-                    className="w-full aspect-square hidden    group-hover:text-green-400"
+                    className="w-full aspect-square hidden   "
                   />
-                  <h3 className="text-transparent py-6 px-3 mx-auto text-xl  group-hover:text-black  group-hover:text-3xl">
-                    {resource.name}
-                  </h3>
-
                 </div>
               </div>
             );
           })}
-          {rentalItems.rentalItems?.map((resource, index) => {
-            return (
-              <div
-                key={index}
-                className="carousel-item text-center relative w-64 h-64 snap-start  flex flex-col  hover:cursor-pointer  group"  >
-                <div onClick={() => handleClick(resource)}
-                  className="h-full w-full aspect-square block bg-origin-padding bg-left-top bg-cover bg-no-repeat z-0"
-                  style={{ backgroundImage: `url(${resource.imgPath || ''})` }}
-                >
-                  <img
-                    src={resource.imgPath || ''}
-                    alt={resource.name}
-                    className="w-full aspect-square hidden    group-hover:text-green-400"
-                  />
-                  <h3 className="text-transparent py-6 px-3 mx-auto text-xl  group-hover:text-black  group-hover:text-3xl">
-                    {resource.name}
-                  </h3>
-
-                </div>
-              </div>
-            );
-          })}
-
-
         </div>
-
-
-
-
       </div>
-
-      {/* <Outlet /> */}
     </div>
-  );
+  
+);
 };
-
-export default TestCarousel;
-

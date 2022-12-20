@@ -54,6 +54,7 @@ const initialState = {
 export const makeOrder = createAsyncThunk('cart/makeOrder',
     async (data) => {
         const res = await axios.post('/details', data);
+        console.log(res.data);
         return res.data;
     }
 );
@@ -63,7 +64,6 @@ export const cartSlice = createSlice({
     initialState,
     reducers: {
         addToCart: (state, action) => {
-            console.log(action.payload);
             state.items.push(action.payload);
             state.totalPrice += action.payload.item.price * action.payload.quantity;
         },
