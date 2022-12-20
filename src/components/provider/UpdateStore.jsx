@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectUserState } from "../../features/auth/authSlice";
-import { updateStore } from "../../features/stores/storesSlice";
+import { selectStoresState, updateStore } from "../../features/stores/storesSlice";
 
 export  const UpdateStore = ({show, item, setEdit}) => {
 
@@ -12,6 +12,7 @@ export  const UpdateStore = ({show, item, setEdit}) => {
 
   const dispatch = useDispatch();
   const { loggedUser } = useSelector(selectUserState);
+  const  { stores }  = useSelector(selectStoresState);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,7 +22,9 @@ export  const UpdateStore = ({show, item, setEdit}) => {
       logoPath: e.target.logo.value,
       address: e.target.address.value,
       UserId: loggedUser.id,
+      id: stores
     }
+    console.log(stores)
     dispatch(updateStore(data))
   }
 
@@ -62,7 +65,7 @@ export  const UpdateStore = ({show, item, setEdit}) => {
     <div className="md:w-1/3">
       <label
         className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
-        htmlFor="inline-full-name"
+        htmlFor="storeName"
       >
         New Store Name
       </label>
@@ -70,7 +73,7 @@ export  const UpdateStore = ({show, item, setEdit}) => {
     <div className="md:w-2/3">
       <input
         className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
-        id="inline-full-name"
+        id="storeName"
         type="text"
         placeholder="7Eleven"
       />
@@ -81,7 +84,7 @@ export  const UpdateStore = ({show, item, setEdit}) => {
     <div className="md:w-1/3">
       <label
         className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
-        htmlFor="inline-password"
+        htmlFor="storePhone"
       >
         New Store Phone Number
       </label>
@@ -89,7 +92,7 @@ export  const UpdateStore = ({show, item, setEdit}) => {
     <div className="md:w-2/3">
       <input
         className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
-        id="inline-password"
+        id="storePhone"
         type="number"
         placeholder="078..."
       />
@@ -99,7 +102,7 @@ export  const UpdateStore = ({show, item, setEdit}) => {
     <div className="md:w-1/3">
       <label
         className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
-        htmlFor="inline-password"
+        htmlFor="address"
       >
         New Address
       </label>
@@ -107,7 +110,7 @@ export  const UpdateStore = ({show, item, setEdit}) => {
     <div className="md:w-2/3">
       <input
         className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
-        id="inline-password"
+        id="address"
         type="text"
         placeholder="adress.."
       />
@@ -118,7 +121,7 @@ export  const UpdateStore = ({show, item, setEdit}) => {
     <div className="md:w-1/3">
       <label
         className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
-        htmlFor="inline-password"
+        htmlFor="logo"
       >
         New Logo
       </label>
@@ -126,7 +129,7 @@ export  const UpdateStore = ({show, item, setEdit}) => {
     <div className="md:w-2/3">
       <input
         className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
-        id="inline-password"
+        id="logo"
         type="file"
       />
     </div>

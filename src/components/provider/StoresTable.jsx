@@ -22,7 +22,7 @@ export default function StoresTable() {
         
         dispatch(getVendorStores(loggedUser.id))
 
-        console.log(stores);
+        // console.log(stores[0].id);
     }, []);
 
     const handleSaleUpdate = (item) => {
@@ -91,7 +91,6 @@ export default function StoresTable() {
                                 </tr>
                             </thead>
                             <tbody className="divide-y divide-gray-200">
-                                {console.log(stores)}
                                 {stores?.map((store, index) => {
                                     return (
 

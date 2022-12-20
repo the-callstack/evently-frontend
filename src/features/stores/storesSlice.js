@@ -35,6 +35,7 @@ export const postStore = createAsyncThunk('stores/postStore',
     export const updateStore = createAsyncThunk('stores/updateStore',
     async (data) => {
         const stores = await axios.put(`/store/${data.id}`,data);
+        console.log(stores)
         return stores.data;
     });
 

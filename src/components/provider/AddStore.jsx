@@ -15,7 +15,7 @@ export const AddStore = () => {
       storeName: e.target.storeName.value,
       phone: e.target.storePhone.value,
       logoPath: e.target.logo.value,
-      address: e.target.address.value,
+      address: e.target.value,
       UserId: loggedUser.id,
     }
       dispatch(postStore(data));
