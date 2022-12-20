@@ -11,8 +11,8 @@ import { silentLogin } from './features/auth/authSlice';
 
 const container = document.getElementById('root');
 const root = createRoot(container);
-store.dispatch(getAllRentals())
-store.dispatch(silentLogin())
+store.dispatch(getAllRentals());
+store.dispatch(silentLogin());
 root.render(
   <React.StrictMode>
     <Provider store={store}>

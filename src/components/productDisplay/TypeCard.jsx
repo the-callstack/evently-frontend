@@ -1,27 +1,27 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-export const TypeCard = ({img, title, hash1, hash2, hash3, route}) => {
+export const TypeCard = ({ img, title, hash1, hash2, hash3, route }) => {
   const navigate = useNavigate();
   const handleNavigate = (route) => {
-    navigate(route)
-  }
+    navigate(route);
+  };
   return (
 
-      <div className=" px-4 w-1/2 h-80 rounded overflow-hidden  ">
-        <img
-          className="w-full  h-full hover:cursor-pointer"
-          src={img}
-          alt="select type"
-          onClick={() => handleNavigate(route)}
-        />
-        {/* <div className="px-6 py-4">
+    <div className=" px-4 w-1/2 h-80 rounded overflow-hidden  ">
+      <img
+        className="w-full  h-full hover:cursor-pointer"
+        src={img}
+        alt="select type"
+        onClick={() => handleNavigate(route)}
+      />
+      {/* <div className="px-6 py-4">
           <div className="font-bold text-xl mb-2 hover:cursor-pointer hover:opacity-70"
           onClick={() => handleNavigate(route)}
           >{title}</div>
         
         </div> */}
-        {/* <div className="px-6 pt-4 pb-2">
+      {/* <div className="px-6 pt-4 pb-2">
           <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
             #{hash1}
           </span>
@@ -32,6 +32,6 @@ export const TypeCard = ({img, title, hash1, hash2, hash3, route}) => {
             #{hash3}
           </span>
         </div> */}
-      </div>
+    </div>
   );
 };
