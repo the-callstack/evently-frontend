@@ -39,8 +39,8 @@ function CartSummary({ items, totalPrice }) {
             "details": itemsDetails,
             "accessToken": loggedUser?.accessToken
         };
-        console.log(data);
-        // dispatch(makeOrder(data))
+        // console.log(data);
+        dispatch(makeOrder(data))
     };
 
     return (
