@@ -10,7 +10,7 @@ export default function ContactUs() {
             style={{
               backgroundPosition: "50%",
               backgroundImage:
-                'url("https://images.pexels.com/photos/1590915/pexels-photo-1590915.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")',
+                'url("https://media.discordapp.net/attachments/1029705588957003889/1054687754031742986/Screenshot_123.png?width=1288&height=671")',
               height: "300px",
             }}
           ></div>

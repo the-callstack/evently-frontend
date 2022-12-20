@@ -53,39 +53,46 @@ export default function AboutUs() {
         },
     ]
     return (
-        <>
-            <div className="container  pb-24 mx-auto ">
-                <section className=" text-gray-800  ">
-                    <div
-                        className="relative overflow-hidden bg-no-repeat bg-cover"
-                        style={{
-                            backgroundPosition: "50%",
-                            backgroundImage:
-                                'url(" https://images-ext-2.discordapp.net/external/Ei2jdjpeNG2OU80j5FQIDwi5Y0HMvuGUVtK_4Y8PisA/%3Fv%3D1030/https/screenshots.visme.co/3b/04/9a/1a/23f192562d198168897fcec9763a2d80_f.jpg")',
-                            height: "300px",
-                        }}
-                    ></div>
-                    <div className="container text-gray-800 px-4 md:px-32  ">
-                        <div
-                            className="block rounded-lg shadow-lg py-10 md:py-12 px-4 md:px-6  "
-                            style={{
-                                marginTop: "-100px",
-                                background: "hsla(0, 0%, 100%, 0.8)",
-                                backdropFilter: "blur(30px)",
-                            }}
-                        >
-                                <div className=" justify-items-center grid grid-cols-3  w-full  px-16 pt-12 pb-4" >
-
-                            {
-                                data.map(data =>
-                                    <AboutUsCard key={data.id} img={data.img} alt={data.alt} name={data.name} phone={data.phone} email={data.email} github={data.github} linkedin={data.linkedin} />)
-                            }
-                            </div>
-                            {/* <AboutUsCard/> */}
-                        </div>
-                    </div>
-                </section>
+      <>
+        <div className="container  pb-24 mx-auto ">
+          <section className=" text-gray-800  ">
+            <div
+              className="relative overflow-hidden bg-no-repeat bg-cover"
+              style={{
+                backgroundPosition: "50%",
+                backgroundImage:
+                  'url("https://images.pexels.com/photos/2526105/pexels-photo-2526105.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")',
+                height: "300px",
+              }}
+            ></div>
+            <div className="container text-gray-800 px-4 md:px-32  ">
+              <div
+                className="block rounded-lg shadow-lg py-10 md:py-12 px-4 md:px-6  "
+                style={{
+                  marginTop: "-100px",
+                  background: "hsla(0, 0%, 100%, 0.8)",
+                  backdropFilter: "blur(30px)",
+                }}
+              >
+                <div className=" justify-items-center grid grid-cols-3 gap-16   w-full  px-16 pt-12 pb-4">
+                  {data.map((data) => (
+                    <AboutUsCard
+                      key={data.id}
+                      img={data.img}
+                      alt={data.alt}
+                      name={data.name}
+                      phone={data.phone}
+                      email={data.email}
+                      github={data.github}
+                      linkedin={data.linkedin}
+                    />
+                  ))}
+                </div>
+                {/* <AboutUsCard/> */}
+              </div>
             </div>
-        </>
+          </section>
+        </div>
+      </>
     );
 }
