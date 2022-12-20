@@ -71,10 +71,10 @@ export default function Aggregator() {
       >
         {({ values }) => (
           <div className="flex ml-16 justify-start w-auto my-10 h-auto">
-            <Form className="w-full border border-b-2 rounded-lg bg-gray-800 ">
+            <Form className="w-full shadow-xl rounded-lg  ">
               <div
                 id="checkbox-group"
-                className="mb-4 flex flex-col justify-center pl-5 text-lg h-10 rounded-lg font-semibold text-gray-900 dark:text-white dark:bg-gray-700"
+                className="mb-4 flex flex-col justify-center pl-5 text-lg m-3 font-semibold text-gray-900 p-5 shadow-md"
               >
                 Categories
               </div>
@@ -84,7 +84,7 @@ export default function Aggregator() {
               <br />
               <div
                 id="radio-group"
-                className="mb-4 flex flex-col justify-center pl-5 text-lg h-10 rounded-lg font-semibold text-gray-900 dark:text-white dark:bg-gray-700"
+                className="mb-4 flex flex-col justify-center pl-5 text-lg  m-3 font-semibold text-gray-900 p-4 shadow-md"
               >
                 Events
               </div>
@@ -95,7 +95,7 @@ export default function Aggregator() {
               >
                 {eventsData}
               </div>
-              <div className="mb-4 rounded-xl  font-semibold text-gray-900 dark:text-white dark:bg-gray-700 pl-4">
+              <div className="mb-4 m-3 p-3 font-semibold text-gray-900 shadow-md pl-4">
                 <p className="inline p-4"> Attendance</p>
                 <Field type="range" name="attendance" min="0" max="1000" />
                 <Field
@@ -104,14 +104,14 @@ export default function Aggregator() {
                   name="attendance"
                   value={values.attendance}
                 />
-                <div className="mb-4 inline mx-3 font-semibold text-gray-900 dark:text-white dark:bg-gray-700">
+                <div className="mb-4 inline mx-3 font-semibold text-gray-900 ">
                   {values.attendance}
                 </div>
               </div>
               <div className="flex justify-center pb-5">
                 <button
                   type="submit"
-                  className="p-3 w-40 bg-blue-800 rounded-lg text-gray-200 hover:text-gray-400"
+                  className="p-3 w-40 bg-gray-100 rounded-lg text-gray-900 hover:shadow-inner hover:translate-x-1 hover:text-gray-800 shadow-md"
                 >
                   Get your package !
                 </button>

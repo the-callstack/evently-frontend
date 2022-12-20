@@ -10,7 +10,7 @@ function PackageResult() {
 
     const items = eventPackage.package?.items?.map(item => {
         return (
-            <PackageResultCard item={item} />
+            <PackageResultCard key={item.id} item={item} />
         );
     });
     return (
