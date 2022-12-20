@@ -3,8 +3,8 @@ import React from "react";
 export default function ContactUs() {
   return (
     <>
-      <div className="container my-24 px-6 mx-auto">
-        <section className="mb-32 text-gray-800">
+      <div className="container  pb-24 mx-auto  ">
+        <section className=" text-gray-800 ">
           <div
             className="relative overflow-hidden bg-no-repeat bg-cover"
             style={{
@@ -14,16 +14,16 @@ export default function ContactUs() {
               height: "300px",
             }}
           ></div>
-          <div className="container text-gray-800 px-4 md:px-12">
+          <div className="container text-gray-800 px-4 md:px-32 ">
             <div
-              className="block rounded-lg shadow-lg py-10 md:py-12 px-4 md:px-6"
+              className="block rounded-lg shadow-lg py-10 md:py-12 px-4 md:px-6  "
               style={{
                 marginTop: "-100px",
                 background: "hsla(0, 0%, 100%, 0.8)",
                 backdropFilter: "blur(30px)",
               }}
             >
-              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-x-6 mb-12">
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-x-6 mb-12 ">
                 <div className="mb-12 lg:mb-0 text-center mx-auto">
                   <svg
                     className="w-8 h-8 text-blue-600 mb-6 mx-auto"
@@ -77,12 +77,12 @@ export default function ContactUs() {
                   <h6 className="font-medium">Tax ID: 273 384</h6>
                 </div>
               </div>
-              <div className="max-w-[700px] mx-auto">
+              <div className="max-w-[550px] mx-auto ">
                 <form>
                   <div className="form-group mb-6">
                     <input
                       type="text"
-                      className="form-control block
+                      className="form-control block 
         w-full
         px-3
         py-1.5

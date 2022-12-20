@@ -32,11 +32,11 @@ export default function Header() {
                 </li>
                 {
                   loggedUser?.role === 'provider' &&
-                <li>
-                  <Link className="hover:text-gray-200" to="/provider">
-                    Provider
-                  </Link>
-                </li>
+                  <li>
+                    <Link className="hover:text-gray-200" to="/provider">
+                      Provider
+                    </Link>
+                  </li>
 
                 }
                 <li>
@@ -77,7 +77,7 @@ export default function Header() {
                       >
                         <div className="py-1" role="none">
                           <Link
-                            onClick={() => setShow(prev=> !prev)}
+                            onClick={() => setShow(prev => !prev)}
                             to="/productrent"
                             className="text-gray-100 hover:text-gray-200 block px-4 py-2 text-sm"
                             role="menuitem"
@@ -89,7 +89,7 @@ export default function Header() {
                         </div>
                         <div className="py-1 border-t-2 border-gray-600" role="none">
                           <Link
-                            onClick={() => setShow(prev=> !prev)}
+                            onClick={() => setShow(prev => !prev)}
                             to="/productsale"
                             className="text-gray-100 hover:text-gray-200 block px-4 py-2 text-sm"
                             role="menuitem"

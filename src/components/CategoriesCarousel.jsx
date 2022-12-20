@@ -70,12 +70,13 @@ export default function CategoriesCarousel() {
 
   return (
     <>
-      <div className="carousel my-12 mx-auto">
+      <div className="carousel my-12 mx-auto px-16 pt-4">
+        <h1 className="text-3xl pb-10"> Choose category</h1>
         <div className="relative overflow-hidden">
           <div className="flex justify-between absolute top left w-full h-full">
             <button
               onClick={movePrev}
-              className="hover:bg-blue-900/75 text-white w-10 h-full text-center opacity-75 hover:opacity-100 disabled:opacity-25 disabled:cursor-not-allowed z-10 p-0 m-0 transition-all ease-in-out duration-300"
+              className="hover:bg-blue-900/75  w-10 h-full text-center opacity-75 hover:opacity-100 disabled:opacity-25 disabled:cursor-not-allowed z-10 p-0 m-0 transition-all ease-in-out duration-300"
               disabled={isDisabled('prev')}
             >
               <svg
@@ -96,7 +97,7 @@ export default function CategoriesCarousel() {
             </button>
             <button
               onClick={moveNext}
-              className="hover:bg-blue-900/75 text-white w-10 h-full text-center opacity-75 hover:opacity-100 disabled:opacity-25 disabled:cursor-not-allowed z-10 p-0 m-0 transition-all ease-in-out duration-300"
+              className="hover:bg-blue-900/75 w-10 h-full text-center opacity-75 hover:opacity-100 disabled:opacity-25 disabled:cursor-not-allowed z-10 p-0 m-0 transition-all ease-in-out duration-300"
               disabled={isDisabled('next')}
             >
               <svg
@@ -124,7 +125,7 @@ export default function CategoriesCarousel() {
               return (
                 <div
                   key={index}
-                  className="carousel-item text-center relative w-64 h-64 snap-start  flex flex-col hover:cursor-pointer"  >
+                  className="carousel-item text-center relative w-64 h-64 snap-start  flex flex-col  hover:cursor-pointer  group"  >
                   <div onClick={() => handleClick(resource)}
                     className="h-full w-full aspect-square block bg-origin-padding bg-left-top bg-cover bg-no-repeat z-0"
                     style={{ backgroundImage: `url(${resource.catImgPath || ''})` }}
@@ -132,28 +133,16 @@ export default function CategoriesCarousel() {
                     <img
                       src={resource.catImgPath || ''}
                       alt={resource.name}
-                      className="w-full aspect-square hidden"
+                      className="w-full aspect-square hidden    group-hover:text-green-400"
                     />
+                    <h3 className="text-transparent py-6 px-3 mx-auto text-xl  group-hover:text-black  group-hover:text-3xl">
+                      {resource.name} 
+                    </h3>
 
                   </div>
-                  <h4 className="text-black">
-                    {resource.name}
-                  </h4>
-                  <h4 className="text-black">
-                    {resource.id}
-                  </h4>
+                 
 
 
-
-
-                  {/* <Link className="h-full w-full aspect-square block bg-origin-padding bg-left-top bg-cover bg-no-repeat z-0"
-                  style={{ backgroundImage: `url(${resource.imgPath || ''})` }} to='https://online.ltuc.com/d2l/home'>
-                  <img
-                    src={resource.imgPath || ''}
-                    alt={resource.name}
-                    className="w-full aspect-square hidden"
-                  />
-                </Link> */}
 
                   {/* <a 
                   href={resource.imgPath}
@@ -171,7 +160,7 @@ export default function CategoriesCarousel() {
           </div>
         </div>
       </div>
-        <Outlet />
+      <Outlet />
     </>
   );
 };
