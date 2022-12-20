@@ -12,15 +12,23 @@ export const ItemCard = ({item}) => {
     }
   return (
 <>
-        
+<div class="w-full min-h-full p-6 flex flex-col">
+              
+                    <img onClick={() => handleClick(item)} alt='' className="hover:grow hover:shadow-lg" src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&h=400&q=80"/>
+                    <div class="pt-3 flex items-center justify-between">
+                        <p onClick={() => handleClick(item)} className="hover:cursor-pointer text-lg">{item.name}</p>
+                    </div>
+                    <p class="pt-1 text-gray-900">£{item.price}</p>
+            </div>
+{/* 
             <div className="flex flex-col w-full max-w-sm mx-auto px-5  rounded-md shadow-md overflow-hidden h-80" >
               <div
                 onClick={() => handleClick(item)} 
                 className="hover:cursor-pointer flex items-end justify-end h-[70%] w-full bg-cover"
-                              style={{
+                style={{
                   backgroundImage:
-                    "url(https://wallpaperaccess.com/full/2489661.jpg)",
-                    // backgroundImage: item.imgPath
+                  "url(https://wallpaperaccess.com/full/2489661.jpg)",
+                  // backgroundImage: item.imgPath
 
                 }}
               >
@@ -33,7 +41,9 @@ export const ItemCard = ({item}) => {
                 <span className="text-gray-500 mt-2">${item.price}</span>
             </div>
             
-          </div>
+          </div> */}
+          
+
 
 </>
   );
