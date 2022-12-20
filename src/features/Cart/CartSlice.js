@@ -47,7 +47,8 @@ import axios from "../../api/config";
 const initialState = {
     items: [],
     totalPrice: 0,
-    order: {}
+    order: {},
+    status:false
 };
 
 
@@ -75,17 +76,23 @@ export const cartSlice = createSlice({
                 acc += item.quantity * item.item.price
                 return acc;
             },0) ;
+        },
+        removeAll: (state, action) => {
+            const empty = [];
+            state.items = [...empty];
+            state.totalPrice = 0 ;
         }
     },
     extraReducers: (builder) => {
         builder
             .addCase(makeOrder.fulfilled, (state, action) => {
                 state.order = action.payload;
+                state.status = true ;
             });
     }
 });
 
 export const selectCartState = (state) => state.cart;
-export const { addToCart, removeFromCart } = cartSlice.actions;
+export const { addToCart, removeFromCart ,removeAll } = cartSlice.actions;
 
 export default cartSlice.reducer;

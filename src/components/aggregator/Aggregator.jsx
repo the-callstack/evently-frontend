@@ -29,7 +29,7 @@ export default function Aggregator() {
     return (
       <div
         key={event.id}
-        className="w-48 py-3  pl-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300  dark:bg-gray-700 "
+        className="w-48 p-3 text-sm font-medium text-gray-900 shadow-inner"
       >
         <Field type="radio" name="eventId" value={parseInt(event.id)} />
         <p className="inline p-4">{event.eventType}</p>
@@ -40,11 +40,11 @@ export default function Aggregator() {
     return (
       <div
         key={cat.id}
-        className="w-48 p-3 text-sm font-medium text-gray-900 mb-2 bg-white rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+        className=" w-48 p-3 text-sm font-medium text-gray-900 mb-2 bg-white rounded-lg border border-gray-200 shadow-inner"
       >
         <Field
           type="checkbox"
-          className=""
+          className="checked:bg-blue-800"
           name="categories"
           value={parseInt(cat.id)}
         />
@@ -71,7 +71,7 @@ export default function Aggregator() {
       >
         {({ values }) => (
           <div className="flex ml-16 justify-start w-auto my-10 h-auto">
-            <Form className="w-full shadow-xl rounded-lg  ">
+            <Form className="w-full p-5 shadow-xl rounded-lg  ">
               <div
                 id="checkbox-group"
                 className="mb-4 flex flex-col justify-center pl-5 text-lg m-3 font-semibold text-gray-900 p-5 shadow-md"

@@ -1,10 +1,15 @@
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectUserState } from "../../features/auth/authSlice";
-import { makeOrder } from "../../features/Cart/CartSlice";
+import { makeOrder, selectCartState } from "../../features/Cart/CartSlice";
+import { PackagePlaced } from "./PackagePlaced";
 
 function PackageSummary({ items, totalPrice }) {
     const dispatch = useDispatch();
     const { loggedUser } = useSelector(selectUserState);
+    const { status } = useSelector(selectCartState);
+
+    const [edit, setEdit] = useState(false);
 
     const order = (e) => {
         e.preventDefault();
@@ -16,20 +21,24 @@ function PackageSummary({ items, totalPrice }) {
         if (dd < 10) dd = '0' + dd;
         if (mm < 10) mm = '0' + mm;
         const itemsDetails = items.map((item) => {
-            if (item.item.type === 'sale') {
-                return {
-                    quantity: item.quantity,
-                    price: item.item.price,
-                    SaleItemId: item.item.id
-                };
-            } else {
-                return {
-                    quantity: item.quantity,
-                    price: item.item.price,
-                    RentalItemId: item.item.id,
-                    trackerId: item.item.trackerId ? item.item.trackerId : null
-                };
+            return {
+                quantity: item.quantity,
+                price: item.price,
             }
+            // if (item.item.type === 'sale') {
+            //     return {
+            //         quantity: item.quantity,
+            //         price: item.item.price,
+            //         SaleItemId: item.item.id
+            //     };
+            // } else {
+            //     return {
+            //         quantity: item.quantity,
+            //         price: item.item.price,
+            //         RentalItemId: item.item.id,
+            //         trackerId: item.item.trackerId ? item.item.trackerId : null
+            //     };
+            // }
         });
         const formattedToday = yyyy + '-' + mm + '-' + dd;
         const data = {
@@ -39,12 +48,15 @@ function PackageSummary({ items, totalPrice }) {
             "details": itemsDetails,
             "accessToken": loggedUser?.accessToken
         };
-        // console.log(data);
+        console.log(data);
         dispatch(makeOrder(data));
+        setEdit(status);
     };
 
     return (
-
+<>
+<PackagePlaced show={edit} setEdit={setEdit} />
+        
         <form id="summary" className="w-1/4 px-8 py-10" onSubmit={order}>
             <h1 className="font-semibold text-2xl border-b pb-8">Package Summary</h1>
             <div className="flex justify-between mt-10 mb-5">
@@ -59,7 +71,7 @@ function PackageSummary({ items, totalPrice }) {
             </div>
             <div className="py-10">
                 <label htmlFor="deleveryDate" className="font-semibold inline-block mb-3 text-sm ">Delivery Date</label>
-                <input type="date" id="deleveryDate" className="p-2 text-sm w-full" />
+                <input type="date" required id="deleveryDate" className="p-2 text-sm w-full" />
             </div>
             <div className="border-t mt-8">
                 <div className="flex font-semibold justify-between py-6 text-sm uppercase">
@@ -69,6 +81,7 @@ function PackageSummary({ items, totalPrice }) {
                 <button type='submit' className="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full">Checkout</button>
             </div>
         </form>
+</>
     );
 }
 

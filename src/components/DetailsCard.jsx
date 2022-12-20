@@ -8,6 +8,7 @@ import TestCarousel from './TestCarousel'
 export default function DetailsCard() {
     const location = useLocation();
     const [totalPrice, setTotalPrice] = useState(0);
+    const [quentityItem, setQuentityItem] = useState(0);
     const [product, setProduct] = useState({});
     const {isLoggedIn} = useSelector(selectUserState);
     const navigate = useNavigate();
@@ -30,14 +31,13 @@ export default function DetailsCard() {
                             id:product.id,
                             type: 'sale'
                         },
-                        quantity:10 
+                        quantity:quentityItem 
             }
             // console.log(item);
             console.log(dispatch(addToCart(item)));
             alert('Added to the cart');
         }else {
             navigate('/auth/signin');
-
         }
     }
 
@@ -68,7 +68,10 @@ export default function DetailsCard() {
                             <span className="text-4xl text-grey-darkest ">$ {product.price}<span className="text-lg">/ unit</span></span>
                             <div className='flex items-center mt-4 pt-3 '>
                                 <label className="pr-24">
-                                    <input onChange={(e) => { setTotalPrice(e.target.value * product.price) }}
+                                    <input onChange={(e) => {
+                                        setQuentityItem(e.target.value)
+                                        setTotalPrice(e.target.value * product.price)
+                                }}
                                         className="w-min focus:ring-2 focus:ring-blue-500 focus:outline-none appearance-none  text-sm leading-6 text-slate-900 placeholder-slate-400 rounded-md  pl-10  ring-1 ring-slate-200 shadow-sm"
                                         type="text"
                                         aria-label="enter quantity"
@@ -79,7 +82,7 @@ export default function DetailsCard() {
                                 <div className="text-4xl text-grey-darkest pl-16 text-red-500  ">
 
                                     {
-                                        totalPrice != 0 &&
+                                        totalPrice !== 0 &&
                                         <>
                                             <span className="text-lg">total Price : </span>  <span> $ {totalPrice} </span>
                                         </>
