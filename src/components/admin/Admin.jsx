@@ -99,21 +99,21 @@ export const Admin = () => {
                       <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                         <button
                           onClick={() => dispatch2({ type: ACTIONS.SHOW_EVENT, payload: !test })}
-                          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+                          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
                           Events
                         </button>
                       </td>
                       <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                         <button
                           onClick={() => dispatch2({ type: ACTIONS.SHOW_CAT })}
-                          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+                          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
                           Categories
                         </button>
                       </td>
                       <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                         <button
                           onClick={() => dispatch2({ type: ACTIONS.SHOW_USERS })}
-                          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+                          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
                           Users
                         </button>
                       </td>
@@ -126,7 +126,7 @@ export const Admin = () => {
                         <button
                           onClick={() => dispatch2({ type: ACTIONS.SHOW_ADD_EVENT })}
 
-                          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+                          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
                           Add Event
                         </button>
                       </td>
@@ -134,12 +134,12 @@ export const Admin = () => {
                         <button
                           onClick={() => dispatch2({ type: ACTIONS.SHOW_ADD_CAT })}
 
-                          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+                          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
                           Add Category
                         </button>
                       </td>
                       <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+                        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
                           Button
                         </button>
                       </td>
