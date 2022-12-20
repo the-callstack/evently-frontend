@@ -21,12 +21,12 @@ export const AddEventForm = () => {
     }
   };
   return (
-    <div className="my-8 w-[30%]">
+    <div className="my-8 w-[30%] border-2 bg-gray-800 rounded-lg p-8">
       <form encType="multipart/form-data" onSubmit={handleCreate}>
         <div>
           <label
             htmlFor="name"
-            className="block mb-2 text-sm text-gray-600 dark:text-gray-600"
+            className="block mb-3 text-sm text-gray-400 dark:text-gray-600"
           >
             Event Type
           </label>

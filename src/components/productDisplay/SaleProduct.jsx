@@ -18,23 +18,28 @@ export const SaleProduct = () => {
     },[]);
     return (
       <div>
-      <div className="flex justify-center gap-10 pt-10 pl-14">
-          <div>
-            <FilterSale category= {category.categories} /> 
+        <div className="flex justify-center gap-10 pt-10 pl-14">
+          <div className="pt-16">
+            <FilterSale category={category.categories} />
           </div>
-          <div className="grid grid-cols-3 gap-5 w-full  px-14 pt-4 pb-12 ">
-
-          {
-            
-            saleItems.saleItems.map(item=>{
-              return(
-              <ItemCard key={item.id} item={item}/>
-              )
-            })
-          }
-          <Outlet />
+          <div>
+            <div className="flex justify-center">
+              <h1 className="text-5xl pb-12 ">Sale Items</h1>
+            </div>
+            <div className="grid grid-cols-3 gap-5 w-full  px-14 pt-4 pb-12 ">
+              {
+  
+                saleItems.saleItems.map(item => {
+                  return (
+                    <ItemCard key={item.id} item={item} />
+                  )
+                })
+              }
+              <Outlet />
+            </div>
           </div>
         </div>
       </div>
     );
-}
+  };
+  
