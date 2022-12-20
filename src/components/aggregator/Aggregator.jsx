@@ -11,6 +11,7 @@ import {
 } from "../../features/events/EventSlice";
 import { createPackage } from "../../features/packageSlice/PackageSlice";
 import { selectPackageState } from "../../features/packageSlice/PackageSlice";
+import PackageResult from "./PackageResult";
 
 export default function Aggregator() {
   const { category } = useSelector(selectCategoryState);
@@ -57,66 +58,69 @@ export default function Aggregator() {
   }, []);
 
   return (
-    <Formik
-      initialValues={{
-        categories: [],
-        eventId: 0,
-        attendance: 0,
-      }}
-      onSubmit={(values) => {
-        submitForm(values);
-      }}
-    >
-      {({ values }) => (
-        <div className="flex justify-center my-10">
-          <Form className="w-[50%] border border-b-2 rounded-lg bg-gray-800 ">
-            <div
-              id="checkbox-group"
-              className="mb-4 flex flex-col justify-center pl-5 text-lg h-10 rounded-lg font-semibold text-gray-900 dark:text-white dark:bg-gray-700"
-            >
-              Categories
-            </div>
-            <div className="pl-5" role="group" aria-labelledby="checkbox-group">
-              {catsData}
-            </div>
-            <br />
-            <div
-              id="radio-group"
-              className="mb-4 flex flex-col justify-center pl-5 text-lg h-10 rounded-lg font-semibold text-gray-900 dark:text-white dark:bg-gray-700"
-            >
-              Events
-            </div>
-            <div
-              aria-labelledby="radio-group"
-              role="group"
-              className="mb-4 pl-5"
-            >
-              {eventsData}
-            </div>
-            <div className="mb-4 rounded-xl  font-semibold text-gray-900 dark:text-white dark:bg-gray-700 pl-4">
-              <p className="inline p-4"> Attendance</p>
-              <Field type="range" name="attendance" min="0" max="1000" />
-              <Field
-                type="number"
-                className="text-black rounded-xl hidden"
-                name="attendance"
-                value={values.attendance}
-              />
-              <div className="mb-4 inline mx-3 font-semibold text-gray-900 dark:text-white dark:bg-gray-700">
-                {values.attendance}
-              </div>
-            </div>
-            <div className="flex justify-center pb-5">
-              <button
-                type="submit"
-                className="p-3 w-40 bg-blue-800 rounded-lg text-gray-200 hover:text-gray-400"
+    <div className="flex flex-start gap-8">
+      <Formik
+        initialValues={{
+          categories: [],
+          eventId: 0,
+          attendance: 0,
+        }}
+        onSubmit={(values) => {
+          submitForm(values);
+        }}
+      >
+        {({ values }) => (
+          <div className="flex ml-16 justify-start w-auto my-10 h-auto">
+            <Form className="w-full shadow-xl rounded-lg  ">
+              <div
+                id="checkbox-group"
+                className="mb-4 flex flex-col justify-center pl-5 text-lg m-3 font-semibold text-gray-900 p-5 shadow-md"
               >
-                Get your package !
-              </button>
-            </div>
-          </Form>
-        </div>
-      )}
-    </Formik>
+                Categories
+              </div>
+              <div className="pl-5" role="group" aria-labelledby="checkbox-group">
+                {catsData}
+              </div>
+              <br />
+              <div
+                id="radio-group"
+                className="mb-4 flex flex-col justify-center pl-5 text-lg  m-3 font-semibold text-gray-900 p-4 shadow-md"
+              >
+                Events
+              </div>
+              <div
+                aria-labelledby="radio-group"
+                role="group"
+                className="mb-4 pl-5"
+              >
+                {eventsData}
+              </div>
+              <div className="mb-4 m-3 p-3 font-semibold text-gray-900 shadow-md pl-4">
+                <p className="inline p-4"> Attendance</p>
+                <Field type="range" name="attendance" min="0" max="1000" />
+                <Field
+                  type="number"
+                  className="text-black rounded-xl hidden"
+                  name="attendance"
+                  value={values.attendance}
+                />
+                <div className="mb-4 inline mx-3 font-semibold text-gray-900 ">
+                  {values.attendance}
+                </div>
+              </div>
+              <div className="flex justify-center pb-5">
+                <button
+                  type="submit"
+                  className="p-3 w-40 bg-gray-100 rounded-lg text-gray-900 hover:shadow-inner hover:translate-x-1 hover:text-gray-800 shadow-md"
+                >
+                  Get your package !
+                </button>
+              </div>
+            </Form>
+          </div>
+        )}
+      </Formik>
+      <PackageResult />
+    </div>
   );
 }
