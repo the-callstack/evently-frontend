@@ -17,12 +17,12 @@ export default function Header() {
   };
   return (
     <>
-      <div className="flex flex-wrap place-items-center">
+      <div className="flex sticky top-0 font-serif z-20 backdrop-blur-md shadow-inner rounded-b-lg  flex-wrap place-items-center">
         <section className="relative mx-auto">
-          <nav className="flex justify-between bg-gray-900 text-white w-screen">
-            <div className="px-5 xl:px-12 py-5 flex w-full items-center">
+          <nav className="flex justify-between text-yellow-600 w-screen">
+            <div className="px-5 xl:px-12 py-5 flex w-screen items-center">
               <Link className="p-0 m-0 h-10" to="/">
-                <img className="h-full p-0 m-0" src={Logo} alt="logo" />
+                <img className="h-full p-0 m-0 shadow-sm" src={Logo} alt="logo" />
               </Link>
               <ul className="hidden md:flex px-4 mx-auto font-semibold font-heading space-x-12">
                 <li>

@@ -39,8 +39,8 @@ function App() {
         </Route>
         <Route path="/" element={<NewLayout />}>
           <Route path="/contactus" element={<ContactUs />} />
-          <Route path="/administrator" element={<Admin />}/>
-            {/* <Route
+          <Route path="/administrator" element={<Admin />} />
+          {/* <Route
               path="cat"
               element={
                 <div className="border-4 rounded-lg mb-8 p-4 w-[80%] flex-col flex items-center">
@@ -58,7 +58,7 @@ function App() {
                 </div>
               }
             /> */}
-         
+
           <Route path="/aboutus" element={<AboutUs />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/cart" element={<Cart />} />
@@ -66,7 +66,7 @@ function App() {
           <Route path="/provider" element={<Provider />} />
 
           <Route path="/CatProducts/:id" element={<CategoriesProduct />} />
-          
+
           <Route path="/aggregator" element={<Aggregator />} />
           <Route path="/ُEventProducts" element={<EventsCarousel />}>
             <Route path=":id" element={<EventProduct />} />
