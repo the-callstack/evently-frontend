@@ -1,22 +1,54 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllCategories, selectCategoryState } from "../../features/categories/categorySlice";
+import { updateSaleItems } from "../../features/saleItems/saleItemsSlice";
+import { updateItem } from "../../features/rentalItems/rentalItemsSlice";
 
-export  const UpdateItem = () => {
-  const [menu, setMenu] = useState(false);
-
+export const UpdateItem = ({show, item, setEdit, storeId}) => {
+  
   const showMenu = () => {
-    setMenu(!menu);
+    setEdit(false);
   };
+
+  const dispatch = useDispatch();
+  // const { loggedUser } = useSelector(selectUserState);
+  const { category } = useSelector(selectCategoryState);
+  
+  useEffect( () => {
+    dispatch(getAllCategories());
+  },[]);
+  
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const data = {
+      name: e.target.itemName.value,
+      imgPath: e.target.imagePath.value,
+      quantity: e.target.quantity.value,
+      price: e.target.itemPrice.value,
+      description: e.target.itemDescription.value,
+      CategoryId: e.target.itemCat.value,
+      StoreId: storeId,
+      id: item.id
+    }
+    console.log(data.StoreId);
+
+    if(e.target.saleItemDrop.checked){
+      dispatch(updateSaleItems(data));
+    }else{
+      dispatch(updateItem(data));
+    }
+  }
   return (
     <>
-      <button
+      {/* <button
         className="bg-blue-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
         type="button"
         onClick={showMenu}
       >
         Open item modal
-      </button>
+      </button> */}
       
-        <div className={(menu) ? `w-full h-full bg-gray-900 bg-opacity-80 top-0 fixed sticky-0` : `hidden`}>
+        <div className={(show) ? `w-full h-full bg-gray-900 bg-opacity-80 top-0 fixed sticky-0` : `hidden`}>
           <div
             className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
           >
@@ -38,12 +70,12 @@ export  const UpdateItem = () => {
                   </button>
                 </div>
                 {/*body*/}
-                 <form encType='multipart/form-data' className="w-full max-w-sm">
+<form encType='multipart/form-data' onSubmit={handleSubmit} className="w-full max-w-sm">
   <div className="md:flex md:items-center mb-6 pt-6">
     <div className="md:w-1/3">
       <label
         className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
-        htmlFor="inline-full-name"
+        htmlFor="itemName"
       >
         New Item Name
       </label>
@@ -51,17 +83,18 @@ export  const UpdateItem = () => {
     <div className="md:w-2/3">
       <input
         className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
-        id="inline-full-name"
+        id="itemName"
         type="text"
         placeholder="chair.."
       />
     </div>
   </div>
+  
   <div className="md:flex md:items-center mb-6">
     <div className="md:w-1/3">
       <label
         className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
-        htmlFor="inline-password"
+        htmlFor="quantity"
       >
         New quantity 
       </label>
@@ -69,9 +102,9 @@ export  const UpdateItem = () => {
     <div className="md:w-2/3">
       <input
         className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
-        id="inline-password"
+        id="quantity"
         type="number"
-        placeholder="2.."
+        placeholder={item.quantity}
       />
     </div>
   </div>
@@ -79,7 +112,7 @@ export  const UpdateItem = () => {
     <div className="md:w-1/3">
       <label
         className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
-        htmlFor="inline-password"
+        htmlFor="itemPrice"
       >
         New Item Price
       </label>
@@ -87,17 +120,18 @@ export  const UpdateItem = () => {
     <div className="md:w-2/3">
       <input
         className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
-        id="inline-password"
+        id="itemPrice"
         type="text"
         placeholder="23.."
       />
     </div>
   </div>
+   
   <div className="md:flex md:items-center mb-6">
     <div className="md:w-1/3">
       <label
         className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
-        htmlFor="inline-password"
+        htmlFor="imagePath"
       >
         New Image
       </label>
@@ -105,7 +139,7 @@ export  const UpdateItem = () => {
     <div className="md:w-2/3">
       <input
         className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
-        id="inline-password"
+        id="imagePath"
         type="file"
       />
     </div>
@@ -114,30 +148,73 @@ export  const UpdateItem = () => {
     <div className="md:w-1/3">
       <label
         className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
-        htmlFor="inline-password"
+        htmlFor="itemDescription"
       >
-        New Category
+        Discription
       </label>
     </div>
     <div className="md:w-2/3">
       <input
         className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
-        id="inline-password"
+        id="itemDescription"
         type="text"
-        placeholder="ex(wedding..)"
+        placeholder="..."
       />
     </div>
   </div>
+  <div className="md:flex md:items-center mb-6">
 
-  <div className="md:flex md:items-center">
-    <div className="md:w-1/3" />
-    <div className="md:w-2/3">
-      
+    <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+      <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="itemCat">
+        Category
+      </label>
+      <div class="relative">
+        <select class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="itemCat">
+
+          <option selected>Category</option>
+            {
+              category.categories?.map(category=>
+              <option 
+                key={category.id}
+                value={category.id}
+              >{category.name}
+              </option> 
+              )
+            }
+        </select>
+        <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+         
+        </div>
+      </div>
+    </div>
+    <div className="flex flex-wrap -mx-3 mb-2">
+  
+  <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+    <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="grid-state">
+      Rent/sale
+    </label>
+    <div className="relative">
+      <ul className="w-48 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 bg-gray-200 appearance-none border-2 border-gray-200">
+    <li className="w-full rounded-t-lg border-b border-gray-200 dark:border-gray-600">
+        <div className="flex items-center pl-3">
+            <input id="saleItemDrop" type="radio" value="1" name="list-radio" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"/>
+            <label htmlFor="saleItemDrop" className="py-3 ml-2 w-full text-sm font-medium text-gray-900 dark:text-gray-900">Sale Item</label>
+        </div>
+    </li>
+    <li className="w-full rounded-t-lg border-b border-gray-200 dark:border-gray-600">
+        <div className="flex items-center pl-3">
+            <input id="rentItemDrop" type="radio" value="2" name="list-radio" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"/>
+            <label htmlFor="rentItemDrop" className="py-3 ml-2 w-full text-sm font-medium text-gray-900 dark:text-gray-900">Rental Item</label>
+        </div>
+    </li>
+</ul>
+      <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+      </div>
     </div>
   </div>
-</form>
-                {/*footer*/}
-                <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
+</div>
+  </div>
+  <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
                   <button
                     className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                     type="button"
@@ -147,11 +224,14 @@ export  const UpdateItem = () => {
                   </button>
                   <button
                         className="shadow bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
-                        type="button"
+                        type="submit"
                     >
                         Update
                     </button>
                 </div>
+</form>
+                {/*footer*/}
+                
               </div>
             </div>
           </div>

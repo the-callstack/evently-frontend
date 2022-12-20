@@ -21,10 +21,12 @@ import CategoriesCarousel from "./components/CategoriesCarousel";
 import CategoriesProduct from "./components/CategoriesProduct";
 import EventsCarousel from "./components/EventsCarousel";
 import EventProduct from "./components/EventProduct";
+
 import { AddCategoryForm } from "./components/admin/AddCategoryForm";
 import { CategoriesTable } from "./components/admin/CategoriesTable";
 import { EventsTable } from "./components/admin/EventsTable";
 import { AddEventForm } from "./components/admin/AddEventForm";
+
 import { Provider } from "./components/provider/Provider";
 
 function App() {
@@ -68,6 +70,7 @@ function App() {
           <Route path="/aggregator" element={<Aggregator />} />
           <Route path="/ُEventProducts" element={<EventsCarousel />}>
             <Route path=":id" element={<EventProduct />} />
+
           </Route>
           <Route path="/storeitems/:name" element={<ItemsTable />} />
           <Route path="/productrent" element={<RentalProduct />} />
