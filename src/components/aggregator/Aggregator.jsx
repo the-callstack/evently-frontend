@@ -68,7 +68,7 @@ export default function Aggregator() {
       }}
     >
       {({ values }) => (
-        <div className="flex justify-center my-10">
+        <div className="flex justify-center my-10 min-h-screen">
           <Form className="w-[50%] border border-b-2 rounded-lg bg-gray-800 ">
             <div
               id="checkbox-group"
