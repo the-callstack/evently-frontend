@@ -14,7 +14,7 @@ export const ItemCard = ({item}) => {
 <>
 <div class="w-full min-h-full p-6 flex flex-col">
               
-                    <img onClick={() => handleClick(item)} alt='' className="hover:grow hover:shadow-lg" src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&h=400&q=80"/>
+                    <img onClick={() => handleClick(item)} alt='' className="hover:grow hover:shadow-lg" src={item.imgPath?item.imgPath:`https://images.unsplash.com/photo-1544787219-7f47ccb76574?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&h=400&q=80`}/>
                     <div class="pt-3 flex items-center justify-between">
                         <p onClick={() => handleClick(item)} className="hover:cursor-pointer text-lg">{item.name}</p>
                     </div>

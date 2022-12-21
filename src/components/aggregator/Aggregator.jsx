@@ -29,7 +29,8 @@ export default function Aggregator() {
     return (
       <div
         key={event.id}
-        className="w-48 p-3 text-sm font-medium text-gray-900 shadow-inner"
+        className="w-48 p-3 text-sm font-medium text-gray-900 shadow-inner visited:bg-gray-900
+        "
       >
         <Field type="radio" name="eventId" value={parseInt(event.id)} />
         <p className="inline p-4">{event.eventType}</p>
@@ -40,7 +41,8 @@ export default function Aggregator() {
     return (
       <div
         key={cat.id}
-        className=" w-48 p-3 text-sm font-medium text-gray-900 mb-2 bg-white rounded-lg border border-gray-200 shadow-inner"
+        className=" w-48 p-3 text-sm font-medium text-gray-900 mb-2 bg-white rounded-lg border border-gray-200 shadow-inner visited:bg-gray-900
+        "
       >
         <Field
           type="checkbox"

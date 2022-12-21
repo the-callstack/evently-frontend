@@ -51,7 +51,7 @@ export default function DetailsCard() {
             <div className="flex justify-center items-center h-full bg-blue-lightest py-16">
                 <div id="app" className="bg-white w-5/6   rounded shadow-md flex card text-grey-darkest  ">
                     <div className='w-1/3   shadow-md pr-2'>
-                        <img className=" rounded-l-sm p-4 " src={product.imgPath} alt={product.imgNAme} />
+                        <img className=" rounded-l-sm p-4 " src={product.imgPath?product.imgPath:`https://images.unsplash.com/photo-1544787219-7f47ccb76574?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&h=400&q=80`} alt={product.imgNAme} />
                     </div>
                     <div className="w-2/3 flex flex-col pl-8">
                         <div className="p-4 pb-0 flex-1">
@@ -79,7 +79,7 @@ export default function DetailsCard() {
                                     </input>
                                 </label>
 
-                                <div className="text-4xl text-grey-darkest pl-16 text-red-500  ">
+                                <div className="text-4xl text-grey-darkest  pl-16 text-red-500  ">
 
                                     {
                                         totalPrice !== 0 &&
@@ -94,9 +94,11 @@ export default function DetailsCard() {
                             <div className="flex-auto flex space-x-4 pr-4">
                                 <button
                                 onClick={handleClick}
-                                className="w-52 h-12 uppercase font-medium tracking-wider bg-slate-900 text-white rounded-md"
-                                    type="submit">
-                                    Add to bag
+                                // className="w-52 h-12 uppercase font-medium tracking-wider bg-slate-900 text-white rounded-md"
+                                className=" hover:bg-slate-700 hover:text-yellow-400 text-yellow-600 border-b-2 hover:shadow-sm duration-100 hover:scale-105 shadow-lg font-bold py-2 mt-10 px-4 rounded-xl"
+
+                                   type="submit">
+                                    Add to Cart
                                 </button>
                             </div>
                         </div>
