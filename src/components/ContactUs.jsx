@@ -26,7 +26,7 @@ export default function ContactUs() {
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-x-6 mb-12 ">
                 <div className="mb-12 lg:mb-0 text-center mx-auto">
                   <svg
-                    className="w-8 h-8 text-blue-600 mb-6 mx-auto"
+                    className="w-8 h-8 text-yellow-600 mb-6 mx-auto"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 496 512"
                   >
@@ -39,7 +39,7 @@ export default function ContactUs() {
                 </div>
                 <div className="mb-12 lg:mb-0 text-center mx-auto">
                   <svg
-                    className="w-8 h-8 text-blue-600 mb-6 mx-auto"
+                    className="w-8 h-8 text-yellow-600 mb-6 mx-auto"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 384 512"
                   >
@@ -52,7 +52,7 @@ export default function ContactUs() {
                 </div>
                 <div className="mb-6 md:mb-0 text-center mx-auto">
                   <svg
-                    className="w-8 h-8 text-blue-600 mb-6 mx-auto"
+                    className="w-8 h-8 text-yellow-600 mb-6 mx-auto"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 512 512"
                   >
@@ -65,7 +65,7 @@ export default function ContactUs() {
                 </div>
                 <div className="text-center mx-auto">
                   <svg
-                    className="w-8 h-8 text-blue-600 mb-6 mx-auto"
+                    className="w-8 h-8 text-yellow-600 mb-6 mx-auto"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 576 512"
                   >
@@ -82,20 +82,22 @@ export default function ContactUs() {
                   <div className="form-group mb-6">
                     <input
                       type="text"
-                      className="form-control block 
-        w-full
-        px-3
-        py-1.5
-        text-base
-        font-normal
-        text-gray-700
-        bg-white bg-clip-padding
-        border border-solid border-gray-300
-        rounded
-        transition
-        ease-in-out
-        m-0
-        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                      //               className="form-control block 
+                      // w-full
+                      // px-3
+                      // py-1.5
+                      // text-base
+                      // font-normal
+                      // text-gray-700
+                      // bg-white bg-clip-padding
+                      // border border-solid border-gray-300
+                      // rounded
+                      // transition
+                      // ease-in-out
+                      // m-0
+                      // focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                      className="rounded w-full py-2 px-4 text-gray-700 border-none shadow-lg"
+
                       id="exampleInput7"
                       placeholder="Name"
                     />
@@ -103,43 +105,47 @@ export default function ContactUs() {
                   <div className="form-group mb-6">
                     <input
                       type="email"
-                      className="form-control block
-        w-full
-        px-3
-        py-1.5
-        text-base
-        font-normal
-        text-gray-700
-        bg-white bg-clip-padding
-        border border-solid border-gray-300
-        rounded
-        transition
-        ease-in-out
-        m-0
-        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                      //               className="form-control block
+                      // w-full
+                      // px-3
+                      // py-1.5
+                      // text-base
+                      // font-normal
+                      // text-gray-700
+                      // bg-white bg-clip-padding
+                      // border border-solid border-gray-300
+                      // rounded
+                      // transition
+                      // ease-in-out
+                      // m-0
+                      // focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                      className="rounded w-full py-2 px-4 text-gray-700 border-none shadow-lg"
+
                       id="exampleInput8"
                       placeholder="Email address"
                     />
                   </div>
                   <div className="form-group mb-6">
                     <textarea
-                      className="
-        form-control
-        block
-        w-full
-        px-3
-        py-1.5
-        text-base
-        font-normal
-        text-gray-700
-        bg-white bg-clip-padding
-        border border-solid border-gray-300
-        rounded
-        transition
-        ease-in-out
-        m-0
-        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
-      "
+      //                 className="
+      //   form-control
+      //   block
+      //   w-full
+      //   px-3
+      //   py-1.5
+      //   text-base
+      //   font-normal
+      //   text-gray-700
+      //   bg-white bg-clip-padding
+      //   border border-solid border-gray-300
+      //   rounded
+      //   transition
+      //   ease-in-out
+      //   m-0
+      //   focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+      // "
+      className="rounded w-full py-2 px-4 text-gray-700 border-none shadow-lg"
+
                       id="exampleFormControlTextarea13"
                       rows={3}
                       placeholder="Message"
@@ -149,7 +155,9 @@ export default function ContactUs() {
                   <div className="form-group form-check text-center mb-6">
                     <input
                       type="checkbox"
-                      className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain mr-2 cursor-pointer"
+                      // className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain mr-2 cursor-pointer"
+                      className=" form-check-input appearance-none h-4 w-4   checked:bg-yellow-400 checked:border-yellow-400  focus:outline-none transition duration-200  rounded py-2 px-4 text-gray-700 border-none shadow-lg bg-no-repeat bg-center bg-contain mr-2 cursor-pointer"
+
                       id="exampleCheck87"
                       defaultChecked
                     />
@@ -162,24 +170,26 @@ export default function ContactUs() {
                   </div>
                   <button
                     type="submit"
-                    className="
-      w-full
-      px-6
-      py-2.5
-      bg-blue-600
-      text-white
-      font-medium
-      text-xs
-      leading-tight
-      uppercase
-      rounded
-      shadow-md
-      hover:bg-blue-700 hover:shadow-lg
-      focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
-      active:bg-blue-800 active:shadow-lg
-      transition
-      duration-150
-      ease-in-out"
+                    //               className="
+                    // w-full
+                    // px-6
+                    // py-2.5
+                    // bg-blue-600
+                    // text-white
+                    // font-medium
+                    // text-xs
+                    // leading-tight
+                    // uppercase
+                    // rounded
+                    // shadow-md
+                    // hover:bg-blue-700 hover:shadow-lg
+                    // focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
+                    // active:bg-blue-800 active:shadow-lg
+                    // transition
+                    // duration-150
+                    // ease-in-out"
+                    className=" w-full hover:bg-slate-700 hover:text-yellow-400 text-yellow-600 border-b-2 hover:shadow-sm duration-100 hover:scale-105 shadow-lg font-bold py-2 mt-10 px-4 rounded-xl"
+
                   >
                     Send
                   </button>

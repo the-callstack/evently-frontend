@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectUserState } from "../../features/auth/authSlice";
 import { selectStoresState, updateStore } from "../../features/stores/storesSlice";
 
-export  const UpdateStore = ({show, item, setEdit}) => {
+export  const UpdateStore = ({show, store, setEdit}) => {
 
   const showMenu = () => {
     setEdit(false);
@@ -75,7 +75,8 @@ export  const UpdateStore = ({show, item, setEdit}) => {
         className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
         id="storeName"
         type="text"
-        placeholder="7Eleven"
+        defaultValue={store.storeName}
+        placeholder={store.storeName}
       />
     </div>
   </div>
@@ -94,7 +95,8 @@ export  const UpdateStore = ({show, item, setEdit}) => {
         className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
         id="storePhone"
         type="number"
-        placeholder="078..."
+        defaultValue={store.phone}
+        placeholder={store.phone}
       />
     </div>
   </div>
@@ -112,7 +114,8 @@ export  const UpdateStore = ({show, item, setEdit}) => {
         className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
         id="address"
         type="text"
-        placeholder="adress.."
+        defaultValue={store.address}
+        placeholder={store.address}
       />
     </div>
   </div>
@@ -131,6 +134,7 @@ export  const UpdateStore = ({show, item, setEdit}) => {
         className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
         id="logo"
         type="file"
+        defaultValue={store.logoPath}
       />
     </div>
   </div>

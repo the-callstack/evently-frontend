@@ -50,7 +50,7 @@ export default function StoresTable() {
 
     return (
         <>
-            <UpdateStore show={edit} item={itemObject} setEdit={setEdit} />
+            <UpdateStore show={edit} store={itemObject} setEdit={setEdit} />
             <div className="flex flex-col px-10 py-8 ">
                 <div className="overflow-x-auto pb-6 pt-2 px-4">
                     <div className="p-1.5 w-full inline-block align-middle">
