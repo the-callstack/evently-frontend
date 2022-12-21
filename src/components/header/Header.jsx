@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { logout, selectUserState } from "../../features/auth/authSlice";
@@ -7,6 +7,7 @@ import Logo from "../../assets/logo.png";
 export default function Header() {
   const { isLoggedIn, loggedUser } = useSelector(selectUserState);
   const [show, setShow] = useState(false);
+  const [scroll, setScroll] = useState('navy');
   const dispatch = useDispatch();
   const handleSignOut = () => {
     dispatch(logout());
@@ -15,9 +16,21 @@ export default function Header() {
   const handleClick = () => {
     setShow((prev) => !prev);
   };
+  const handleScroll = () => {
+    setScroll('none');
+  };
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.addEventListener('scroll', handleScroll);
+
+    };
+  }, []);
+
   return (
     <>
-      <div className="flex sticky top-0 font-serif z-20 backdrop-blur-md shadow-inner rounded-b-lg  flex-wrap place-items-center min-w-screen">
+      <div className={`flex sticky top-0 font-serif z-20 backdrop-blur-md bg-${scroll} duration-200 shadow-inner rounded-b-lg  flex-wrap place-items-center min-w-screen`}>
         <section className="relative mx-auto w-full">
           <nav className="flex justify-between text-yellow-600 m-w-screen">
             <div className="px-5 xl:px-12 py-5 flex w-screen items-center">
