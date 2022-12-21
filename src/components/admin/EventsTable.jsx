@@ -1,17 +1,24 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { deleteEvent, selectEventState } from '../../features/events/EventSlice';
+import { deleteEvent, getAllEvents, selectEventState } from '../../features/events/EventSlice';
+import { AlertTempo } from '../alert/AlertTempo';
 
 export const EventsTable = () => {
     const { events } = useSelector(selectEventState);
     const dispatch = useDispatch();
+  const [edit, setEdit] = useState(false);
+
     const handleDelete = (id) => {
       const payload = {
         id: parseInt(id),
       };
       dispatch(deleteEvent(payload));
     };
+
+    useEffect(() => {
+      dispatch(getAllEvents());
+    },[events])
   
     return (
       <div className='w-[50%]'>
@@ -62,7 +69,10 @@ export const EventsTable = () => {
                           </td>
                           <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
                             <Link
-                              onClick={() => handleDelete(event.id)}
+                              onClick={() => {
+                                setEdit(true)
+                                handleDelete(event.id)}
+                              }
                               className="text-red-500 hover:text-red-700"
                               href="#sss"
                             >
@@ -78,6 +88,8 @@ export const EventsTable = () => {
             </div>
           </div>
         </div>
+      <AlertTempo show={edit} setEdit={setEdit} msg='Event has been deleted successfully.' />
+
       </div>
     );
 }

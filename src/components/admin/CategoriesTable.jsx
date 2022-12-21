@@ -1,14 +1,18 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import {
   deleteCategory,
 
+  getAllCategories,
+
   selectCategoryState,
 } from "../../features/categories/categorySlice";
+import { AlertTempo } from "../alert/AlertTempo";
 
 export const CategoriesTable = () => {
   const { category } = useSelector(selectCategoryState);
+  const [edit, setEdit] = useState(false);
   const dispatch = useDispatch();
   const handleDelete = (id) => {
     const payload = {
@@ -16,6 +20,10 @@ export const CategoriesTable = () => {
     };
     dispatch(deleteCategory(payload));
   };
+
+  useEffect(() => {
+    dispatch(getAllCategories());
+  },[category])
 
   return (
     <div className="w-[50%] mt-y border">
@@ -66,7 +74,10 @@ export const CategoriesTable = () => {
                         </td>
                         <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
                           <Link
-                            onClick={() => handleDelete(category.id)}
+                            onClick={() =>{
+                              handleDelete(category.id)
+                              setEdit(true)
+                            } }
                             className="text-red-500 hover:text-red-700"
                             href="#sss"
                           >
@@ -82,6 +93,8 @@ export const CategoriesTable = () => {
           </div>
         </div>
       </div>
+      <AlertTempo show={edit} setEdit={setEdit} msg='Category has been deleted successfully.' />
+
     </div>
   );
 };

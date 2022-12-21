@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createCategory } from "../../features/categories/categorySlice";
 import { selectEventState } from "../../features/events/EventSlice";
+import { AlertTempo } from "../alert/AlertTempo";
 
 export const AddCategoryForm = () => {
   const { events } = useSelector(selectEventState);
+  const [edit, setEdit] = useState(false);
   const dispatch = useDispatch();
   const handleCreate = (e) => {
     e.preventDefault();
@@ -13,12 +15,9 @@ export const AddCategoryForm = () => {
       events: parseInt(e.target.events.value),
     };
     console.log(data);
-    try {
+   
       dispatch(createCategory(data));
-      alert("Category has been created successfly");
-    } catch (e) {
-      alert(e.message);
-    }
+      setEdit(true);
   };
   return (
     <div className="my-8 w-[30%] border-2 bg-gray-800 rounded-lg p-8">
@@ -65,6 +64,7 @@ export const AddCategoryForm = () => {
           </button>
         </div>
       </form>
+      <AlertTempo show={edit} setEdit={setEdit} msg='Category has been created successfly.' />
     </div>
   );
 };
