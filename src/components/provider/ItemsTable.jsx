@@ -20,6 +20,7 @@ export default function ItemsTable(props) {
 
     const [itemObject, setItemObject] = useState({});
     const [edit, setEdit] = useState(false);
+    const [type,setType]=useState('')
 
     useEffect(() => {
         dispatch(getStoreSaleItems(location.state?.id));
@@ -41,6 +42,7 @@ export default function ItemsTable(props) {
         // console.log(item.id, item.itemName)
         // setEditItem(item);
         // edit(true);
+        setType('SALE');
         setItemObject(item);
         setEdit(true);
     }
@@ -50,6 +52,7 @@ export default function ItemsTable(props) {
 
     const handleRentalUpdate = (item) => {
         // console.log(item.id, item.itemName)
+        setType('RENT');
         setItemObject(item);
         setEdit(true);
     }
@@ -59,7 +62,7 @@ export default function ItemsTable(props) {
 
     return (
         <>
-            <UpdateItem storeId={test} show={edit} item={itemObject} setEdit={setEdit} />
+            <UpdateItem storeId={test} show={edit} item={itemObject} setEdit={setEdit} type={type} />
             <div className="flex flex-col px-10 py-8">
                 <div className="overflow-x-auto pb-6 pt-2 px-4">
                     <div className="p-1.5 w-full inline-block align-middle">
