@@ -52,7 +52,6 @@ export const userSlice = createSlice({
                 state.isLoggedIn = true;
             })
             .addCase(silentLogin.rejected, (state, action) => {
-                alert("Sorry your session ended!");
                 state.isLoggedIn = false;
             })
             .addCase(logout.fulfilled, (state, action) => {

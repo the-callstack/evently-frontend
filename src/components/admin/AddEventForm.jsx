@@ -1,10 +1,13 @@
-import React from "react";
+import React, {  useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectCategoryState } from "../../features/categories/categorySlice";
 import { createEvent } from "../../features/events/EventSlice";
+import { AlertTempo } from "../alert/AlertTempo";
 
 export const AddEventForm = () => {
   const { category } = useSelector(selectCategoryState);
+  const [edit, setEdit] = useState(false);
+
   // console.log(category);
   const dispatch = useDispatch();
   const handleCreate = (e) => {
@@ -13,13 +16,11 @@ export const AddEventForm = () => {
       eventType: e.target.type.value,
       categories: parseInt(e.target.events.value),
     };
-    try {
       dispatch(createEvent(data));
-      alert("Event has been created successfly");
-    } catch (e) {
-      alert(e.message);
-    }
+      setEdit(true);
+  
   };
+
   return (
     <div className="my-8 w-[30%] border-2 bg-gray-800 rounded-lg p-8">
       <form encType="multipart/form-data" onSubmit={handleCreate}>
@@ -65,6 +66,8 @@ export const AddEventForm = () => {
           </button>
         </div>
       </form>
+      <AlertTempo show={edit} setEdit={setEdit} msg='Event has been created successfly.' />
+
     </div>
   );
 };

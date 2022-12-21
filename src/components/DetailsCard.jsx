@@ -3,12 +3,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { selectUserState } from '../features/auth/authSlice';
 import { addToCart } from '../features/Cart/CartSlice';
+import { AlertTempo } from './alert/AlertTempo';
 import TestCarousel from './TestCarousel'
 
 export default function DetailsCard() {
     const location = useLocation();
     const [totalPrice, setTotalPrice] = useState(0);
     const [quentityItem, setQuentityItem] = useState(0);
+    const [edit, setEdit] = useState(false);
     const [product, setProduct] = useState({});
     const {isLoggedIn} = useSelector(selectUserState);
     const navigate = useNavigate();
@@ -35,7 +37,7 @@ export default function DetailsCard() {
             }
             // console.log(item);
             console.log(dispatch(addToCart(item)));
-            alert('Added to the cart');
+            setEdit(true)
         }else {
             navigate('/auth/signin');
         }
@@ -106,6 +108,7 @@ export default function DetailsCard() {
                 </div>
             </div>
             <TestCarousel />
+            <AlertTempo show={edit} setEdit={setEdit} msg='Item has been added to the cart.' />
 
         </div>
     )
