@@ -79,11 +79,11 @@ export const UpdateItem = ({ show, item, setEdit, storeId, type }) => {
                 </button>
               </div>
               {/*body*/}
-              <form encType='multipart/form-data' onSubmit={handleSubmit} className="w-full max-w-sm">
-                <div className="md:flex md:items-center mb-6 pt-6">
+              <form encType='multipart/form-data' onSubmit={handleSubmit} className="w-full max-w-lg  ">
+                <div className="md:flex md:items-center mb-6 pt-6 ">
                   <div className="md:w-1/3">
                     <label
-                      className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
+                      className="block text-gray-500 font-bold md:text-left mb-1 md:mb-0 pl-7"
                       htmlFor="itemName"
                     >
                       New Item Name
@@ -103,7 +103,7 @@ export const UpdateItem = ({ show, item, setEdit, storeId, type }) => {
                 <div className="md:flex md:items-center mb-6">
                   <div className="md:w-1/3">
                     <label
-                      className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
+                      className="block text-gray-500 font-bold md:text-left mb-1 md:mb-0 pl-7"
                       htmlFor="quantity"
                     >
                       New quantity
@@ -122,7 +122,7 @@ export const UpdateItem = ({ show, item, setEdit, storeId, type }) => {
                 <div className="md:flex md:items-center mb-6">
                   <div className="md:w-1/3">
                     <label
-                      className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
+                      className="block text-gray-500 font-bold md:text-left mb-1 md:mb-0 pl-7"
                       htmlFor="itemPrice"
                     >
                       New Item Price
@@ -138,11 +138,10 @@ export const UpdateItem = ({ show, item, setEdit, storeId, type }) => {
                     />
                   </div>
                 </div>
-
                 <div className="md:flex md:items-center mb-6">
                   <div className="md:w-1/3">
                     <label
-                      className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
+                      className="block text-gray-500 font-bold md:text-left mb-1 md:mb-0 pl-7"
                       htmlFor="imagePath"
                     >
                       New Image
@@ -160,7 +159,7 @@ export const UpdateItem = ({ show, item, setEdit, storeId, type }) => {
                 <div className="md:flex md:items-center mb-6">
                   <div className="md:w-1/3">
                     <label
-                      className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
+                      className="block text-gray-500 font-bold md:text-left mb-1 md:mb-0 pl-7"
                       htmlFor="itemDescription"
                     >
                       Discription
@@ -176,42 +175,34 @@ export const UpdateItem = ({ show, item, setEdit, storeId, type }) => {
                     />
                   </div>
                 </div>
-                <div className="md:flex md:items-center mb-6">
-
-                  <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                    <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="itemCat">
+                <div className="grid grid-cols-2">
+                  <div className="md:flex md:w-1/3">
+                    <label className="text-gray-500 font-bold md:left-left mb-1 md:mb-0 pl-7" htmlFor="itemCat">
                       Category
                     </label>
-                    <div className="relative">
-
-                      <select className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="itemCat">
-
-                        <option selected>Category</option>
-                        {
-                          category.categories?.map(category =>
-                            <option
-                              key={category.id}
-                              value={category.id}
-                            >{category.name}
-                            </option>
-                          )
-                        }
-                      </select>
-                      {/* <select defaultValue={{ label: ' {item.CatName}', value: '{item.CategoryId}' }} placeholder={item.CatName}
-                        className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="itemCat"
-
-                        // <option>Category</option>
-
-                        {...options}
-
-                      /> */}
-                      <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-
-                      </div>
+                    <div className="md:w-2/3">
                     </div>
                   </div>
+                  <div classNmae=" bg-yellow-900 pr-0">
+                    <select className="bg-gray-200 border border-gray-200 text-gray-700 rounded w-full py-2 px-4 text-gray-700" id="itemCat">
+                      <option selected>Category</option>
+                      {
+                        category.categories?.map(category =>
+                          <option
+                            key={category.id}
+                            value={category.id}
+                          >{category.name}
+                          </option>
+                        )
+                      }
+                    </select>
+                  </div>
+                  {/* <select defaultValue={{ label: ' {item.CatName}', value: '{item.CategoryId}' }} placeholder={item.CatName}
+                        className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="itemCat"
+                        // <option>Category</option>
+                        {...options}
+                      /> */}
                   {/* <div className="flex flex-wrap -mx-3 mb-2">
-
                     <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
                       <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="grid-state">
                         Rent/sale
@@ -254,11 +245,9 @@ export const UpdateItem = ({ show, item, setEdit, storeId, type }) => {
                 </div>
               </form>
               {/*footer*/}
-
             </div>
           </div>
         </div>
-        <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
       </div>
 
     </>
