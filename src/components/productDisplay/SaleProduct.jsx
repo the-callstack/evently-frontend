@@ -28,9 +28,9 @@ export const SaleProduct = () => {
             <FilterSale category={category.categories} />
           </div>
           <div>
-            {/* <div className="flex justify-center">
+            <div className="flex justify-center">
               <h1 className="text-5xl pb-12 ">Sale Items</h1>
-            </div> */}
+            </div>
             <div className="grid grid-cols-3 gap-5 w-full  px-14 pt-4 pb-12 ">
               {
   
