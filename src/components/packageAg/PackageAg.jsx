@@ -33,10 +33,10 @@ export const PackageAg = () => {
             <p className="pt-8 text-lg">
               Don't have time? let us help
             </p>
-            <div className="pt-12 pb-8">
+            <div className="pt-12 translate-x-[-0.5rem] pb-8">
               <button
                 onClick={() => navigate("/aggregator")}
-                className=" hover:bg-slate-700 hover:text-yellow-400 text-yellow-600 border-b-2 hover:shadow-sm duration-100 hover:scale-105 shadow-lg font-bold py-2 px-4 rounded-xl"
+                className=" hover:bg-slate-700 hover:text-yellow-400 text-xl text-yellow-600 border-b-2 hover:shadow-sm duration-100 hover:scale-105 shadow-lg font-bold py-2 px-4 rounded-xl"
               >
                 Pick your package !
               </button>
