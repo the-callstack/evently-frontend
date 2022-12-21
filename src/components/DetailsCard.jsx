@@ -51,7 +51,7 @@ export default function DetailsCard() {
             <div className="flex justify-center items-center h-full bg-blue-lightest py-16">
                 <div id="app" className="bg-white w-5/6   rounded shadow-md flex card text-grey-darkest  ">
                     <div className='w-1/3   shadow-md pr-2'>
-                        <img className=" rounded-l-sm p-4 " src={product.imgPath?product.imgPath:`https://images.unsplash.com/photo-1544787219-7f47ccb76574?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&h=400&q=80`} alt={product.imgNAme} />
+                        <img className=" rounded-l-sm p-4 w-full " src={product.imgPath?product.imgPath:`https://images.unsplash.com/photo-1544787219-7f47ccb76574?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&h=400&q=80`} alt={product.imgNAme} />
                     </div>
                     <div className="w-2/3 flex flex-col pl-8">
                         <div className="p-4 pb-0 flex-1">
@@ -105,7 +105,7 @@ export default function DetailsCard() {
                     </div>
                 </div>
             </div>
-            <TestCarousel />
+            <TestCarousel itemId={product.id} />
 
         </div>
     )

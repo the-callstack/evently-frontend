@@ -13,7 +13,7 @@ export default function CategoriesProduct() {
       <div className=" gap-10 pt-10 pl-10">
         <div>
           <div className="flex justify-center">
-            <h1 className="text-5xl pb-12 ">{location.state.category.name} Items</h1>
+            <h1 className="text-5xl pb-12 ">{location.state.category.name}</h1>
           </div>
           <div className="grid grid-cols-3 gap-5 w-full  px-14 pt-4 pb-12 ">
             {

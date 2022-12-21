@@ -22,6 +22,7 @@ export default function Aggregator() {
     const newCat = val.categories.map((item) => parseInt(item));
     val.categories = [...newCat];
     val.eventId = parseInt(val.eventId);
+    console.log(val)
     dispatch(createPackage(val));
   };
 
