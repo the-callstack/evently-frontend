@@ -4,7 +4,7 @@ import { getAllCategories, selectCategoryState } from "../../features/categories
 import { updateSaleItems } from "../../features/saleItems/saleItemsSlice";
 import { updateItem } from "../../features/rentalItems/rentalItemsSlice";
 
-export const UpdateItem = ({ show, item, setEdit, storeId }) => {
+export const UpdateItem = ({ show, item, setEdit, storeId, type }) => {
 
   const showMenu = () => {
     setEdit(false);
@@ -13,6 +13,15 @@ export const UpdateItem = ({ show, item, setEdit, storeId }) => {
   const dispatch = useDispatch();
   // const { loggedUser } = useSelector(selectUserState);
   const { category } = useSelector(selectCategoryState);
+
+  const options = category.categories?.map(category =>
+    <option
+      key={category.id}
+      value={category.id}
+    >{category.name}
+    </option>
+  )
+
 
   useEffect(() => {
     dispatch(getAllCategories());
@@ -30,9 +39,9 @@ export const UpdateItem = ({ show, item, setEdit, storeId }) => {
       StoreId: storeId,
       id: item.id
     }
-    console.log(data.StoreId);
+    console.log(data);
 
-    if (e.target.saleItemDrop.checked) {
+    if (type === 'SALE') {
       dispatch(updateSaleItems(data));
     } else {
       dispatch(updateItem(data));
@@ -85,7 +94,8 @@ export const UpdateItem = ({ show, item, setEdit, storeId }) => {
                       className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
                       id="itemName"
                       type="text"
-                      placeholder="chair.."
+                      defaultValue={item.name}
+                      placeholder={item.name}
                     />
                   </div>
                 </div>
@@ -104,6 +114,7 @@ export const UpdateItem = ({ show, item, setEdit, storeId }) => {
                       className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
                       id="quantity"
                       type="number"
+                      defaultValue={item.quantity}
                       placeholder={item.quantity}
                     />
                   </div>
@@ -122,7 +133,8 @@ export const UpdateItem = ({ show, item, setEdit, storeId }) => {
                       className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
                       id="itemPrice"
                       type="text"
-                      placeholder="23.."
+                      defaultValue={item.price}
+                      placeholder={item.price}
                     />
                   </div>
                 </div>
@@ -141,6 +153,7 @@ export const UpdateItem = ({ show, item, setEdit, storeId }) => {
                       className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
                       id="imagePath"
                       type="file"
+                      defaultValue={item.imgPath}
                     />
                   </div>
                 </div>
@@ -158,7 +171,8 @@ export const UpdateItem = ({ show, item, setEdit, storeId }) => {
                       className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
                       id="itemDescription"
                       type="text"
-                      placeholder="..."
+                      defaultValue={item.description}
+                      placeholder={item.description}
                     />
                   </div>
                 </div>
@@ -169,6 +183,7 @@ export const UpdateItem = ({ show, item, setEdit, storeId }) => {
                       Category
                     </label>
                     <div className="relative">
+
                       <select className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="itemCat">
 
                         <option selected>Category</option>
@@ -182,12 +197,20 @@ export const UpdateItem = ({ show, item, setEdit, storeId }) => {
                           )
                         }
                       </select>
+                      {/* <select defaultValue={{ label: ' {item.CatName}', value: '{item.CategoryId}' }} placeholder={item.CatName}
+                        className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="itemCat"
+
+                        // <option>Category</option>
+
+                        {...options}
+
+                      /> */}
                       <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
 
                       </div>
                     </div>
                   </div>
-                  <div className="flex flex-wrap -mx-3 mb-2">
+                  {/* <div className="flex flex-wrap -mx-3 mb-2">
 
                     <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
                       <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="grid-state">
@@ -212,7 +235,7 @@ export const UpdateItem = ({ show, item, setEdit, storeId }) => {
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
                 <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
                   <button

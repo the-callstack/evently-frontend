@@ -155,7 +155,8 @@ export const AddItem = (props) => {
             </div>
             <div className="md:flex mb-10 mt-14 md:items-center flex justify-center">
               <button
-                className="shadow  bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded w-1/5"
+                // className="shadow  bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded w-1/5"
+                className=" hover:bg-slate-700 hover:text-yellow-400 text-yellow-600 border-b-2 hover:shadow-sm duration-100 hover:scale-105 shadow-lg font-bold py-2 px-4 rounded-xl"
                 type="submit"
               >
                 Add Item
