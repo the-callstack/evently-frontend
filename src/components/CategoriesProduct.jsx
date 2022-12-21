@@ -10,6 +10,7 @@ export default function CategoriesProduct() {
   const location=useLocation()
   return (
     <div>
+      {console.log (location.state.category)}
       <div className=" gap-10 pt-10 pl-10">
         <div>
           <div className="flex justify-center">
